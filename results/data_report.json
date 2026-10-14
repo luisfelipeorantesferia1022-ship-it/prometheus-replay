@@ -1,0 +1,10 @@
+{
+  "tickers_with_prices": 526,
+  "first_date": "2017-10-02",
+  "last_date": "2026-02-13",
+  "weeks": 52,
+  "first_asof": "2025-01-03",
+  "last_asof": "2025-12-26",
+  "members_first_week": 503,
+  "members_without_prices": []
+}
