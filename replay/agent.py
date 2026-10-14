@@ -173,14 +173,23 @@ class Replay:
                 ask if ask > 0 and np.isfinite(ask) else None)
 
     def option_last_trade(self, tr: Trade, ts: pd.Timestamp) -> float | None:
-        if tr.raw_symbol not in self._trade_cache:
-            self._trade_cache[tr.raw_symbol] = dbn.option_trades(
-                tr.raw_symbol, pd.Timestamp(f"{tr.entry_ts.date()} 09:00"),
-                pd.Timestamp(f"{tr.expiry} 16:15"), purpose="held_option_trades")
-        t = self._trade_cache[tr.raw_symbol]
+        """
+        Last trade before the (delayed) exit time. Only the exit day is bought:
+        busy contracts print thousands of trades over a hold, and the sale only
+        needs the most recent one. No print that day -> caller uses the bid,
+        as _execute_sell does when `last` is missing.
+        """
+        cut = ts - self.delay
+        if cut.time() < pd.Timestamp("09:31").time():
+            # delayed quote still shows the prior session: its last hour
+            p = asof.prev_trading_day(cut.date())
+            start, end = pd.Timestamp(f"{p} 15:00"), pd.Timestamp(f"{p} 16:15")
+        else:
+            start, end = pd.Timestamp(f"{cut.date()} 09:30"), cut + ONE_MIN
+        t = dbn.option_trades(tr.raw_symbol, start, end, purpose="exit_option_trades")
         if t.empty:
             return None
-        t = t[t["ts_et"] <= ts - self.delay]
+        t = t[t["ts_et"] <= cut]
         return float(t["price"].iloc[-1]) if not t.empty else None
 
     # ── SPY trend (get_market_trend: Tradier daily, through prior close) ──
