@@ -1,0 +1,50 @@
+name: 5 · Agent replay (continuous 2025 book)
+
+on:
+  workflow_dispatch:
+    inputs:
+      runs:
+        description: "selector:mode pairs, space separated"
+        default: "lstm:copy lstm:real spy_rsi:real"
+      budget_usd:
+        description: "Hard Databento budget for the whole project (USD)"
+        default: "70"
+
+permissions:
+  contents: write
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    env:
+      DATABENTO_API_KEY: ${{ secrets.DATABENTO_API_KEY }}
+      DATABENTO_BUDGET_USD: ${{ inputs.budget_usd }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt
+      - uses: actions/cache/restore@v4
+        with:
+          path: data/sharadar
+          key: sharadar-v1-none
+          restore-keys: sharadar-v1-
+          fail-on-cache-miss: true
+      - uses: actions/cache/restore@v4
+        with:
+          path: data/databento
+          key: dbn-v1-none
+          restore-keys: dbn-v1-
+      - name: Replay
+        run: |
+          for r in ${{ inputs.runs }}; do
+            python -m replay.agent --selector "${r%%:*}" --mode "${r##*:}"
+          done
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: data/databento
+          key: dbn-v1-${{ github.run_id }}-${{ github.run_attempt }}
+      - if: always()
+        run: .github/scripts/commit-results.sh "agent replay"

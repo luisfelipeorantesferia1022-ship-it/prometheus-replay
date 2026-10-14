@@ -1,0 +1,88 @@
+name: 2 · Stage 1 LSTM sweep (one quarter per run)
+
+on:
+  workflow_dispatch:
+    inputs:
+      quarter:
+        description: "Quarter of 2025 to sweep (1-4)"
+        required: true
+        default: "1"
+      nshards:
+        description: "Shards per week (each ~503/nshards tickers)"
+        required: true
+        default: "6"
+
+permissions:
+  contents: write
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.m.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install pandas pyarrow pandas-market-calendars
+      - id: m
+        run: echo "matrix=$(python -m replay.matrix stage1 --quarter ${{ inputs.quarter }} --nshards ${{ inputs.nshards }})" >> "$GITHUB_OUTPUT"
+
+  sweep:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt
+      - uses: actions/cache/restore@v4
+        with:
+          path: data/sharadar
+          key: sharadar-v1-none
+          restore-keys: sharadar-v1-
+          fail-on-cache-miss: true
+      - name: Sweep shard
+        env: { TF_CPP_MIN_LOG_LEVEL: "3" }
+        run: python -m replay.stage1 shard --asof ${{ matrix.asof }} --shard ${{ matrix.shard }} --nshards ${{ matrix.nshards }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stage1-${{ matrix.asof }}-${{ matrix.shard }}
+          path: data/stage1/${{ matrix.asof }}/
+          retention-days: 5
+
+  merge:
+    needs: [plan, sweep]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install pandas pyarrow pandas-market-calendars
+      - uses: actions/cache/restore@v4
+        with:
+          path: data/sharadar
+          key: sharadar-v1-none
+          restore-keys: sharadar-v1-
+          fail-on-cache-miss: true
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: stage1-*
+          path: artifacts
+      - name: Merge shards and apply the candidate gate
+        run: |
+          for d in $(ls artifacts | sed -E 's/^stage1-([0-9-]{10})-.*/\1/' | sort -u); do
+            mkdir -p data/stage1/$d
+            cp artifacts/stage1-$d-*/* data/stage1/$d/
+            n=$(ls data/stage1/$d/shard_*.csv | wc -l)
+            echo "$d: $n of ${{ inputs.nshards }} shards"
+            if [ "$n" -ne "${{ inputs.nshards }}" ]; then echo "::warning::$d is missing shards; not merged"; continue; fi
+            python -m replay.stage1 merge --asof $d
+          done
+      - run: .github/scripts/commit-results.sh "stage 1 sweep Q${{ inputs.quarter }}"

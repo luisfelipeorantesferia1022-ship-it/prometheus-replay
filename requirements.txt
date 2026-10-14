@@ -1,0 +1,12 @@
+# Matches the live agent's stack (Python 3.12, TensorFlow/Keras, pandas 2).
+tensorflow-cpu>=2.16,<2.21
+pandas>=2.2,<3
+numpy>=1.26,<2.3
+scipy>=1.11
+scikit-learn>=1.4
+pyarrow>=15
+requests>=2.31
+yfinance>=0.2.40          # imported by the strategy modules; never called by the replay
+python-dotenv>=1.0
+pandas-market-calendars>=4.4
+databento>=0.40

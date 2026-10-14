@@ -1,0 +1,76 @@
+name: 4 · Agent LSTM forecasts (one fit per whitelisted ticker per entry morning)
+
+on:
+  workflow_dispatch:
+    inputs:
+      fits_per_shard:
+        description: "Fits per job (~60-80 s each; keep under ~250 for the 6 h limit)"
+        default: "200"
+
+permissions:
+  contents: write
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.m.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install pandas pyarrow pandas-market-calendars
+      - uses: actions/cache/restore@v4
+        with:
+          path: data/sharadar
+          key: sharadar-v1-none
+          restore-keys: sharadar-v1-
+          fail-on-cache-miss: true
+      - run: python -m replay.forecasts plan
+      - id: m
+        run: echo "matrix=$(python -m replay.matrix forecasts --fits-per-shard ${{ inputs.fits_per_shard }})" >> "$GITHUB_OUTPUT"
+
+  fit:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt
+      - uses: actions/cache/restore@v4
+        with:
+          path: data/sharadar
+          key: sharadar-v1-none
+          restore-keys: sharadar-v1-
+          fail-on-cache-miss: true
+      - env: { TF_CPP_MIN_LOG_LEVEL: "3" }
+        run: python -m replay.forecasts shard --shard ${{ matrix.shard }} --nshards ${{ matrix.nshards }}
+      - name: Strip raw prices before upload
+        run: python -c "import pandas as pd,glob; [pd.read_csv(p).drop(columns=['last_close'],errors='ignore').to_csv(p,index=False) for p in glob.glob('data/forecasts/*.csv')]"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: forecasts-${{ matrix.shard }}
+          path: data/forecasts/
+          retention-days: 5
+
+  merge:
+    needs: fit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install pandas pyarrow pandas-market-calendars
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: forecasts-*
+          path: data/forecasts
+          merge-multiple: true
+      - run: python -m replay.forecasts merge
+      - run: .github/scripts/commit-results.sh "agent forecasts"

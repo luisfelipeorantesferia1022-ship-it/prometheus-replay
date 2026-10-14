@@ -1,0 +1,60 @@
+name: 3 · Stages 2-4 for every week (Databento bars + sim + promotion)
+
+on:
+  workflow_dispatch:
+    inputs:
+      quote_only:
+        description: "Only price the Databento bars stage 2 needs (no download, no spend)"
+        type: boolean
+        default: true
+      budget_usd:
+        description: "Hard Databento budget for the whole project (USD)"
+        default: "70"
+
+permissions:
+  contents: write
+
+jobs:
+  weekly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    env:
+      DATABENTO_API_KEY: ${{ secrets.DATABENTO_API_KEY }}
+      DATABENTO_BUDGET_USD: ${{ inputs.budget_usd }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt
+      - uses: actions/cache/restore@v4
+        with:
+          path: data/sharadar
+          key: sharadar-v1-none
+          restore-keys: sharadar-v1-
+          fail-on-cache-miss: true
+      - uses: actions/cache/restore@v4
+        with:
+          path: data/databento
+          key: dbn-v1-none
+          restore-keys: dbn-v1-
+
+      - name: Price stage-2 bars (quote only)
+        if: ${{ inputs.quote_only }}
+        env: { DATABENTO_QUOTE_ONLY: "1" }
+        run: python -m replay.weekly prefetch
+
+      - name: Buy stage-2 bars
+        if: ${{ !inputs.quote_only }}
+        run: python -m replay.weekly prefetch
+      - uses: actions/cache/save@v4
+        if: ${{ always() && !inputs.quote_only }}
+        with:
+          path: data/databento
+          key: dbn-v1-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Stages 2, 3, 4 for all weeks
+        if: ${{ !inputs.quote_only }}
+        env: { TF_CPP_MIN_LOG_LEVEL: "3" }
+        run: python -m replay.weekly run
+      - if: ${{ always() && !inputs.quote_only }}
+        run: .github/scripts/commit-results.sh "stages 2-4"

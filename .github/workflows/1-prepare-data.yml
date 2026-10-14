@@ -1,0 +1,44 @@
+name: 1 · Prepare Sharadar data
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install pandas pyarrow requests pandas-market-calendars
+      - name: Download and subset Sharadar tables
+        env:
+          SHARADAR_API_KEY: ${{ secrets.SHARADAR_API_KEY }}
+        run: python -m replay.sharadar
+      - name: Data report (no prices, just coverage)
+        run: |
+          python - <<'PY'
+          import json, pandas as pd
+          from replay import config, asof
+          p = pd.read_parquet(config.SHARADAR_DIR / "prices.parquet", columns=["ticker", "date"])
+          weeks = asof.weekly_asof_dates()
+          rep = {
+            "tickers_with_prices": int(p["ticker"].nunique()),
+            "first_date": str(p["date"].min().date()), "last_date": str(p["date"].max().date()),
+            "weeks": len(weeks), "first_asof": str(weeks[0]), "last_asof": str(weeks[-1]),
+            "members_first_week": len(asof.members_live_format(weeks[0])),
+            "members_without_prices": (config.SHARADAR_DIR / "missing_price_tickers.txt").read_text().split(),
+          }
+          (config.RESULTS_DIR).mkdir(exist_ok=True)
+          (config.RESULTS_DIR / "data_report.json").write_text(json.dumps(rep, indent=2))
+          print(json.dumps(rep, indent=2))
+          PY
+      - uses: actions/cache/save@v4
+        with:
+          path: data/sharadar
+          key: sharadar-v1-${{ github.run_id }}
+      - run: .github/scripts/commit-results.sh "data report"
