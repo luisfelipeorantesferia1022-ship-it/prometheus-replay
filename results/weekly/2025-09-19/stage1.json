@@ -1,0 +1,22 @@
+{
+  "asof": "2025-09-19",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 12,
+  "candidates": [
+    "ED",
+    "AME",
+    "APA",
+    "HRL",
+    "CPT",
+    "COP",
+    "FSLR",
+    "SOLV",
+    "KEYS",
+    "ICE",
+    "CPB",
+    "KO"
+  ],
+  "mean_dir_accuracy": 50.34
+}
