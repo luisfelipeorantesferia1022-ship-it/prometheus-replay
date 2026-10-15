@@ -1,0 +1,19 @@
+{
+  "asof": "2025-07-18",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 9,
+  "candidates": [
+    "NSC",
+    "DASH",
+    "INCY",
+    "AFL",
+    "LW",
+    "TECH",
+    "VTRS",
+    "GEHC",
+    "PGR"
+  ],
+  "mean_dir_accuracy": 47.65
+}

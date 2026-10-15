@@ -1,0 +1,26 @@
+{
+  "asof": "2025-08-15",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 16,
+  "candidates": [
+    "EG",
+    "AJG",
+    "GIS",
+    "SOLV",
+    "EXR",
+    "EQIX",
+    "F",
+    "HST",
+    "AMP",
+    "WY",
+    "JKHY",
+    "ZBRA",
+    "NCLH",
+    "JBHT",
+    "BMY",
+    "DOV"
+  ],
+  "mean_dir_accuracy": 51.15
+}

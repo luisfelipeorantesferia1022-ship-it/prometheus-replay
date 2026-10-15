@@ -1,0 +1,29 @@
+{
+  "asof": "2025-09-26",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 19,
+  "candidates": [
+    "HST",
+    "MAS",
+    "JBHT",
+    "HLT",
+    "PODD",
+    "DRI",
+    "ROP",
+    "CPB",
+    "COP",
+    "CPRT",
+    "PLD",
+    "SHW",
+    "CSX",
+    "MTD",
+    "JBL",
+    "STLD",
+    "MHK",
+    "TYL",
+    "GNRC"
+  ],
+  "mean_dir_accuracy": 51.17
+}

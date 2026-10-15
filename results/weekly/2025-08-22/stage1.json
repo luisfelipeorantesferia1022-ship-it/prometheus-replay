@@ -1,0 +1,24 @@
+{
+  "asof": "2025-08-22",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 14,
+  "candidates": [
+    "EG",
+    "FRT",
+    "ES",
+    "CLX",
+    "O",
+    "VICI",
+    "TRMB",
+    "CPB",
+    "SJM",
+    "CPRT",
+    "JBHT",
+    "YUM",
+    "F",
+    "ZBRA"
+  ],
+  "mean_dir_accuracy": 50.01
+}

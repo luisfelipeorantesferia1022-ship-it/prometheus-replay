@@ -1,0 +1,21 @@
+{
+  "asof": "2025-07-03",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 11,
+  "candidates": [
+    "AWK",
+    "MPC",
+    "ADSK",
+    "WDC",
+    "CCI",
+    "PCG",
+    "DLTR",
+    "TJX",
+    "IT",
+    "RVTY",
+    "PODD"
+  ],
+  "mean_dir_accuracy": 48.4
+}

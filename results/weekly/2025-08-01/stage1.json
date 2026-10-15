@@ -1,0 +1,20 @@
+{
+  "asof": "2025-08-01",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 10,
+  "candidates": [
+    "CME",
+    "EG",
+    "WDC",
+    "DPZ",
+    "KDP",
+    "AIG",
+    "POOL",
+    "ON",
+    "ANET",
+    "CI"
+  ],
+  "mean_dir_accuracy": 47.82
+}

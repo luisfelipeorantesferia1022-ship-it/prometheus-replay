@@ -1,0 +1,23 @@
+{
+  "asof": "2025-09-05",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 13,
+  "candidates": [
+    "CTRA",
+    "CPRT",
+    "PFG",
+    "SRE",
+    "BR",
+    "JBHT",
+    "CAG",
+    "SBAC",
+    "AES",
+    "CRWD",
+    "OTIS",
+    "TROW",
+    "EL"
+  ],
+  "mean_dir_accuracy": 50.83
+}

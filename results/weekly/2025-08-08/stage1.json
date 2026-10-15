@@ -1,0 +1,19 @@
+{
+  "asof": "2025-08-08",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 9,
+  "candidates": [
+    "MSFT",
+    "EG",
+    "PSA",
+    "KDP",
+    "WDC",
+    "LMT",
+    "AVGO",
+    "SJM",
+    "PEP"
+  ],
+  "mean_dir_accuracy": 48.61
+}

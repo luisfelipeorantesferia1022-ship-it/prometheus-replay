@@ -1,0 +1,27 @@
+{
+  "asof": "2025-09-12",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 17,
+  "candidates": [
+    "CPRT",
+    "SOLV",
+    "UDR",
+    "O",
+    "TSN",
+    "TXT",
+    "CMCSA",
+    "EXC",
+    "MAA",
+    "CMG",
+    "CPB",
+    "JKHY",
+    "ULTA",
+    "TRMB",
+    "PYPL",
+    "BMY",
+    "CCL"
+  ],
+  "mean_dir_accuracy": 51.05
+}

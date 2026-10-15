@@ -1,0 +1,19 @@
+{
+  "asof": "2025-07-11",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 9,
+  "candidates": [
+    "OKE",
+    "KDP",
+    "WDC",
+    "LW",
+    "CAG",
+    "TECH",
+    "KMB",
+    "DLTR",
+    "BAX"
+  ],
+  "mean_dir_accuracy": 47.64
+}

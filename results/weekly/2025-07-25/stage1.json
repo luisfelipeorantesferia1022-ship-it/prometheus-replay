@@ -1,0 +1,18 @@
+{
+  "asof": "2025-07-25",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 8,
+  "candidates": [
+    "DRI",
+    "EIX",
+    "AWK",
+    "SBUX",
+    "TRGP",
+    "PG",
+    "APTV",
+    "WBD"
+  ],
+  "mean_dir_accuracy": 47.43
+}
