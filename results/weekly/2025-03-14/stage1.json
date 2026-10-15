@@ -1,0 +1,37 @@
+{
+  "asof": "2025-03-14",
+  "members": 503,
+  "swept": 502,
+  "failed": [
+    "SW"
+  ],
+  "cleared_gates": 28,
+  "candidates": [
+    "AEP",
+    "CBOE",
+    "RMD",
+    "NVR",
+    "DOC",
+    "NSC",
+    "CTAS",
+    "USB",
+    "CCI",
+    "GOOGL",
+    "KIM",
+    "ROST",
+    "RF",
+    "CRM",
+    "MKTX",
+    "DOV",
+    "TYL",
+    "IDXX",
+    "TEL",
+    "MTB",
+    "GOOG",
+    "IR",
+    "ADSK",
+    "UNH",
+    "PNC"
+  ],
+  "mean_dir_accuracy": 51.19
+}

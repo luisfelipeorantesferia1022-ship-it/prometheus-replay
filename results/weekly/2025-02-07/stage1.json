@@ -1,0 +1,24 @@
+{
+  "asof": "2025-02-07",
+  "members": 503,
+  "swept": 502,
+  "failed": [
+    "SW"
+  ],
+  "cleared_gates": 12,
+  "candidates": [
+    "K",
+    "CLX",
+    "BDX",
+    "SPG",
+    "LH",
+    "VLO",
+    "SWK",
+    "ULTA",
+    "AVB",
+    "BG",
+    "KVUE",
+    "D"
+  ],
+  "mean_dir_accuracy": 49.37
+}

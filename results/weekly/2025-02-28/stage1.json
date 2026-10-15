@@ -1,0 +1,24 @@
+{
+  "asof": "2025-02-28",
+  "members": 503,
+  "swept": 502,
+  "failed": [
+    "SW"
+  ],
+  "cleared_gates": 12,
+  "candidates": [
+    "CME",
+    "VICI",
+    "AMT",
+    "ES",
+    "SWK",
+    "JBHT",
+    "NVR",
+    "MKTX",
+    "HAL",
+    "FITB",
+    "GPN",
+    "MLM"
+  ],
+  "mean_dir_accuracy": 48.1
+}

@@ -1,0 +1,27 @@
+{
+  "asof": "2025-02-14",
+  "members": 503,
+  "swept": 502,
+  "failed": [
+    "SW"
+  ],
+  "cleared_gates": 15,
+  "candidates": [
+    "UDR",
+    "USB",
+    "CSX",
+    "CSCO",
+    "CHTR",
+    "NSC",
+    "BF-B",
+    "FANG",
+    "CLX",
+    "CAG",
+    "BXP",
+    "D",
+    "AME",
+    "TEL",
+    "ALB"
+  ],
+  "mean_dir_accuracy": 48.97
+}

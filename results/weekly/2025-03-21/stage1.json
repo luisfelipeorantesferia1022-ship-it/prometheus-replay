@@ -1,0 +1,30 @@
+{
+  "asof": "2025-03-21",
+  "members": 503,
+  "swept": 502,
+  "failed": [
+    "SW"
+  ],
+  "cleared_gates": 18,
+  "candidates": [
+    "ANSS",
+    "GOOG",
+    "ICE",
+    "ADP",
+    "DOC",
+    "IQV",
+    "PSA",
+    "GEN",
+    "DOV",
+    "HRL",
+    "MHK",
+    "REG",
+    "PFG",
+    "CRM",
+    "UNH",
+    "GEHC",
+    "PNC",
+    "IDXX"
+  ],
+  "mean_dir_accuracy": 51.2
+}

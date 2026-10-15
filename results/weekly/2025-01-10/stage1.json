@@ -1,0 +1,32 @@
+{
+  "asof": "2025-01-10",
+  "members": 503,
+  "swept": 500,
+  "failed": [
+    "SOLV",
+    "GEV",
+    "SW"
+  ],
+  "cleared_gates": 18,
+  "candidates": [
+    "RTX",
+    "MRK",
+    "MKTX",
+    "ROK",
+    "AME",
+    "FITB",
+    "LNT",
+    "JPM",
+    "VRSN",
+    "ADI",
+    "BBY",
+    "MNST",
+    "XOM",
+    "TFC",
+    "GPC",
+    "MCO",
+    "CHD",
+    "VMC"
+  ],
+  "mean_dir_accuracy": 51.81
+}

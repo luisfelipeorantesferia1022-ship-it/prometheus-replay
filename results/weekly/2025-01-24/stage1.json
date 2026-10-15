@@ -1,0 +1,17 @@
+{
+  "asof": "2025-01-24",
+  "members": 503,
+  "swept": 502,
+  "failed": [
+    "SW"
+  ],
+  "cleared_gates": 5,
+  "candidates": [
+    "BDX",
+    "MRK",
+    "MDLZ",
+    "VTRS",
+    "AMT"
+  ],
+  "mean_dir_accuracy": 49.2
+}

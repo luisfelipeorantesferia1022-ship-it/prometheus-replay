@@ -1,0 +1,22 @@
+{
+  "asof": "2025-01-03",
+  "members": 503,
+  "swept": 500,
+  "failed": [
+    "SOLV",
+    "GEV",
+    "SW"
+  ],
+  "cleared_gates": 8,
+  "candidates": [
+    "XOM",
+    "ZBH",
+    "LHX",
+    "IEX",
+    "DECK",
+    "APD",
+    "IPG",
+    "FCX"
+  ],
+  "mean_dir_accuracy": 50.62
+}

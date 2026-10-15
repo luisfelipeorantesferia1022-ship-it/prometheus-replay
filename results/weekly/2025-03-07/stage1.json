@@ -1,0 +1,27 @@
+{
+  "asof": "2025-03-07",
+  "members": 503,
+  "swept": 502,
+  "failed": [
+    "SW"
+  ],
+  "cleared_gates": 15,
+  "candidates": [
+    "MTD",
+    "ANSS",
+    "ZBRA",
+    "DOC",
+    "PHM",
+    "ES",
+    "RMD",
+    "DHI",
+    "FE",
+    "EMR",
+    "GLW",
+    "A",
+    "D",
+    "WY",
+    "MCO"
+  ],
+  "mean_dir_accuracy": 50.45
+}

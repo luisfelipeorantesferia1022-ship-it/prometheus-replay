@@ -1,0 +1,30 @@
+{
+  "asof": "2025-03-28",
+  "members": 503,
+  "swept": 502,
+  "failed": [
+    "SW"
+  ],
+  "cleared_gates": 18,
+  "candidates": [
+    "SNA",
+    "RMD",
+    "CVS",
+    "PSA",
+    "UNH",
+    "GEN",
+    "WY",
+    "D",
+    "GOOGL",
+    "HD",
+    "CRM",
+    "EIX",
+    "FDX",
+    "HAS",
+    "STX",
+    "PHM",
+    "UBER",
+    "EXPE"
+  ],
+  "mean_dir_accuracy": 51.34
+}

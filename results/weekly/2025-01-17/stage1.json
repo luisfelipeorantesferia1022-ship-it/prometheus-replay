@@ -1,0 +1,23 @@
+{
+  "asof": "2025-01-17",
+  "members": 503,
+  "swept": 502,
+  "failed": [
+    "SW"
+  ],
+  "cleared_gates": 11,
+  "candidates": [
+    "NWSA",
+    "EA",
+    "IPG",
+    "TXN",
+    "TMO",
+    "GEN",
+    "VTRS",
+    "DAY",
+    "PAYC",
+    "ODFL",
+    "CPRT"
+  ],
+  "mean_dir_accuracy": 50.58
+}
