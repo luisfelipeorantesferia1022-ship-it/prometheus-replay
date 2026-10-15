@@ -1,0 +1,23 @@
+{
+  "asof": "2025-11-14",
+  "members": 503,
+  "swept": 501,
+  "failed": [
+    "Q",
+    "SOLS"
+  ],
+  "cleared_gates": 10,
+  "candidates": [
+    "TAP",
+    "CPRT",
+    "GEN",
+    "RMD",
+    "ELV",
+    "VLTO",
+    "MKC",
+    "CRM",
+    "CTRA",
+    "NOC"
+  ],
+  "mean_dir_accuracy": 50.71
+}

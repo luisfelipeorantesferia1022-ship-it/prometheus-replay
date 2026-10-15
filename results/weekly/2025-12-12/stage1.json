@@ -1,0 +1,22 @@
+{
+  "asof": "2025-12-12",
+  "members": 503,
+  "swept": 501,
+  "failed": [
+    "SOLS",
+    "Q"
+  ],
+  "cleared_gates": 9,
+  "candidates": [
+    "PSX",
+    "LH",
+    "ROP",
+    "VLO",
+    "STZ",
+    "OKE",
+    "PWR",
+    "WEC",
+    "LULU"
+  ],
+  "mean_dir_accuracy": 48.88
+}

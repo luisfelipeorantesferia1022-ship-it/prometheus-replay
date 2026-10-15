@@ -1,0 +1,27 @@
+{
+  "asof": "2025-12-26",
+  "members": 503,
+  "swept": 502,
+  "failed": [
+    "Q"
+  ],
+  "cleared_gates": 15,
+  "candidates": [
+    "ROP",
+    "HOLX",
+    "CPB",
+    "KIM",
+    "ACN",
+    "RVTY",
+    "IP",
+    "DVA",
+    "DXCM",
+    "HRL",
+    "AZO",
+    "POOL",
+    "MPWR",
+    "GEHC",
+    "VST"
+  ],
+  "mean_dir_accuracy": 49.33
+}

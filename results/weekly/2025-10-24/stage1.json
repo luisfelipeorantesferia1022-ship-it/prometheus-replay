@@ -1,0 +1,23 @@
+{
+  "asof": "2025-10-24",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 13,
+  "candidates": [
+    "CL",
+    "LIN",
+    "KMB",
+    "GPC",
+    "AME",
+    "CTRA",
+    "NOW",
+    "MAS",
+    "HBAN",
+    "FSLR",
+    "BKNG",
+    "BF-B",
+    "NCLH"
+  ],
+  "mean_dir_accuracy": 50.27
+}

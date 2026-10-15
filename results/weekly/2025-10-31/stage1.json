@@ -1,0 +1,18 @@
+{
+  "asof": "2025-10-31",
+  "members": 503,
+  "swept": 502,
+  "failed": [
+    "SOLS"
+  ],
+  "cleared_gates": 6,
+  "candidates": [
+    "MTB",
+    "EIX",
+    "COF",
+    "CL",
+    "CMI",
+    "BX"
+  ],
+  "mean_dir_accuracy": 49.97
+}

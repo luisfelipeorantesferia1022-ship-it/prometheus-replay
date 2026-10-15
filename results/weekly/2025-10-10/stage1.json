@@ -1,0 +1,30 @@
+{
+  "asof": "2025-10-10",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 20,
+  "candidates": [
+    "CL",
+    "ICE",
+    "HIG",
+    "EMN",
+    "KMB",
+    "EBAY",
+    "GIS",
+    "MAS",
+    "AMT",
+    "AME",
+    "TSCO",
+    "HRL",
+    "EIX",
+    "INTU",
+    "ADM",
+    "MTCH",
+    "CMCSA",
+    "MHK",
+    "EPAM",
+    "CAG"
+  ],
+  "mean_dir_accuracy": 50.5
+}

@@ -1,0 +1,27 @@
+{
+  "asof": "2025-10-03",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 17,
+  "candidates": [
+    "KO",
+    "CPAY",
+    "KEYS",
+    "AKAM",
+    "F",
+    "IPG",
+    "IFF",
+    "WY",
+    "ACGL",
+    "PTC",
+    "CPB",
+    "CRM",
+    "GEN",
+    "COP",
+    "EMN",
+    "GNRC",
+    "BEN"
+  ],
+  "mean_dir_accuracy": 49.9
+}

@@ -1,0 +1,26 @@
+{
+  "asof": "2025-11-28",
+  "members": 503,
+  "swept": 500,
+  "failed": [
+    "SNDK",
+    "SOLS",
+    "Q"
+  ],
+  "cleared_gates": 12,
+  "candidates": [
+    "L",
+    "PSX",
+    "OTIS",
+    "STT",
+    "DRI",
+    "GE",
+    "CF",
+    "FTNT",
+    "VLTO",
+    "AON",
+    "AMAT",
+    "WBD"
+  ],
+  "mean_dir_accuracy": 49.27
+}

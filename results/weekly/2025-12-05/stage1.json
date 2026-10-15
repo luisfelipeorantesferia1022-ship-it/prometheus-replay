@@ -1,0 +1,21 @@
+{
+  "asof": "2025-12-05",
+  "members": 503,
+  "swept": 501,
+  "failed": [
+    "SOLS",
+    "Q"
+  ],
+  "cleared_gates": 8,
+  "candidates": [
+    "PG",
+    "VZ",
+    "LIN",
+    "OKE",
+    "DVN",
+    "CCL",
+    "PWR",
+    "SYY"
+  ],
+  "mean_dir_accuracy": 49.1
+}
