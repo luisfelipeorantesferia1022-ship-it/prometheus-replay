@@ -1,0 +1,18 @@
+{
+  "asof": "2025-05-16",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 8,
+  "candidates": [
+    "EG",
+    "IEX",
+    "AOS",
+    "CSX",
+    "PYPL",
+    "CAH",
+    "NUE",
+    "MOH"
+  ],
+  "mean_dir_accuracy": 47.57
+}

@@ -1,0 +1,18 @@
+{
+  "asof": "2025-06-13",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 8,
+  "candidates": [
+    "VLTO",
+    "LIN",
+    "DLTR",
+    "MPC",
+    "HUBB",
+    "CF",
+    "FDX",
+    "ULTA"
+  ],
+  "mean_dir_accuracy": 49.53
+}

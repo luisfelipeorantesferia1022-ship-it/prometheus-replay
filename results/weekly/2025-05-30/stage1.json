@@ -1,0 +1,22 @@
+{
+  "asof": "2025-05-30",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 12,
+  "candidates": [
+    "KVUE",
+    "ADSK",
+    "SPGI",
+    "EG",
+    "VLTO",
+    "AOS",
+    "RTX",
+    "UPS",
+    "GLW",
+    "EXPD",
+    "MOS",
+    "TER"
+  ],
+  "mean_dir_accuracy": 48.43
+}

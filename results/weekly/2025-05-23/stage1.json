@@ -1,0 +1,18 @@
+{
+  "asof": "2025-05-23",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 8,
+  "candidates": [
+    "AIZ",
+    "GWW",
+    "SBUX",
+    "EMR",
+    "TKO",
+    "TGT",
+    "BAC",
+    "FDX"
+  ],
+  "mean_dir_accuracy": 48.07
+}

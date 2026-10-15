@@ -1,0 +1,15 @@
+{
+  "asof": "2025-04-25",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 5,
+  "candidates": [
+    "GWW",
+    "MDT",
+    "FTV",
+    "BLDR",
+    "RVTY"
+  ],
+  "mean_dir_accuracy": 49.24
+}

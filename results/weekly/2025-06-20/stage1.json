@@ -1,0 +1,22 @@
+{
+  "asof": "2025-06-20",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 12,
+  "candidates": [
+    "IPG",
+    "CSCO",
+    "RVTY",
+    "AKAM",
+    "MMM",
+    "IBM",
+    "WAT",
+    "DLTR",
+    "ZTS",
+    "TECH",
+    "WDC",
+    "CMG"
+  ],
+  "mean_dir_accuracy": 50.28
+}

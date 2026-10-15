@@ -1,0 +1,28 @@
+{
+  "asof": "2025-06-06",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 18,
+  "candidates": [
+    "ACN",
+    "USB",
+    "SJM",
+    "APD",
+    "MTB",
+    "VLTO",
+    "MOH",
+    "SPG",
+    "FRT",
+    "DAY",
+    "CPT",
+    "KVUE",
+    "LUV",
+    "AOS",
+    "FDX",
+    "IFF",
+    "EMN",
+    "EXPD"
+  ],
+  "mean_dir_accuracy": 48.67
+}

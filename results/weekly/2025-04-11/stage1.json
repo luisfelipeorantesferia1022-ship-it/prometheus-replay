@@ -1,0 +1,23 @@
+{
+  "asof": "2025-04-11",
+  "members": 503,
+  "swept": 502,
+  "failed": [
+    "SW"
+  ],
+  "cleared_gates": 11,
+  "candidates": [
+    "PSA",
+    "CSGP",
+    "AME",
+    "SBAC",
+    "ARE",
+    "IQV",
+    "FTV",
+    "MDT",
+    "NVR",
+    "LW",
+    "QCOM"
+  ],
+  "mean_dir_accuracy": 50.83
+}

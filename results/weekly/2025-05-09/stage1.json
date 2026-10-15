@@ -1,0 +1,15 @@
+{
+  "asof": "2025-05-09",
+  "members": 503,
+  "swept": 503,
+  "failed": [],
+  "cleared_gates": 5,
+  "candidates": [
+    "TAP",
+    "RF",
+    "NEE",
+    "TGT",
+    "ODFL"
+  ],
+  "mean_dir_accuracy": 48.8
+}
