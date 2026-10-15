@@ -41,6 +41,17 @@ jobs:
           for r in ${{ inputs.runs }}; do
             python -m replay.agent --selector "${r%%:*}" --mode "${r##*:}"
           done
+      - name: Summaries as annotations
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, glob
+          from replay import dbn
+          for p in sorted(glob.glob("results/agent/*/summary.json")):
+              s = json.load(open(p))
+              print(f"::notice title={s.get('selector')}/{s.get('mode')}::return {s.get('return_pct')}% | trades {s.get('n_trades')} | win {s.get('win_rate_pct')}% | maxDD {s.get('max_drawdown_pct')}% | SPY {s.get('spy_return_pct_same_window')}%")
+          print(f"::notice title=Databento spend::${dbn.ledger()['spent_usd']:.2f}")
+          PY
       - uses: actions/cache/save@v4
         if: always()
         with:

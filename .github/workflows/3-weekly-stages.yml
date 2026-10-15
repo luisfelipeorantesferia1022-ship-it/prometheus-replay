@@ -43,6 +43,17 @@ jobs:
         env: { DATABENTO_QUOTE_ONLY: "1" }
         run: python -m replay.weekly prefetch
 
+      - name: Report quote as an annotation
+        if: ${{ always() && inputs.quote_only }}
+        run: |
+          python - <<'PY'
+          from replay import dbn, weekly
+          led = dbn.ledger(); need = weekly.plan()
+          pairs = sum(len(v) for v in need.values())
+          tick = len(set().union(*need.values()))
+          print(f"::notice title=Databento quote::stage-2 bars ${led.get('quoted_usd', 0):.2f} for {pairs} ticker-days ({tick} tickers, {len(need)} days) on {led.get('equity_dataset')}; nothing bought")
+          PY
+
       - name: Buy stage-2 bars
         if: ${{ !inputs.quote_only }}
         run: python -m replay.weekly prefetch
@@ -56,5 +67,8 @@ jobs:
         if: ${{ !inputs.quote_only }}
         env: { TF_CPP_MIN_LOG_LEVEL: "3" }
         run: python -m replay.weekly run
+      - name: Report spend as an annotation
+        if: ${{ always() && !inputs.quote_only }}
+        run: python -c "from replay import dbn; l=dbn.ledger(); print(f\"::notice title=Databento spend::spent \${l['spent_usd']:.2f} total, by purpose {l.get('by_purpose')}\")"
       - if: ${{ always() && !inputs.quote_only }}
         run: .github/scripts/commit-results.sh "stages 2-4"
