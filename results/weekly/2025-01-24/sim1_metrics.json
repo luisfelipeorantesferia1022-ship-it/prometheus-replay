@@ -1,0 +1,35 @@
+{
+  "n_trades": 38,
+  "win_rate": 23.68,
+  "expectancy": -122.89,
+  "total_pnl": -4670.0,
+  "return_pct": -93.4,
+  "max_dd_pct": -93.89,
+  "ending_balance": 329.99,
+  "exit_reason_counts": {
+    "Trail": 6,
+    "Stop": 28,
+    "Hard": 3,
+    "Thursday-before-expiry": 1
+  },
+  "per_ticker_pnl": {
+    "MDLZ": {
+      "trades": 38,
+      "wins": 9,
+      "pnl": -4670.0,
+      "win_rate": 23.7
+    }
+  },
+  "open_at_end": 0,
+  "exit_engine_errors": 0,
+  "entry_pipeline_errors": 0,
+  "open_market_value": 0.0,
+  "open_cost_basis": 0.0,
+  "unrealized_pnl": 0.0,
+  "equity_at_end": 329.99,
+  "return_pct_equity": -93.4,
+  "total_pnl_incl_open": -4670.0,
+  "unrevaluable_open": 0,
+  "max_dd_equity_pct": -94.7,
+  "unrevaluable_marks": 0
+}

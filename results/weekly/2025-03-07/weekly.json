@@ -1,0 +1,42 @@
+{
+  "asof": "2025-03-07",
+  "run_date": "2025-03-08",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "MTD",
+    "ANSS",
+    "ZBRA",
+    "DOC",
+    "PHM",
+    "ES",
+    "RMD",
+    "DHI",
+    "FE",
+    "EMR",
+    "GLW",
+    "A",
+    "D",
+    "WY",
+    "MCO"
+  ],
+  "passed_stage2_gate": [
+    "MTD",
+    "ANSS",
+    "ES",
+    "D",
+    "MCO"
+  ],
+  "sim1_positive": [
+    "MCO"
+  ],
+  "promoted": [
+    "MCO"
+  ],
+  "whitelist": [
+    "MCO"
+  ],
+  "carried_over": false,
+  "backtest_trades": 172,
+  "sim1_trades": 78,
+  "sim2_trades": 33
+}

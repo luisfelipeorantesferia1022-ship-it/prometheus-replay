@@ -1,0 +1,53 @@
+{
+  "n_trades": 81,
+  "win_rate": 38.27,
+  "expectancy": -38.67,
+  "total_pnl": -3132.43,
+  "return_pct": -68.51,
+  "max_dd_pct": -89.98,
+  "ending_balance": 1574.65,
+  "exit_reason_counts": {
+    "Trail": 32,
+    "Stop": 36,
+    "Thursday-before-expiry": 6,
+    "Hard": 7
+  },
+  "per_ticker_pnl": {
+    "GEHC": {
+      "trades": 29,
+      "wins": 10,
+      "pnl": -2905.63,
+      "win_rate": 34.5
+    },
+    "DASH": {
+      "trades": 11,
+      "wins": 4,
+      "pnl": 205.71,
+      "win_rate": 36.4
+    },
+    "NSC": {
+      "trades": 9,
+      "wins": 4,
+      "pnl": -986.84,
+      "win_rate": 44.4
+    },
+    "TECH": {
+      "trades": 32,
+      "wins": 13,
+      "pnl": 554.33,
+      "win_rate": 40.6
+    }
+  },
+  "open_at_end": 1,
+  "exit_engine_errors": 0,
+  "entry_pipeline_errors": 0,
+  "open_market_value": 180.04,
+  "open_cost_basis": 292.92,
+  "unrealized_pnl": -112.88,
+  "equity_at_end": 1754.69,
+  "return_pct_equity": -64.91,
+  "total_pnl_incl_open": -3245.31,
+  "unrevaluable_open": 0,
+  "max_dd_equity_pct": -88.03,
+  "unrevaluable_marks": 0
+}

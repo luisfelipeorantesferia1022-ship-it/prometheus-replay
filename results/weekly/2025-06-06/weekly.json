@@ -1,0 +1,38 @@
+{
+  "asof": "2025-06-06",
+  "run_date": "2025-06-07",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "ACN",
+    "USB",
+    "SJM",
+    "APD",
+    "MTB",
+    "VLTO",
+    "MOH",
+    "SPG",
+    "FRT",
+    "DAY",
+    "CPT",
+    "KVUE",
+    "LUV",
+    "AOS",
+    "FDX",
+    "IFF",
+    "EMN",
+    "EXPD"
+  ],
+  "passed_stage2_gate": [
+    "USB",
+    "LUV"
+  ],
+  "sim1_positive": [],
+  "promoted": [],
+  "whitelist": [
+    "TECH"
+  ],
+  "carried_over": true,
+  "backtest_trades": 256,
+  "sim1_trades": 60,
+  "sim2_trades": 0
+}

@@ -1,0 +1,36 @@
+{
+  "asof": "2025-07-03",
+  "run_date": "2025-07-05",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "AWK",
+    "MPC",
+    "ADSK",
+    "WDC",
+    "CCI",
+    "PCG",
+    "DLTR",
+    "TJX",
+    "IT",
+    "RVTY",
+    "PODD"
+  ],
+  "passed_stage2_gate": [
+    "MPC",
+    "WDC",
+    "RVTY"
+  ],
+  "sim1_positive": [
+    "RVTY"
+  ],
+  "promoted": [
+    "RVTY"
+  ],
+  "whitelist": [
+    "RVTY"
+  ],
+  "carried_over": false,
+  "backtest_trades": 186,
+  "sim1_trades": 64,
+  "sim2_trades": 32
+}

@@ -1,0 +1,28 @@
+{
+  "asof": "2025-12-05",
+  "run_date": "2025-12-06",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "PG",
+    "VZ",
+    "LIN",
+    "OKE",
+    "DVN",
+    "CCL",
+    "PWR",
+    "SYY"
+  ],
+  "passed_stage2_gate": [
+    "VZ",
+    "OKE"
+  ],
+  "sim1_positive": [],
+  "promoted": [],
+  "whitelist": [
+    "PSX"
+  ],
+  "carried_over": true,
+  "backtest_trades": 125,
+  "sim1_trades": 45,
+  "sim2_trades": 0
+}

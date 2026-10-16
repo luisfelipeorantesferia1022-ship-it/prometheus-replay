@@ -1,0 +1,13 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
+K,9,-69324.25,-693.2,0.0,False,,,,,backtest below 200%
+CLX,11,9804.83,98.0,54.5,False,,,,,backtest below 200%
+BDX,9,-3484.5,-34.8,55.6,False,,,,,backtest below 200%
+SPG,10,-16970.08,-169.7,50.0,False,,,,,backtest below 200%
+LH,9,-890.67,-8.9,55.6,False,,,,,backtest below 200%
+VLO,9,-24892.89,-248.9,33.3,False,,,,,backtest below 200%
+SWK,9,-25034.4,-250.3,44.4,False,,,,,backtest below 200%
+ULTA,17,-52553.11,-525.5,41.2,False,,,,,backtest below 200%
+AVB,9,-17981.66,-179.8,44.4,False,,,,,backtest below 200%
+BG,9,7867.74,78.7,55.6,False,,,,,backtest below 200%
+KVUE,6,27700.77,277.0,100.0,True,27.0,-4276.54,,,sim 1 negative
+D,11,-12114.35,-121.1,36.4,False,,,,,backtest below 200%

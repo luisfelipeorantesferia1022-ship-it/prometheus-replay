@@ -1,0 +1,31 @@
+{
+  "asof": "2025-11-21",
+  "run_date": "2025-11-22",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "SRE",
+    "SPGI",
+    "PRU",
+    "PG",
+    "OTIS",
+    "CPRT",
+    "CTRA",
+    "MSI",
+    "AVY",
+    "JBL",
+    "ELV",
+    "AMAT",
+    "BRO"
+  ],
+  "passed_stage2_gate": [],
+  "sim1_positive": [],
+  "promoted": [],
+  "whitelist": [
+    "PANW",
+    "DDOG"
+  ],
+  "carried_over": true,
+  "backtest_trades": 137,
+  "sim1_trades": 0,
+  "sim2_trades": 0
+}

@@ -1,0 +1,27 @@
+{
+  "asof": "2025-07-25",
+  "run_date": "2025-07-26",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "DRI",
+    "EIX",
+    "AWK",
+    "SBUX",
+    "TRGP",
+    "PG",
+    "APTV",
+    "WBD"
+  ],
+  "passed_stage2_gate": [
+    "WBD"
+  ],
+  "sim1_positive": [],
+  "promoted": [],
+  "whitelist": [
+    "TECH"
+  ],
+  "carried_over": true,
+  "backtest_trades": 105,
+  "sim1_trades": 25,
+  "sim2_trades": 0
+}

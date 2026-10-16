@@ -1,0 +1,35 @@
+{
+  "n_trades": 33,
+  "win_rate": 36.36,
+  "expectancy": -61.59,
+  "total_pnl": -2032.5,
+  "return_pct": -40.65,
+  "max_dd_pct": -73.62,
+  "ending_balance": 2967.51,
+  "exit_reason_counts": {
+    "Stop": 19,
+    "Trail": 8,
+    "Hard": 5,
+    "Thursday-before-expiry": 1
+  },
+  "per_ticker_pnl": {
+    "TROW": {
+      "trades": 33,
+      "wins": 12,
+      "pnl": -2032.5,
+      "win_rate": 36.4
+    }
+  },
+  "open_at_end": 0,
+  "exit_engine_errors": 0,
+  "entry_pipeline_errors": 0,
+  "open_market_value": 0.0,
+  "open_cost_basis": 0.0,
+  "unrealized_pnl": 0.0,
+  "equity_at_end": 2967.51,
+  "return_pct_equity": -40.65,
+  "total_pnl_incl_open": -2032.5,
+  "unrevaluable_open": 0,
+  "max_dd_equity_pct": -71.04,
+  "unrevaluable_marks": 0
+}

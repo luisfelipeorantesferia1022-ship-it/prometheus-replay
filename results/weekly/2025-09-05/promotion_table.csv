@@ -1,0 +1,14 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
+CTRA,13,-14685.89,-146.9,53.8,False,,,,,backtest below 200%
+CPRT,9,8770.74,87.7,66.7,False,,,,,backtest below 200%
+PFG,16,7771.8,77.7,56.2,False,,,,,backtest below 200%
+SRE,11,-20228.57,-202.3,45.5,False,,,,,backtest below 200%
+BR,12,-76190.85,-761.9,8.3,False,,,,,backtest below 200%
+JBHT,17,-29817.09,-298.2,23.5,False,,,,,backtest below 200%
+CAG,17,-36506.04,-365.1,41.2,False,,,,,backtest below 200%
+SBAC,13,-29898.52,-299.0,38.5,False,,,,,backtest below 200%
+AES,13,-90785.88,-907.9,0.0,False,,,,,backtest below 200%
+CRWD,8,-31948.13,-319.5,25.0,False,,,,,backtest below 200%
+OTIS,17,-91182.33,-911.8,17.6,False,,,,,backtest below 200%
+TROW,14,45386.19,453.9,64.3,True,33.0,-2032.5,,,sim 1 negative
+EL,8,-8392.65,-83.9,50.0,False,,,,,backtest below 200%

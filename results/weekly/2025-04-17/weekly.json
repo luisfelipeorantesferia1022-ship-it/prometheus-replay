@@ -1,0 +1,41 @@
+{
+  "asof": "2025-04-17",
+  "run_date": "2025-04-19",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "MDT",
+    "CLX",
+    "CVS",
+    "STX",
+    "AME",
+    "PH",
+    "DHI",
+    "QCOM",
+    "BF-B",
+    "EMR",
+    "VLO",
+    "NEE",
+    "HPQ"
+  ],
+  "passed_stage2_gate": [
+    "MDT",
+    "CLX",
+    "STX",
+    "AME",
+    "QCOM",
+    "NEE",
+    "HPQ"
+  ],
+  "sim1_positive": [
+    "MDT",
+    "HPQ"
+  ],
+  "promoted": [],
+  "whitelist": [
+    "PSA"
+  ],
+  "carried_over": true,
+  "backtest_trades": 195,
+  "sim1_trades": 89,
+  "sim2_trades": 59
+}

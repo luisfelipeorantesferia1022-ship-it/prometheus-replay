@@ -1,0 +1,32 @@
+{
+  "asof": "2025-09-05",
+  "run_date": "2025-09-06",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "CTRA",
+    "CPRT",
+    "PFG",
+    "SRE",
+    "BR",
+    "JBHT",
+    "CAG",
+    "SBAC",
+    "AES",
+    "CRWD",
+    "OTIS",
+    "TROW",
+    "EL"
+  ],
+  "passed_stage2_gate": [
+    "TROW"
+  ],
+  "sim1_positive": [],
+  "promoted": [],
+  "whitelist": [
+    "WYNN"
+  ],
+  "carried_over": true,
+  "backtest_trades": 168,
+  "sim1_trades": 33,
+  "sim2_trades": 0
+}

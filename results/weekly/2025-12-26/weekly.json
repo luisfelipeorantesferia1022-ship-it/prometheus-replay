@@ -1,0 +1,34 @@
+{
+  "asof": "2025-12-26",
+  "run_date": "2025-12-27",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "ROP",
+    "HOLX",
+    "CPB",
+    "KIM",
+    "ACN",
+    "RVTY",
+    "IP",
+    "DVA",
+    "DXCM",
+    "HRL",
+    "AZO",
+    "POOL",
+    "MPWR",
+    "GEHC",
+    "VST"
+  ],
+  "passed_stage2_gate": [
+    "VST"
+  ],
+  "sim1_positive": [],
+  "promoted": [],
+  "whitelist": [
+    "PSX"
+  ],
+  "carried_over": true,
+  "backtest_trades": 229,
+  "sim1_trades": 17,
+  "sim2_trades": 0
+}

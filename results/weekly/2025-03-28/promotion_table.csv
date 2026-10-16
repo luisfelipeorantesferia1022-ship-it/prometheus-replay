@@ -1,0 +1,19 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
+SNA,17,-34205.68,-342.1,41.2,False,,,,,backtest below 200%
+RMD,17,-10152.55,-101.5,52.9,False,,,,,backtest below 200%
+CVS,17,-97915.86,-979.2,5.9,False,,,,,backtest below 200%
+PSA,14,46028.33,460.3,78.6,True,5.0,-1317.23,,,sim 1 negative
+UNH,17,-108645.46,-1086.5,5.9,False,,,,,backtest below 200%
+GEN,17,4952.54,49.5,58.8,False,,,,,backtest below 200%
+WY,17,22990.81,229.9,64.7,True,25.0,-1359.7,,,sim 1 negative
+D,17,55918.08,559.2,76.5,True,24.0,-728.93,,,sim 1 negative
+GOOGL,17,31352.7,313.5,64.7,True,11.0,575.55,34.0,-6393.29,sim 2 negative
+HD,13,30664.69,306.6,69.2,True,7.0,-2567.21,,,sim 1 negative
+CRM,12,-5025.84,-50.3,50.0,False,,,,,backtest below 200%
+EIX,12,-46273.79,-462.7,16.7,False,,,,,backtest below 200%
+FDX,8,-23111.34,-231.1,37.5,False,,,,,backtest below 200%
+HAS,15,23156.47,231.6,60.0,True,12.0,-1111.53,,,sim 1 negative
+STX,17,47069.41,470.7,58.8,True,18.0,2127.69,34.0,3128.83,promoted
+PHM,17,-13280.33,-132.8,52.9,False,,,,,backtest below 200%
+UBER,17,-36265.34,-362.7,47.1,False,,,,,backtest below 200%
+EXPE,17,382.03,3.8,47.1,False,,,,,backtest below 200%

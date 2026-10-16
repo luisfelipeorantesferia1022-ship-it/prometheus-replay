@@ -1,0 +1,47 @@
+{
+  "n_trades": 64,
+  "win_rate": 28.12,
+  "expectancy": -74.34,
+  "total_pnl": -4757.9,
+  "return_pct": -95.16,
+  "max_dd_pct": -95.35,
+  "ending_balance": 242.1,
+  "exit_reason_counts": {
+    "Trail": 15,
+    "Stop": 42,
+    "Hard": 5,
+    "Thursday-before-expiry": 2
+  },
+  "per_ticker_pnl": {
+    "CSX": {
+      "trades": 22,
+      "wins": 4,
+      "pnl": -4104.96,
+      "win_rate": 18.2
+    },
+    "CAH": {
+      "trades": 20,
+      "wins": 7,
+      "pnl": -198.08,
+      "win_rate": 35.0
+    },
+    "AOS": {
+      "trades": 22,
+      "wins": 7,
+      "pnl": -454.86,
+      "win_rate": 31.8
+    }
+  },
+  "open_at_end": 0,
+  "exit_engine_errors": 0,
+  "entry_pipeline_errors": 0,
+  "open_market_value": 0.0,
+  "open_cost_basis": 0.0,
+  "unrealized_pnl": 0.0,
+  "equity_at_end": 242.1,
+  "return_pct_equity": -95.16,
+  "total_pnl_incl_open": -4757.9,
+  "unrevaluable_open": 0,
+  "max_dd_equity_pct": -95.86,
+  "unrevaluable_marks": 0
+}

@@ -1,0 +1,14 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
+CL,15,-36352.63,-363.5,40.0,False,,,,,backtest below 200%
+LIN,15,-63082.49,-630.8,26.7,False,,,,,backtest below 200%
+KMB,12,-55671.91,-556.7,25.0,False,,,,,backtest below 200%
+GPC,10,-53915.58,-539.2,20.0,False,,,,,backtest below 200%
+AME,12,-59984.43,-599.8,25.0,False,,,,,backtest below 200%
+CTRA,9,130.94,1.3,66.7,False,,,,,backtest below 200%
+NOW,12,-52556.85,-525.6,25.0,False,,,,,backtest below 200%
+MAS,12,-85078.56,-850.8,8.3,False,,,,,backtest below 200%
+HBAN,8,-24719.38,-247.2,50.0,False,,,,,backtest below 200%
+FSLR,12,50898.9,509.0,100.0,True,16.0,-2401.84,,,sim 1 negative
+BKNG,12,-45147.54,-451.5,25.0,False,,,,,backtest below 200%
+BF-B,18,10733.05,107.3,50.0,False,,,,,backtest below 200%
+NCLH,15,-99021.3,-990.2,6.7,False,,,,,backtest below 200%

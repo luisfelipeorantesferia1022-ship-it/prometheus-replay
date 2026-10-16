@@ -1,0 +1,21 @@
+{
+  "asof": "2025-06-27",
+  "run_date": "2025-06-28",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "JNJ",
+    "GILD",
+    "DLTR",
+    "SJM"
+  ],
+  "passed_stage2_gate": [],
+  "sim1_positive": [],
+  "promoted": [],
+  "whitelist": [
+    "TECH"
+  ],
+  "carried_over": true,
+  "backtest_trades": 53,
+  "sim1_trades": 0,
+  "sim2_trades": 0
+}

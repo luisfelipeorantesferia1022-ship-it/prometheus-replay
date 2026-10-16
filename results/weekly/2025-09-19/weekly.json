@@ -1,0 +1,34 @@
+{
+  "asof": "2025-09-19",
+  "run_date": "2025-09-20",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "ED",
+    "AME",
+    "APA",
+    "HRL",
+    "CPT",
+    "COP",
+    "FSLR",
+    "SOLV",
+    "KEYS",
+    "ICE",
+    "CPB",
+    "KO"
+  ],
+  "passed_stage2_gate": [
+    "APA",
+    "CPT",
+    "FSLR",
+    "KEYS"
+  ],
+  "sim1_positive": [],
+  "promoted": [],
+  "whitelist": [
+    "CCL"
+  ],
+  "carried_over": true,
+  "backtest_trades": 182,
+  "sim1_trades": 77,
+  "sim2_trades": 0
+}

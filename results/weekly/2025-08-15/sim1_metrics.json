@@ -1,0 +1,41 @@
+{
+  "n_trades": 39,
+  "win_rate": 35.9,
+  "expectancy": -88.51,
+  "total_pnl": -3451.82,
+  "return_pct": -74.01,
+  "max_dd_pct": -76.3,
+  "ending_balance": 1299.62,
+  "exit_reason_counts": {
+    "Stop": 24,
+    "Trail": 10,
+    "Hard": 4,
+    "Thursday-before-expiry": 1
+  },
+  "per_ticker_pnl": {
+    "ZBRA": {
+      "trades": 11,
+      "wins": 5,
+      "pnl": 169.39,
+      "win_rate": 45.5
+    },
+    "BMY": {
+      "trades": 28,
+      "wins": 9,
+      "pnl": -3621.21,
+      "win_rate": 32.1
+    }
+  },
+  "open_at_end": 1,
+  "exit_engine_errors": 0,
+  "entry_pipeline_errors": 0,
+  "open_market_value": 648.25,
+  "open_cost_basis": 248.54,
+  "unrealized_pnl": 399.71,
+  "equity_at_end": 1947.87,
+  "return_pct_equity": -61.04,
+  "total_pnl_incl_open": -3052.11,
+  "unrevaluable_open": 0,
+  "max_dd_equity_pct": -74.99,
+  "unrevaluable_marks": 0
+}

@@ -1,0 +1,28 @@
+{
+  "asof": "2025-01-17",
+  "run_date": "2025-01-18",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "NWSA",
+    "EA",
+    "IPG",
+    "TXN",
+    "TMO",
+    "GEN",
+    "VTRS",
+    "DAY",
+    "PAYC",
+    "ODFL",
+    "CPRT"
+  ],
+  "passed_stage2_gate": [
+    "IPG"
+  ],
+  "sim1_positive": [],
+  "promoted": [],
+  "whitelist": [],
+  "carried_over": true,
+  "backtest_trades": 159,
+  "sim1_trades": 31,
+  "sim2_trades": 0
+}

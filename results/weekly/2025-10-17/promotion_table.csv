@@ -1,0 +1,25 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
+KIM,13,-100297.0,-1003.0,0.0,False,,,,,backtest below 200%
+ICE,15,-58390.83,-583.9,26.7,False,,,,,backtest below 200%
+MTB,9,-28335.86,-283.4,33.3,False,,,,,backtest below 200%
+SYK,15,-55248.69,-552.5,26.7,False,,,,,backtest below 200%
+MAA,15,-83824.08,-838.2,20.0,False,,,,,backtest below 200%
+MAS,15,-85600.27,-856.0,20.0,False,,,,,backtest below 200%
+CPRT,18,-73077.42,-730.8,27.8,False,,,,,backtest below 200%
+DPZ,10,-32812.26,-328.1,40.0,False,,,,,backtest below 200%
+SHW,15,-74256.48,-742.6,20.0,False,,,,,backtest below 200%
+PANW,18,43701.91,437.0,83.3,True,28.0,2876.08,36.0,6833.5,promoted
+DDOG,18,76997.26,770.0,77.8,True,28.0,25881.36,30.0,83409.72,promoted
+IFF,18,-88497.99,-885.0,22.2,False,,,,,backtest below 200%
+NXPI,15,-26177.54,-261.8,46.7,False,,,,,backtest below 200%
+SLB,12,-29333.0,-293.3,41.7,False,,,,,backtest below 200%
+EMN,18,-78634.89,-786.3,27.8,False,,,,,backtest below 200%
+BXP,15,-53763.33,-537.6,33.3,False,,,,,backtest below 200%
+PRU,9,-60380.71,-603.8,11.1,False,,,,,backtest below 200%
+TDG,18,-36413.25,-364.1,33.3,False,,,,,backtest below 200%
+PCAR,12,26019.53,260.2,58.3,True,33.0,-6220.6,,,sim 1 negative
+HSY,15,-13559.08,-135.6,46.7,False,,,,,backtest below 200%
+ELV,12,27535.69,275.4,83.3,True,21.0,-10388.91,,,sim 1 negative
+MSCI,15,-38706.86,-387.1,33.3,False,,,,,backtest below 200%
+CDNS,15,-36593.63,-365.9,26.7,False,,,,,backtest below 200%
+NRG,18,-9206.58,-92.1,50.0,False,,,,,backtest below 200%
