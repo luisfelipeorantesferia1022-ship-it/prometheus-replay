@@ -81,3 +81,59 @@ def compute_promotion(candidates: list[str], bt_df, sim_metrics: dict | None,
         ).reset_index(drop=True)
     promoted = df.loc[df["status"] == "promoted", "ticker"].tolist() if not df.empty else []
     return df, promoted
+
+
+def stage2_gate(candidates: list[str], bt_df, stake: float, min_gain_pct: float,
+                min_trades: int = 1):
+    """Tickers whose total stage-2 P&L >= min_gain_pct % of the per-trade stake."""
+    bt = backtest_pnl_by_ticker(bt_df)
+    rows, passed = [], []
+    for tk in candidates:
+        b = bt.get(tk)
+        trades = b["trades"] if b else 0
+        pnl = b["pnl"] if b else 0.0
+        gain = pnl / stake * 100 if stake else 0.0
+        ok = trades >= min_trades and pnl > 0 and gain >= min_gain_pct
+        rows.append({"ticker": tk, "backtest_trades": trades, "backtest_pnl": pnl,
+                     "backtest_gain_pct_of_stake": round(gain, 1),
+                     "backtest_win_%": b["win_rate"] if b else 0.0,
+                     "passed_gate": ok})
+        if ok:
+            passed.append(tk)
+    return pd.DataFrame(rows), passed
+
+
+def sim_survivors(tickers: list[str], metrics: dict | None, min_trades: int = 1):
+    sm = sim_pnl_by_ticker(metrics)
+    out = {}
+    for tk in tickers:
+        s = sm.get(tk)
+        out[tk] = {"trades": s["trades"] if s else 0, "pnl": s["pnl"] if s else 0.0,
+                   "win_rate": s["win_rate"] if s else 0.0}
+    positive = [t for t, v in out.items() if v["trades"] >= min_trades and v["pnl"] > 0]
+    return out, positive
+
+
+def funnel_table(gate_df, sim1: dict, sim2: dict, stake_pct: float) -> pd.DataFrame:
+    df = gate_df.copy()
+    df["sim1_trades"] = df["ticker"].map(lambda t: sim1.get(t, {}).get("trades"))
+    df["sim1_pnl"] = df["ticker"].map(lambda t: sim1.get(t, {}).get("pnl"))
+    df["sim2_trades"] = df["ticker"].map(lambda t: sim2.get(t, {}).get("trades"))
+    df["sim2_pnl"] = df["ticker"].map(lambda t: sim2.get(t, {}).get("pnl"))
+
+    def status(r):
+        if r["backtest_trades"] == 0:
+            return "no trades (backtest)"
+        if not r["passed_gate"]:
+            return f"backtest below {stake_pct:g}%"
+        if not r["sim1_trades"]:
+            return "no trades (sim 1)"
+        if r["sim1_pnl"] <= 0:
+            return "sim 1 negative"
+        if not r["sim2_trades"]:
+            return "no trades (sim 2)"
+        if r["sim2_pnl"] <= 0:
+            return "sim 2 negative"
+        return "promoted"
+    df["status"] = df.apply(status, axis=1) if len(df) else []
+    return df

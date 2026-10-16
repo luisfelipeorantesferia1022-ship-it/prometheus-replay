@@ -35,6 +35,7 @@ config.REPLAY_FIRST_ASOF = "2025-01-03"
 config.REPLAY_LAST_ASOF = "2025-01-10"
 config.AGENT_LAST_ENTRY_DAY = "2025-01-17"
 config.AGENT_LAST_EXIT_DAY = "2025-02-14"
+config.STAGE2_MIN_GAIN_PCT = 0.0   # random tape: let any positive ticker through
 
 from replay import asof, dbn  # noqa: E402
 

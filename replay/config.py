@@ -40,6 +40,15 @@ MAX_CANDIDATES = 25          # "Cap candidates" used on the 2026-08-07 run
 MIN_TRADES = 1               # promotion: trades required in each harness
 MAX_OPEN_SIM = 3             # sim max open (sidebar default = agent's value)
 
+# ── Funnel change requested 2026-10-16 (differs from the live console) ──────
+# Stage 2 -> 3 gate: a candidate's total intraday-backtest P&L must be at
+# least this % of the fixed per-trade stake (intraday_backtest.BUDGET_PER_TRADE,
+# $10,000), i.e. 200 -> >= $20,000 total across its trades.
+STAGE2_MIN_GAIN_PCT = float(os.environ.get("STAGE2_MIN_GAIN_PCT", "200"))
+# Stage 3 then runs the sim twice: on the gate survivors, then again on only
+# the tickers that were positive in the first sim. Tickers positive in the
+# second sim are promoted.
+
 # ── Live agent (trading_agent_v3.py / paper_trading.py) ──────────────────────
 STARTING_BALANCE = 5000.0    # agent comments describe a $5,000 paper balance
 BASE_POSITION_PCT = 0.20

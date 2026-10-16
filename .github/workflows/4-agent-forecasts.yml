@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   plan:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       matrix: ${{ steps.m.outputs.matrix }}
     steps:
@@ -32,7 +32,7 @@ jobs:
 
   fit:
     needs: plan
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 350
     strategy:
       fail-fast: false
@@ -61,7 +61,7 @@ jobs:
 
   merge:
     needs: fit
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

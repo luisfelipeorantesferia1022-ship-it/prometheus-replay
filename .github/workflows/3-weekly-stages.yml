@@ -9,18 +9,22 @@ on:
         default: true
       budget_usd:
         description: "Hard Databento budget for the whole project (USD)"
-        default: "70"
+        default: "40"
+      stage2_min_gain_pct:
+        description: "Stage 2 -> 3 gate: total backtest P&L must be >= this % of the $10k per-trade stake"
+        default: "200"
 
 permissions:
   contents: write
 
 jobs:
   weekly:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 350
     env:
       DATABENTO_API_KEY: ${{ secrets.DATABENTO_API_KEY }}
       DATABENTO_BUDGET_USD: ${{ inputs.budget_usd }}
+      STAGE2_MIN_GAIN_PCT: ${{ inputs.stage2_min_gain_pct }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -67,6 +71,15 @@ jobs:
         if: ${{ !inputs.quote_only }}
         env: { TF_CPP_MIN_LOG_LEVEL: "3" }
         run: python -m replay.weekly run
+      - name: Funnel counts as an annotation
+        if: ${{ !inputs.quote_only }}
+        run: |
+          python - <<'PY'
+          import pandas as pd
+          t = pd.read_csv("results/whitelist_timeline.csv")
+          wl = t["whitelist"].fillna("").str.split()
+          print(f"::notice title=Funnel (52 weeks)::candidates {t.n_candidates.sum()} -> stage-2 gate {t.n_passed_stage2_gate.sum()} -> sim-1 positive {t.n_sim1_positive.sum()} -> promoted {t.promoted.fillna('').str.split().str.len().sum()} | weeks with a fresh promotion {(~t.carried_over).sum()} | weeks with an empty whitelist {(wl.str.len()==0).sum()} | distinct whitelisted tickers {len(set(x for l in wl for x in l))}")
+          PY
       - name: Report spend as an annotation
         if: ${{ always() && !inputs.quote_only }}
         run: python -c "from replay import dbn; l=dbn.ledger(); print(f\"::notice title=Databento spend::spent \${l['spent_usd']:.2f} total, by purpose {l.get('by_purpose')}\")"

@@ -17,6 +17,12 @@ The live system has two halves:
 
 The replay runs both halves for 52 weekends and one continuous trading book.
 
+**Funnel change from the live console (2026-10-16).** Instead of "positive in
+both the backtest and the sim", the replay now uses: stage-2 total P&L ≥ 200%
+of the $10,000 per-trade stake (≥ $20,000) → sim on those survivors → sim again
+on only the tickers positive in the first sim → tickers positive in the second
+sim are promoted. The threshold is the `stage2_min_gain_pct` input of workflow 3.
+
 ## What is reused and what is ported
 
 `strategy/` holds the live repo's research modules **unmodified**:
