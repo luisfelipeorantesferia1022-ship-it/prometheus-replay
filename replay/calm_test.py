@@ -231,10 +231,19 @@ def run_week(a: date) -> list[dict]:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--weeks", type=int, default=0, help="only the first N weeks (0 = all)")
+    ap.add_argument("--shard", type=int, default=None, help="run weeks shard::nshards only")
+    ap.add_argument("--nshards", type=int, default=1)
+    ap.add_argument("--merge", action="store_true", help="combine shard parts into calm_test.csv")
     a = ap.parse_args()
+    parts = R / "analysis" / "calm_parts"
+    if a.merge:
+        return merge(parts)
     weeks = asof.weekly_asof_dates()
     if a.weeks:
         weeks = weeks[:a.weeks]
+    if a.shard is not None:
+        weeks = weeks[a.shard::a.nshards]
+    base = dbn.ledger()
     rows = []
     try:
         for w in weeks:
@@ -242,12 +251,48 @@ def main():
     except dbn.BudgetExceeded as e:
         print(f"::warning title=Calm test stopped on budget::{e}", flush=True)
     df = pd.DataFrame(rows)
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    df.to_csv(OUT, index=False)
+    out = OUT if a.shard is None else parts / f"calm_test_{a.shard:02d}.csv"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    df.to_csv(out, index=False)
+    if a.shard is not None:          # spend of this shard alone, added up by --merge
+        now = dbn.ledger()
+        delta = {"spent_usd": now["spent_usd"] - base.get("spent_usd", 0),
+                 "requests": now.get("requests", 0) - base.get("requests", 0),
+                 "by_purpose": {k: v - base.get("by_purpose", {}).get(k, 0)
+                                for k, v in now.get("by_purpose", {}).items()}}
+        (parts / f"spend_{a.shard:02d}.json").write_text(json.dumps(delta))
     ok = df["peak_pct"].notna().sum() if "peak_pct" in df.columns else 0
     skips = df["skip"].value_counts().to_dict() if "skip" in df.columns else {}
-    print(f"::notice title=Calm test::{len(weeks)} weeks | {ok} options measured | skipped {skips} | "
-          f"Databento spend ${dbn.ledger()['spent_usd']:.2f}", flush=True)
+    print(f"::notice title=Calm test {'' if a.shard is None else f'shard {a.shard}'}::{len(weeks)} weeks | "
+          f"{ok} options measured | skipped {skips} | Databento spend ${dbn.ledger()['spent_usd']:.2f}",
+          flush=True)
+
+
+def merge(parts) -> None:
+    files = sorted(parts.glob("calm_test_*.csv"))
+    frames = []
+    for f in files:
+        try:
+            frames.append(pd.read_csv(f))
+        except pd.errors.EmptyDataError:
+            pass
+    df = pd.concat(frames, ignore_index=True).sort_values(["asof", "group", "ticker", "side"])
+    df.to_csv(OUT, index=False)
+    # Repo ledger + every shard's own spend.
+    led = json.loads(dbn._LEDGER_REPO.read_text())
+    for f in sorted(parts.glob("spend_*.json")):
+        dlt = json.loads(f.read_text())
+        led["spent_usd"] = round(led.get("spent_usd", 0) + dlt["spent_usd"], 6)
+        led["requests"] = led.get("requests", 0) + dlt.get("requests", 0)
+        bp = led.setdefault("by_purpose", {})
+        for k, v in dlt.get("by_purpose", {}).items():
+            if v:
+                bp[k] = round(bp.get(k, 0) + v, 6)
+    dbn._LEDGER_REPO.write_text(json.dumps(led, indent=2, sort_keys=True))
+    ok = int(df["peak_pct"].notna().sum())
+    print(f"::notice title=Calm test merged::{len(files)} shards | {df['asof'].nunique()} weeks | "
+          f"{ok} options measured | skipped {df['skip'].value_counts().to_dict() if 'skip' in df.columns else {}} | "
+          f"Databento spend ${led['spent_usd']:.2f}", flush=True)
 
 
 if __name__ == "__main__":

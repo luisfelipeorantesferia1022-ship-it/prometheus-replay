@@ -127,6 +127,8 @@ def main():
     for k in ["all", "tradable", "candidates", "controls", "calls", "puts"]:
         print(f"\n== {out[k]['label']}: {out[k]['options']} options, {out[k]['tickers']} tickers, "
               f"{out[k]['weeks']} weeks ==")
+        if not out[k]["tests"]:
+            continue
         print(pd.DataFrame(out[k]["tests"]).T[["measure", "outcome", "pooled_rho", "median_weekly_rho",
                                                  "weeks_negative", "weeks_positive", "sign_test_p",
                                                  "wilcoxon_p"]].to_string())

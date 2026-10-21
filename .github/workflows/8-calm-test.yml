@@ -6,17 +6,30 @@ on:
       budget_usd:
         description: "Hard Databento budget for the whole project (USD)"
         default: "15"
-      weeks:
-        description: "Only the first N weeks (0 = all 52)"
-        default: "0"
+      nshards:
+        description: "Parallel jobs (weeks are split across them)"
+        default: "13"
 
 permissions:
   contents: write
 
 jobs:
-  factors:
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      shards: ${{ steps.m.outputs.shards }}
+    steps:
+      - id: m
+        run: echo "shards=$(python3 -c "import json;print(json.dumps(list(range(${{ inputs.nshards }}))))")" >> "$GITHUB_OUTPUT"
+
+  measure:
+    needs: plan
     runs-on: ubuntu-24.04
     timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: ${{ fromJSON(needs.plan.outputs.shards) }}
     env:
       DATABENTO_API_KEY: ${{ secrets.DATABENTO_API_KEY }}
       DATABENTO_BUDGET_USD: ${{ inputs.budget_usd }}
@@ -36,12 +49,35 @@ jobs:
           path: data/databento
           key: dbn-v1-none
           restore-keys: dbn-v1-
-      - name: Calm-stock test
-        run: python -m replay.ghrun replay.calm_test --weeks ${{ inputs.weeks }}
+      - name: Calm-stock test, one shard of the weeks
+        run: python -m replay.ghrun replay.calm_test --shard ${{ matrix.shard }} --nshards ${{ inputs.nshards }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: calm-part-${{ matrix.shard }}
+          path: results/analysis/calm_parts/
+          if-no-files-found: ignore
       - uses: actions/cache/save@v4
         if: always()
         with:
           path: data/databento
-          key: dbn-v1-${{ github.run_id }}-${{ github.run_attempt }}
-      - if: always()
-        run: .github/scripts/commit-results.sh "calm-stock test"
+          key: dbn-v1-${{ github.run_id }}-${{ github.run_attempt }}-calm${{ matrix.shard }}
+
+  merge:
+    needs: measure
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: calm-part-*
+          path: results/analysis/calm_parts/
+          merge-multiple: true
+      - run: python -m replay.ghrun replay.calm_test --merge
+      - run: python -m replay.ghrun replay.calm_analysis
+        continue-on-error: true
+      - run: rm -rf results/analysis/calm_parts && .github/scripts/commit-results.sh "calm-stock test"
