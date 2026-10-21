@@ -118,7 +118,7 @@ def fake_quotes(symbols, start, end, purpose):
         for d in asof.trading_days(pd.Timestamp(start).date(), min(pd.Timestamp(end).date(), e)):
             b = fake_equity_bars(u, d).between_time("09:30", "15:59")
             b = b[(b.index >= pd.Timestamp(start)) & (b.index <= pd.Timestamp(end))]
-            for ts, S in b["close"].iloc[::5].items():
+            for ts, S in b["close"].items():
                 T = max((pd.Timestamp(e) + pd.Timedelta(hours=16) - ts).total_seconds() / 3.15e7, 1e-4)
                 m = bs_price(S, K, T, 0.045, 0.30, call)
                 out.append({"symbol": sym, "ts_et": ts, "bid": m * 0.97, "ask": m * 1.03})

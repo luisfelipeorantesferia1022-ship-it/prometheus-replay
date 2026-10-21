@@ -34,7 +34,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass, field, fields
 from datetime import date, datetime, timedelta
 
 import numpy as np
@@ -161,10 +161,20 @@ class Replay:
                 else pd.DataFrame(columns=["bid", "ask"])
         return self._opt_cache[tr.raw_symbol]
 
+    def first_live_quote(self, d: date) -> pd.Timestamp:
+        """
+        Real mode only trades on quotes from the current session. The cbbo-1m
+        snapshot stamped at the open still shows the prior close, so the first
+        live one is the snapshot one minute after the open.
+        """
+        return pd.Timestamp(asof.nyse_schedule().loc[d]["open_et"]) + ONE_MIN
+
     def option_quote(self, tr: Trade, ts: pd.Timestamp, delayed: bool):
         q = self._quotes_for(tr)
         t = ts - (self.delay if delayed else pd.Timedelta(0))
         q = q[q.index <= t]
+        if self.mode == "real":
+            q = q[q.index >= self.first_live_quote(ts.date())]
         if q.empty:
             return None, None
         r = q.iloc[-1]
@@ -307,8 +317,13 @@ class Replay:
         start = pd.Timestamp(f"{asof.prev_trading_day(ts.date())} 15:30")
         q = dbn.option_quotes(valid["raw_symbol"].tolist(), start, ts + ONE_MIN, purpose="chain_quotes")
         qt = ts - self.delay
-        last_q = (q[q["ts_et"] <= qt].groupby("symbol" if "symbol" in q.columns else "raw_symbol").last()
+        if not q.empty:
+            q = q[q["ts_et"] <= qt]
+            if self.mode == "real":
+                q = q[q["ts_et"] >= self.first_live_quote(ts.date())]
+        last_q = (q.groupby("symbol" if "symbol" in q.columns else "raw_symbol").last()
                   if not q.empty else pd.DataFrame())
+        rejects = {"no quote": 0, "spread>20%": 0, "delta<0.35": 0, "over budget": 0}
 
         T = max((datetime.combine(target, datetime.min.time()) + timedelta(hours=16) - now)
                 .total_seconds() / (365 * 86400), 1 / 365)
@@ -316,12 +331,15 @@ class Replay:
         for _, o in valid.iterrows():
             sym = o["raw_symbol"]
             if sym not in last_q.index:
+                rejects["no quote"] += 1
                 continue
             bid, ask = float(last_q.at[sym, "bid"]), float(last_q.at[sym, "ask"])
             if not (bid > 0 and ask > 0):
+                rejects["no quote"] += 1
                 continue
             mid = (bid + ask) / 2
             if (ask - bid) / mid > config.MAX_SPREAD_PCT:
+                rejects["spread>20%"] += 1
                 continue
             iv = implied_vol(mid, current, o["strike"], T, config.RISK_FREE, is_call)
             if iv is not None:
@@ -329,12 +347,16 @@ class Replay:
             else:
                 delta = max(0.05, 0.50 - abs(o["strike"] - current) / current * 2.0)
             if delta < config.MIN_DELTA:
+                rejects["delta<0.35"] += 1
                 continue
             value_score = delta * current * config.ASSUMED_MOVE_PCT / mid
             if mid * 100 <= budget:
                 scored.append((value_score, o, mid, bid, ask, delta))
+            else:
+                rejects["over budget"] += 1
         if not scored:
-            return None, "no contract within budget after scoring"
+            why = ", ".join(f"{k} {v}" for k, v in rejects.items() if v)
+            return None, f"no contract within budget after scoring ({why})"
         scored.sort(key=lambda x: x[0], reverse=True)
         vs, o, mid, bid, ask, delta = scored[0]
         contracts = max(1, int(budget / (mid * 100)))
@@ -430,6 +452,9 @@ class Replay:
             dbn.prefetch_equity_day(d, universe + [t.ticker for t in self.book.open], "agent_bars")
             trend = self.spy_trend(d)
             passed, skips, clock = self.scan(d, universe, trend, clock)
+            if self.mode == "real":
+                # A real order can only fill against a live quote.
+                clock = max(clock, self.first_live_quote(d))
             log.update({"spy_trend": trend, "passed": " ".join(c["ticker"] for c in passed),
                         "skips": "; ".join(f"{t}: {r}" for t, r in skips)})
             deployed, held = [], {t.ticker for t in self.book.open}
@@ -527,7 +552,8 @@ class Replay:
     def write(self) -> dict:
         od = config.RESULTS_DIR / "agent" / self.variant / f"{self.selector}_{self.mode}"
         od.mkdir(parents=True, exist_ok=True)
-        trades = pd.DataFrame([asdict(t) for t in self.book.closed + self.book.open])
+        trades = pd.DataFrame([asdict(t) for t in self.book.closed + self.book.open],
+                              columns=[f.name for f in fields(Trade)])
         trades.to_csv(od / "trades.csv", index=False)
         daily = pd.DataFrame(self.book.daily)
         daily.to_csv(od / "daily_equity.csv", index=False)
