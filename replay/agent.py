@@ -124,9 +124,13 @@ class Book:
 
 
 class Replay:
-    def __init__(self, mode: str, selector: str, variant: str):
+    def __init__(self, mode: str, selector: str, variant: str, entry_start: str | None = None):
         assert mode in ("copy", "real") and selector in ("lstm", "spy_rsi")
         self.mode, self.selector, self.variant = mode, selector, variant
+        # None = the live V3 behaviour (scan at the open). "09:46" = the V2
+        # rule restored on 2026-10-21: hold entries until 9:46 ET so the
+        # 15-minute-delayed sandbox quotes come from today's session.
+        self.entry_start = entry_start
         self.delay = pd.Timedelta(minutes=config.COPY_QUOTE_DELAY_MIN if mode == "copy" else 0)
         self.book = Book()
         self.whitelists = whitelist_timeline(variant)
@@ -515,7 +519,14 @@ class Replay:
         if self.book.open:
             dbn.prefetch_equity_day(d, [t.ticker for t in self.book.open], "agent_bars")
         self.exit_tick(open_ts)                       # first tick: exits before entry
-        clock = self.try_entry(d, open_ts)            # once per day
+        entry_ts = open_ts
+        if self.entry_start:
+            entry_ts = max(open_ts, pd.Timestamp(f"{d} {self.entry_start}"))
+            t = open_ts + ONE_MIN
+            while t < entry_ts and self.book.open:    # exits keep running meanwhile
+                self.exit_tick(t)
+                t += ONE_MIN
+        clock = self.try_entry(d, entry_ts)           # once per day
         ts = max(open_ts + ONE_MIN, clock.ceil("min"))
         while ts <= last_tick and self.book.open:
             self.exit_tick(ts)
@@ -550,7 +561,8 @@ class Replay:
 
     # ── Output ─────────────────────────────────────────────────────────────
     def write(self) -> dict:
-        od = config.RESULTS_DIR / "agent" / self.variant / f"{self.selector}_{self.mode}"
+        suffix = f"_{self.entry_start.replace(':', '')}" if self.entry_start else ""
+        od = config.RESULTS_DIR / "agent" / self.variant / f"{self.selector}_{self.mode}{suffix}"
         od.mkdir(parents=True, exist_ok=True)
         trades = pd.DataFrame([asdict(t) for t in self.book.closed + self.book.open],
                               columns=[f.name for f in fields(Trade)])
@@ -560,6 +572,7 @@ class Replay:
         pd.DataFrame(self.book.entry_log).to_csv(od / "entry_log.csv", index=False)
         s = summarize(trades, daily)
         s.update({"variant": self.variant, "mode": self.mode, "selector": self.selector,
+                  "entry_start": self.entry_start or "open",
                   "stopped_early": getattr(self, "stopped", None),
                   "databento_spent_usd": dbn.ledger()["spent_usd"]})
         (od / "summary.json").write_text(json.dumps(s, indent=2, default=str))
@@ -598,8 +611,9 @@ def main():
     ap.add_argument("--mode", choices=["copy", "real"], required=True)
     ap.add_argument("--selector", choices=["lstm", "spy_rsi"], default="lstm")
     ap.add_argument("--variant", default=next(iter(config.SIM_MIN_TRADES_VARIANTS)))
+    ap.add_argument("--entry-start", default=None, help="HH:MM ET; default = at the open")
     a = ap.parse_args()
-    Replay(a.mode, a.selector, a.variant).run()
+    Replay(a.mode, a.selector, a.variant, a.entry_start).run()
 
 
 if __name__ == "__main__":
