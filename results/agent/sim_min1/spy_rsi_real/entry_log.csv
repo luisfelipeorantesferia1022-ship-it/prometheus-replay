@@ -1,158 +1,141 @@
 date,universe,spy_trend,passed,skips,deployed,result,select_skips,entry_done_at
-2025-03-10,MCO,Bearish,MCO,,,all candidates exhausted,MCO: select_option: no expiry in 12-24 DTE,09:30:02
-2025-03-11,MCO,Bearish,MCO,,,all candidates exhausted,MCO: select_option: no expiry in 12-24 DTE,09:30:02
-2025-03-12,MCO,Bearish,MCO,,,all candidates exhausted,MCO: select_option: no expiry in 12-24 DTE,09:30:02
-2025-03-17,MCO,Bearish,MCO,,,all candidates exhausted,MCO: select_option: no expiry in 12-24 DTE,09:30:02
-2025-03-18,MCO,Bearish,MCO,,,all candidates exhausted,MCO: select_option: no expiry in 12-24 DTE,09:30:02
-2025-03-19,MCO,Bearish,MCO,,,all candidates exhausted,MCO: select_option: no expiry in 12-24 DTE,09:30:02
-2025-03-24,ADP,Bearish,ADP,,ADP,deployed,,09:30:02
-2025-03-25,ADP,Bullish,ADP,,,all candidates exhausted,,09:30:02
-2025-03-26,ADP,Bullish,ADP,,,all candidates exhausted,,09:30:02
-2025-03-31,STX,Bearish,STX,,STX,deployed,,09:30:02
-2025-04-01,STX,Bearish,STX,,,all candidates exhausted,,09:30:02
-2025-04-02,STX,Bearish,STX,,,all candidates exhausted,,09:30:02
-2025-04-03,STX,,,,,weekday gate,,09:30:00
-2025-04-07,STX,Bearish,STX,,,all candidates exhausted,STX: select_option: no contract within budget after scoring,09:30:02
-2025-04-08,STX,Bearish,STX,,STX,deployed,,09:30:02
-2025-04-09,STX,Bearish,STX,,,all candidates exhausted,,09:30:02
-2025-04-10,STX,,,,,weekday gate,,09:30:00
-2025-04-11,STX,,,,,weekday gate,,09:30:00
-2025-04-14,PSA,Bearish,PSA,,,all candidates exhausted,PSA: select_option: no expiry in 12-24 DTE,09:30:02
-2025-04-15,PSA,Bearish,PSA,,,all candidates exhausted,PSA: select_option: no expiry in 12-24 DTE,09:30:02
-2025-04-16,PSA,Bearish,PSA,,,all candidates exhausted,PSA: select_option: no expiry in 12-24 DTE,09:30:02
-2025-04-21,PSA,Bearish,PSA,,PSA,deployed,,09:30:02
-2025-04-22,PSA,Bearish,PSA,,,all candidates exhausted,PSA: select_option: no contract within budget after scoring,09:30:02
-2025-04-23,PSA,Bearish,,PSA: earnings within 7 days,,no candidates passed filters,,09:30:02
-2025-04-28,RVTY,Bullish,,RVTY: earnings within 7 days,,no candidates passed filters,,09:30:02
-2025-04-29,RVTY,Bullish,RVTY,,,all candidates exhausted,RVTY: select_option: no strike in range,09:30:02
-2025-04-30,RVTY,Bullish,RVTY,,,all candidates exhausted,RVTY: select_option: no contract within budget after scoring,09:30:02
-2025-05-05,TECH,Bullish,,TECH: earnings within 7 days,,no candidates passed filters,,09:30:02
-2025-05-06,TECH,Bullish,,TECH: earnings within 7 days,,no candidates passed filters,,09:30:02
-2025-05-07,TECH,Bullish,,TECH: earnings within 7 days,,no candidates passed filters,,09:30:02
-2025-05-12,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-05-13,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-05-14,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-05-19,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-05-20,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-05-21,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-05-27,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no strike in range,09:30:02
-2025-05-28,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring,09:30:02
-2025-06-02,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no strike in range,09:30:02
-2025-06-03,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring,09:30:02
-2025-06-04,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring,09:30:02
-2025-06-09,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-06-10,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-06-11,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-06-16,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-06-17,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-06-18,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-06-23,TECH,Bearish,TECH,,,all candidates exhausted,TECH: select_option: no strike in range,09:30:02
-2025-06-24,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring,09:30:02
-2025-06-25,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring,09:30:02
-2025-06-30,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no strike in range,09:30:02
-2025-07-01,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no strike in range,09:30:02
-2025-07-02,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no strike in range,09:30:02
-2025-07-07,RVTY,Bullish,RVTY,,,all candidates exhausted,RVTY: select_option: no expiry in 12-24 DTE,09:30:02
-2025-07-08,RVTY,Bullish,RVTY,,,all candidates exhausted,RVTY: select_option: no expiry in 12-24 DTE,09:30:02
-2025-07-09,RVTY,Bullish,RVTY,,,all candidates exhausted,RVTY: select_option: no expiry in 12-24 DTE,09:30:02
-2025-07-14,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-07-15,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-07-16,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-07-21,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no strike in range,09:30:02
-2025-07-22,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no strike in range,09:30:02
-2025-07-23,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no strike in range,09:30:02
-2025-07-28,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring,09:30:02
-2025-07-29,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring,09:30:02
-2025-07-30,TECH,Bullish,,TECH: earnings within 7 days,,no candidates passed filters,,09:30:02
-2025-08-04,TECH,Bearish,,TECH: earnings within 7 days,,no candidates passed filters,,09:30:02
-2025-08-05,TECH,Bullish,,TECH: earnings within 7 days,,no candidates passed filters,,09:30:02
-2025-08-06,TECH,Bearish,,TECH: earnings within 7 days,,no candidates passed filters,,09:30:02
-2025-08-11,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-08-12,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-08-13,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-08-18,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-08-19,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-08-20,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:30:02
-2025-08-25,ZBRA,Bullish,ZBRA,,,all candidates exhausted,ZBRA: select_option: no contract within budget after scoring,09:30:02
-2025-08-26,ZBRA,Bullish,ZBRA,,,all candidates exhausted,ZBRA: select_option: no contract within budget after scoring,09:30:02
-2025-08-27,ZBRA,Bullish,ZBRA,,,all candidates exhausted,ZBRA: select_option: no contract within budget after scoring,09:30:02
-2025-09-02,WYNN,Bullish,WYNN,,WYNN,deployed,,09:30:02
-2025-09-03,WYNN,Bearish,WYNN,,,all candidates exhausted,,09:30:02
+2025-03-10,MCO,Bearish,MCO,,,all candidates exhausted,MCO: select_option: no expiry in 12-24 DTE,09:31:00
+2025-03-11,MCO,Bearish,MCO,,,all candidates exhausted,MCO: select_option: no expiry in 12-24 DTE,09:31:00
+2025-03-12,MCO,Bearish,MCO,,,all candidates exhausted,MCO: select_option: no expiry in 12-24 DTE,09:31:00
+2025-03-17,MCO,Bearish,MCO,,,all candidates exhausted,MCO: select_option: no expiry in 12-24 DTE,09:31:00
+2025-03-18,MCO,Bearish,MCO,,,all candidates exhausted,MCO: select_option: no expiry in 12-24 DTE,09:31:00
+2025-03-19,MCO,Bearish,MCO,,,all candidates exhausted,MCO: select_option: no expiry in 12-24 DTE,09:31:00
+2025-03-24,ADP,Bearish,ADP,,,all candidates exhausted,ADP: select_option: no contract within budget after scoring (spread>20% 4),09:31:00
+2025-03-25,ADP,Bullish,ADP,,ADP,deployed,,09:31:00
+2025-03-26,ADP,Bullish,ADP,,,all candidates exhausted,,09:31:00
+2025-03-31,STX,Bearish,STX,,,all candidates exhausted,STX: select_option: no contract within budget after scoring (spread>20% 3),09:31:00
+2025-04-01,STX,Bearish,STX,,,all candidates exhausted,STX: select_option: no contract within budget after scoring (spread>20% 3),09:31:00
+2025-04-02,STX,Bearish,STX,,,all candidates exhausted,STX: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-04-07,STX,Bearish,STX,,,all candidates exhausted,STX: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-04-08,STX,Bearish,STX,,,all candidates exhausted,STX: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-04-09,STX,Bearish,STX,,,all candidates exhausted,STX: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-04-14,PSA,Bearish,PSA,,,all candidates exhausted,PSA: select_option: no expiry in 12-24 DTE,09:31:00
+2025-04-15,PSA,Bearish,PSA,,,all candidates exhausted,PSA: select_option: no expiry in 12-24 DTE,09:31:00
+2025-04-16,PSA,Bearish,PSA,,,all candidates exhausted,PSA: select_option: no expiry in 12-24 DTE,09:31:00
+2025-04-21,PSA,Bearish,PSA,,,all candidates exhausted,PSA: select_option: no contract within budget after scoring (spread>20% 1),09:31:00
+2025-04-22,PSA,Bearish,PSA,,,all candidates exhausted,PSA: select_option: no contract within budget after scoring (spread>20% 1),09:31:00
+2025-04-23,PSA,Bearish,,PSA: earnings within 7 days,,no candidates passed filters,,09:31:00
+2025-04-28,RVTY,Bullish,,RVTY: earnings within 7 days,,no candidates passed filters,,09:31:00
+2025-04-29,RVTY,Bullish,RVTY,,,all candidates exhausted,RVTY: select_option: no contract within budget after scoring (spread>20% 1),09:31:00
+2025-04-30,RVTY,Bullish,RVTY,,,all candidates exhausted,RVTY: select_option: no contract within budget after scoring (spread>20% 1),09:31:00
+2025-05-05,TECH,Bullish,,TECH: earnings within 7 days,,no candidates passed filters,,09:31:00
+2025-05-06,TECH,Bullish,,TECH: earnings within 7 days,,no candidates passed filters,,09:31:00
+2025-05-07,TECH,Bullish,,TECH: earnings within 7 days,,no candidates passed filters,,09:31:00
+2025-05-12,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-05-13,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-05-14,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-05-19,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-05-20,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-05-21,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-05-27,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring (spread>20% 1),09:31:00
+2025-05-28,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring (no quote 1),09:31:00
+2025-06-02,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring (spread>20% 1),09:31:00
+2025-06-03,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring (spread>20% 1),09:31:00
+2025-06-04,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring (spread>20% 1),09:31:00
+2025-06-09,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-06-10,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-06-11,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-06-16,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-06-17,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-06-18,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-06-23,TECH,Bearish,TECH,,,all candidates exhausted,TECH: select_option: no strike in range,09:31:00
+2025-06-24,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring (no quote 1),09:31:00
+2025-06-25,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring (spread>20% 1),09:31:00
+2025-06-30,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no strike in range,09:31:00
+2025-07-01,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no strike in range,09:31:00
+2025-07-02,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring (no quote 1),09:31:00
+2025-07-07,RVTY,Bullish,RVTY,,,all candidates exhausted,RVTY: select_option: no expiry in 12-24 DTE,09:31:00
+2025-07-08,RVTY,Bullish,RVTY,,,all candidates exhausted,RVTY: select_option: no expiry in 12-24 DTE,09:31:00
+2025-07-09,RVTY,Bullish,RVTY,,,all candidates exhausted,RVTY: select_option: no expiry in 12-24 DTE,09:31:00
+2025-07-14,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-07-15,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-07-16,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-07-21,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no strike in range,09:31:00
+2025-07-22,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no strike in range,09:31:00
+2025-07-23,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no strike in range,09:31:00
+2025-07-28,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring (spread>20% 1),09:31:00
+2025-07-29,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring (spread>20% 1),09:31:00
+2025-07-30,TECH,Bullish,,TECH: earnings within 7 days,,no candidates passed filters,,09:31:00
+2025-08-04,TECH,Bearish,,TECH: earnings within 7 days,,no candidates passed filters,,09:31:00
+2025-08-05,TECH,Bullish,,TECH: earnings within 7 days,,no candidates passed filters,,09:31:00
+2025-08-06,TECH,Bearish,,TECH: earnings within 7 days,,no candidates passed filters,,09:31:00
+2025-08-11,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-08-12,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-08-13,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-08-18,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-08-19,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-08-20,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:00
+2025-08-25,ZBRA,Bullish,ZBRA,,,all candidates exhausted,ZBRA: select_option: no contract within budget after scoring (spread>20% 1),09:31:00
+2025-08-26,ZBRA,Bullish,ZBRA,,,all candidates exhausted,ZBRA: select_option: no contract within budget after scoring (spread>20% 1),09:31:00
+2025-08-27,ZBRA,Bullish,ZBRA,,,all candidates exhausted,ZBRA: select_option: no contract within budget after scoring (spread>20% 1),09:31:00
+2025-09-02,WYNN,Bullish,WYNN,,WYNN,deployed,,09:31:00
+2025-09-03,WYNN,Bearish,WYNN,,,all candidates exhausted,,09:31:00
 2025-09-04,WYNN,,,,,weekday gate,,09:30:00
 2025-09-05,WYNN,,,,,weekday gate,,09:30:00
-2025-09-08,WYNN,Bullish,WYNN,,WYNN,deployed,,09:30:02
-2025-09-09,WYNN,Bullish,WYNN,,WYNN,deployed,,09:30:02
-2025-09-10,WYNN,Bullish,WYNN,,,all candidates exhausted,,09:30:02
+2025-09-08,WYNN,Bullish,WYNN,,,all candidates exhausted,,09:31:00
+2025-09-09,WYNN,Bullish,WYNN,,,all candidates exhausted,,09:31:00
+2025-09-10,WYNN,Bullish,WYNN,,,all candidates exhausted,,09:31:00
 2025-09-11,WYNN,,,,,weekday gate,,09:30:00
 2025-09-12,WYNN,,,,,weekday gate,,09:30:00
-2025-09-15,CCL,Bullish,CCL,,CCL,deployed,,09:30:02
-2025-09-16,CCL,Bullish,CCL,,,all candidates exhausted,,09:30:02
-2025-09-17,CCL,Bullish,CCL,,,all candidates exhausted,,09:30:02
-2025-09-18,CCL,,,,,weekday gate,,09:30:00
-2025-09-19,CCL,,,,,weekday gate,,09:30:00
-2025-09-22,CCL,Bullish,,CCL: earnings within 7 days,,no candidates passed filters,,09:30:02
-2025-09-23,CCL,Bullish,,CCL: earnings within 7 days,,no candidates passed filters,,09:30:02
-2025-09-24,CCL,Bullish,,CCL: earnings within 7 days,,no candidates passed filters,,09:30:02
-2025-09-25,CCL,,,,,weekday gate,,09:30:00
-2025-09-26,CCL,,,,,weekday gate,,09:30:00
-2025-09-29,CCL,Bullish,,CCL: earnings within 7 days,,no candidates passed filters,,09:30:02
-2025-09-30,CCL,Bullish,CCL,,CCL,deployed,,09:30:02
-2025-10-01,CCL,Bullish,CCL,,,all candidates exhausted,,09:30:02
+2025-09-15,CCL,Bullish,CCL,,,all candidates exhausted,CCL: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-09-16,CCL,Bullish,CCL,,,all candidates exhausted,CCL: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-09-17,CCL,Bullish,CCL,,,all candidates exhausted,CCL: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-09-22,CCL,Bullish,,CCL: earnings within 7 days,,no candidates passed filters,,09:31:00
+2025-09-23,CCL,Bullish,,CCL: earnings within 7 days,,no candidates passed filters,,09:31:00
+2025-09-24,CCL,Bullish,,CCL: earnings within 7 days,,no candidates passed filters,,09:31:00
+2025-09-29,CCL,Bullish,,CCL: earnings within 7 days,,no candidates passed filters,,09:31:00
+2025-09-30,CCL,Bullish,CCL,,CCL,deployed,,09:31:00
+2025-10-01,CCL,Bullish,CCL,,,all candidates exhausted,,09:31:00
 2025-10-02,CCL,,,,,weekday gate,,09:30:00
 2025-10-03,CCL,,,,,weekday gate,,09:30:00
-2025-10-06,CCL,Bullish,CCL,,,all candidates exhausted,,09:30:02
-2025-10-07,CCL,Bullish,CCL,,CCL,deployed,,09:30:02
-2025-10-08,CCL,Bullish,CCL,,,all candidates exhausted,,09:30:02
-2025-10-09,CCL,,,,,weekday gate,,09:30:00
-2025-10-10,CCL,,,,,weekday gate,,09:30:00
-2025-10-13,CCL,Bearish,CCL,,,all candidates exhausted,,09:30:02
-2025-10-14,CCL,Bearish,CCL,,CCL,deployed,,09:30:02
-2025-10-15,CCL,Bearish,CCL,,CCL,deployed,,09:30:02
-2025-10-16,CCL,,,,,weekday gate,,09:30:00
-2025-10-17,CCL,,,,,weekday gate,,09:30:00
-2025-10-20,PANW DDOG,Bearish,DDOG PANW,,PANW,deployed,DDOG: select_option: no contract within budget after scoring,09:30:04
-2025-10-21,PANW DDOG,Bullish,PANW DDOG,,,all candidates exhausted,DDOG: select_option: no contract within budget after scoring,09:30:04
-2025-10-22,PANW DDOG,Bullish,DDOG PANW,,,all candidates exhausted,DDOG: select_option: no contract within budget after scoring,09:30:04
+2025-10-06,CCL,Bullish,CCL,,,all candidates exhausted,,09:31:00
+2025-10-07,CCL,Bullish,CCL,,,all candidates exhausted,CCL: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-10-08,CCL,Bullish,CCL,,,all candidates exhausted,CCL: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-10-13,CCL,Bearish,CCL,,,all candidates exhausted,CCL: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-10-14,CCL,Bearish,CCL,,,all candidates exhausted,CCL: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-10-15,CCL,Bearish,CCL,,,all candidates exhausted,CCL: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-10-20,PANW DDOG,Bearish,DDOG PANW,,DDOG,deployed,PANW: select_option: no contract within budget after scoring (spread>20% 3),09:31:00
+2025-10-21,PANW DDOG,Bullish,PANW DDOG,,,all candidates exhausted,PANW: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-10-22,PANW DDOG,Bullish,DDOG PANW,,,all candidates exhausted,PANW: select_option: no contract within budget after scoring (spread>20% 3),09:31:00
 2025-10-23,PANW DDOG,,,,,weekday gate,,09:30:00
 2025-10-24,PANW DDOG,,,,,weekday gate,,09:30:00
-2025-10-27,PANW DDOG,Bullish,DDOG PANW,,PANW,deployed,DDOG: select_option: no contract within budget after scoring,09:30:04
-2025-10-28,PANW DDOG,Bullish,DDOG PANW,,,all candidates exhausted,DDOG: select_option: no contract within budget after scoring,09:30:04
-2025-10-29,PANW DDOG,Bullish,DDOG PANW,,PANW,deployed,DDOG: select_option: no contract within budget after scoring,09:30:04
+2025-10-27,PANW DDOG,Bullish,DDOG PANW,,,all candidates exhausted,PANW: select_option: no contract within budget after scoring (spread>20% 3),09:31:00
+2025-10-28,PANW DDOG,Bullish,DDOG PANW,,,all candidates exhausted,PANW: select_option: no contract within budget after scoring (spread>20% 3),09:31:00
+2025-10-29,PANW DDOG,Bullish,DDOG PANW,,,all candidates exhausted,PANW: select_option: no contract within budget after scoring (spread>20% 3),09:31:00
 2025-10-30,PANW DDOG,,,,,weekday gate,,09:30:00
 2025-10-31,PANW DDOG,,,,,weekday gate,,09:30:00
-2025-11-03,PANW DDOG,Bullish,PANW,DDOG: earnings within 7 days,,all candidates exhausted,,09:30:04
-2025-11-04,PANW DDOG,Bullish,PANW,DDOG: earnings within 7 days,,all candidates exhausted,,09:30:04
-2025-11-05,PANW DDOG,Bullish,PANW,DDOG: earnings within 7 days,,all candidates exhausted,PANW: select_option: no contract within budget after scoring,09:30:04
-2025-11-10,PANW DDOG,Bearish,DDOG PANW,,,all candidates exhausted,DDOG: select_option: no contract within budget after scoring; PANW: select_option: no contract within budget after scoring,09:30:04
-2025-11-11,PANW DDOG,Bullish,PANW DDOG,,,all candidates exhausted,PANW: select_option: no contract within budget after scoring; DDOG: select_option: no contract within budget after scoring,09:30:04
-2025-11-12,PANW DDOG,Bullish,DDOG,PANW: earnings within 7 days,,all candidates exhausted,DDOG: select_option: no contract within budget after scoring,09:30:04
-2025-11-17,PANW DDOG,Bearish,DDOG,PANW: earnings within 7 days,DDOG,deployed,,09:30:04
-2025-11-18,PANW DDOG,Bearish,DDOG,PANW: earnings within 7 days,,all candidates exhausted,,09:30:04
-2025-11-19,PANW DDOG,Bearish,DDOG,PANW: earnings within 7 days,DDOG,deployed,,09:30:04
-2025-11-20,PANW DDOG,,,,,weekday gate,,09:30:00
-2025-11-24,PANW DDOG,Bearish,DDOG PANW,,DDOG PANW,deployed,,09:30:04
-2025-11-25,PANW DDOG,Bearish,DDOG PANW,,,all candidates exhausted,,09:30:04
-2025-11-26,PANW DDOG,Bullish,PANW DDOG,,,all candidates exhausted,,09:30:04
-2025-11-28,PANW DDOG,,,,,weekday gate,,09:30:00
-2025-12-01,PSX,Bullish,PSX,,,all candidates exhausted,PSX: select_option: no contract within budget after scoring,09:30:02
-2025-12-02,PSX,Bullish,PSX,,PSX,deployed,,09:30:02
-2025-12-03,PSX,Bullish,PSX,,,all candidates exhausted,,09:30:02
-2025-12-04,PSX,,,,,weekday gate,,09:30:00
-2025-12-05,PSX,,,,,weekday gate,,09:30:00
-2025-12-08,PSX,Bullish,PSX,,,all candidates exhausted,,09:30:02
-2025-12-09,PSX,Bullish,PSX,,,all candidates exhausted,,09:30:02
-2025-12-10,PSX,Bullish,PSX,,,all candidates exhausted,,09:30:02
-2025-12-11,PSX,,,,,weekday gate,,09:30:00
-2025-12-15,PSX,Bullish,PSX,,PSX,deployed,,09:30:02
-2025-12-16,PSX,Bullish,PSX,,,all candidates exhausted,,09:30:02
-2025-12-17,PSX,Bullish,PSX,,PSX,deployed,,09:30:02
-2025-12-18,PSX,,,,,weekday gate,,09:30:00
-2025-12-19,PSX,,,,,weekday gate,,09:30:00
-2025-12-22,PSX,Bullish,PSX,,,all candidates exhausted,,09:30:02
-2025-12-23,PSX,Bullish,PSX,,,all candidates exhausted,PSX: select_option: no contract within budget after scoring,09:30:02
-2025-12-24,PSX,Bullish,PSX,,,all candidates exhausted,PSX: select_option: no contract within budget after scoring,09:30:02
-2025-12-29,PSX,Bullish,PSX,,PSX,deployed,,09:30:02
-2025-12-30,PSX,Bullish,PSX,,,all candidates exhausted,,09:30:02
-2025-12-31,PSX,Bullish,PSX,,,all candidates exhausted,,09:30:02
+2025-11-03,PANW DDOG,Bullish,PANW,DDOG: earnings within 7 days,,all candidates exhausted,PANW: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-11-04,PANW DDOG,Bullish,PANW,DDOG: earnings within 7 days,,all candidates exhausted,PANW: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-11-05,PANW DDOG,Bullish,PANW,DDOG: earnings within 7 days,,all candidates exhausted,PANW: select_option: no contract within budget after scoring (over budget 2),09:31:00
+2025-11-10,PANW DDOG,Bearish,DDOG PANW,,,all candidates exhausted,DDOG: select_option: no contract within budget after scoring (spread>20% 2); PANW: select_option: no contract within budget after scoring (spread>20% 3),09:31:00
+2025-11-11,PANW DDOG,Bullish,PANW DDOG,,,all candidates exhausted,"PANW: select_option: no contract within budget after scoring (spread>20% 1, over budget 1); DDOG: select_option: no contract within budget after scoring (spread>20% 2)",09:31:00
+2025-11-12,PANW DDOG,Bullish,DDOG,PANW: earnings within 7 days,DDOG,deployed,,09:31:00
+2025-11-13,PANW DDOG,,,,,weekday gate,,09:30:00
+2025-11-17,PANW DDOG,Bearish,DDOG,PANW: earnings within 7 days,,all candidates exhausted,DDOG: select_option: no contract within budget after scoring (spread>20% 3),09:31:00
+2025-11-18,PANW DDOG,Bearish,DDOG,PANW: earnings within 7 days,,all candidates exhausted,DDOG: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-11-19,PANW DDOG,Bearish,DDOG,PANW: earnings within 7 days,,all candidates exhausted,DDOG: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-11-24,PANW DDOG,Bearish,DDOG PANW,,,all candidates exhausted,DDOG: select_option: no contract within budget after scoring (spread>20% 2); PANW: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-11-25,PANW DDOG,Bearish,DDOG PANW,,,all candidates exhausted,DDOG: select_option: no contract within budget after scoring (spread>20% 2); PANW: select_option: no contract within budget after scoring (spread>20% 3),09:31:00
+2025-11-26,PANW DDOG,Bullish,PANW DDOG,,,all candidates exhausted,PANW: select_option: no contract within budget after scoring (spread>20% 2); DDOG: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
+2025-12-01,PSX,Bullish,PSX,,,all candidates exhausted,PSX: select_option: no contract within budget after scoring (spread>20% 4),09:31:00
+2025-12-02,PSX,Bullish,PSX,,,all candidates exhausted,PSX: select_option: no contract within budget after scoring (spread>20% 4),09:31:00
+2025-12-03,PSX,Bullish,PSX,,,all candidates exhausted,PSX: select_option: no contract within budget after scoring (spread>20% 4),09:31:00
+2025-12-08,PSX,Bullish,PSX,,,all candidates exhausted,PSX: select_option: no contract within budget after scoring (spread>20% 5),09:31:00
+2025-12-09,PSX,Bullish,PSX,,,all candidates exhausted,PSX: select_option: no contract within budget after scoring (spread>20% 4),09:31:00
+2025-12-10,PSX,Bullish,PSX,,,all candidates exhausted,PSX: select_option: no contract within budget after scoring (spread>20% 4),09:31:00
+2025-12-15,PSX,Bullish,PSX,,,all candidates exhausted,PSX: select_option: no contract within budget after scoring (spread>20% 5),09:31:00
+2025-12-16,PSX,Bullish,PSX,,,all candidates exhausted,PSX: select_option: no contract within budget after scoring (spread>20% 4),09:31:00
+2025-12-17,PSX,Bullish,PSX,,,all candidates exhausted,PSX: select_option: no contract within budget after scoring (spread>20% 3),09:31:00
+2025-12-22,PSX,Bullish,PSX,,,all candidates exhausted,PSX: select_option: no contract within budget after scoring (spread>20% 4),09:31:00
+2025-12-23,PSX,Bullish,PSX,,,all candidates exhausted,PSX: select_option: no contract within budget after scoring (spread>20% 4),09:31:00
+2025-12-24,PSX,Bullish,PSX,,,all candidates exhausted,PSX: select_option: no contract within budget after scoring (spread>20% 3),09:31:00
+2025-12-29,PSX,Bullish,PSX,,,all candidates exhausted,PSX: select_option: no contract within budget after scoring (spread>20% 4),09:31:00
+2025-12-30,PSX,Bullish,PSX,,PSX,deployed,,09:31:00
+2025-12-31,PSX,Bullish,PSX,,,all candidates exhausted,,09:31:00
 2026-01-02,,,,,,empty universe,,09:30:00
 2026-01-05,,,,,,empty universe,,09:30:00
