@@ -512,6 +512,11 @@ class Replay:
                 print(f"[agent] STOPPED on {d}: {e}", flush=True)
                 self.stopped = f"{d}: {e}"
                 break
+            except Exception as e:
+                # Keep what was done so far for diagnosis, then fail loudly.
+                self.stopped = f"{d}: crashed with {type(e).__name__}: {e}"
+                self.write()
+                raise
             if d.day == 1 or d.weekday() == 4:
                 print(f"[agent {self.variant} {self.mode}/{self.selector}] {d} cash ${self.book.balance:,.2f} "
                       f"open {len(self.book.open)} closed {len(self.book.closed)} "

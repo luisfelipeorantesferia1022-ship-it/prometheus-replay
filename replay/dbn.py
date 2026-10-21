@@ -85,12 +85,38 @@ def _charge(cost: float, purpose: str, quoted_only: bool) -> None:
     _write(led)
 
 
+RETRY_DELAYS = [5, 15, 30, 60, 120, 180, 300, 300]   # ~17 minutes in total
+
+
+def _transient(e: Exception) -> bool:
+    """Server-side or network trouble worth waiting out (5xx, 429, timeouts)."""
+    status = getattr(e, "http_status", None)
+    if status is not None:
+        return status >= 500 or status == 429
+    name = type(e).__name__
+    return any(k in name for k in ("Timeout", "Connection", "RemoteDisconnected",
+                                   "ChunkedEncoding", "ProtocolError"))
+
+
+def _with_retry(fn, what: str):
+    for i, delay in enumerate([0] + RETRY_DELAYS):
+        if delay:
+            time.sleep(delay)
+        try:
+            return fn()
+        except Exception as e:
+            if not _transient(e) or i == len(RETRY_DELAYS):
+                raise
+            print(f"[dbn] {what}: {type(e).__name__} "
+                  f"{getattr(e, 'http_status', '')} - retrying in {RETRY_DELAYS[i]}s", flush=True)
+
+
 def _get(purpose: str, cache: Path, **params) -> pd.DataFrame | None:
     """Quote, check budget, download, cache. Returns None in quote-only mode."""
     if cache.exists():
         return pd.read_parquet(cache)
     c = client()
-    cost = float(c.metadata.get_cost(**params))
+    cost = float(_with_retry(lambda: c.metadata.get_cost(**params), f"{purpose} quote"))
     if QUOTE_ONLY:
         _charge(cost, purpose, quoted_only=True)
         return None
@@ -98,15 +124,7 @@ def _get(purpose: str, cache: Path, **params) -> pd.DataFrame | None:
         raise BudgetExceeded(
             f"{purpose}: request costs ${cost:.4f}, ${remaining():.4f} left of "
             f"${config.DATABENTO_BUDGET_USD:.2f}")
-    for attempt in range(4):
-        try:
-            data = c.timeseries.get_range(**params)
-            break
-        except Exception as e:
-            if attempt == 3:
-                raise
-            print(f"[dbn] retry {attempt + 1} after {type(e).__name__}", flush=True)
-            time.sleep(5 * (attempt + 1))
+    data = _with_retry(lambda: c.timeseries.get_range(**params), f"{purpose} download")
     df = data.to_df()
     _charge(cost, purpose, quoted_only=False)
     cache.parent.mkdir(parents=True, exist_ok=True)
