@@ -1,0 +1,2 @@
+ticker,option,entry,contracts,cost,spent,exit,exit_reason,realized_pnl,underlying_at_expiry,value_at_expiry,hold_to_expiry_pnl,hold_to_expiry_pct,peak_bid,peak_bid_at,peak_bid_pnl,peak_bid_pct,peak_mid,peak_mid_at,peak_mid_pct,ever_positive_bid,peak_before_exit,quote_minutes
+DDOG,PUT 152.5 exp 2025-11-07,2025-10-20 09:32:40,1,8.5,850.0,2025-11-06 09:31:00,Stop loss,-848.0,191.24,0.0,-850.0,-100.0,7.75,2025-10-22 13:50:00,-75.0,-8.8,8.025,2025-10-22 13:50:00,-5.6,False,True,5153
