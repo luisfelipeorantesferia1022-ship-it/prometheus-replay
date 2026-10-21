@@ -1,0 +1,47 @@
+name: 8 · Calm-stock test (real option quotes)
+
+on:
+  workflow_dispatch:
+    inputs:
+      budget_usd:
+        description: "Hard Databento budget for the whole project (USD)"
+        default: "15"
+      weeks:
+        description: "Only the first N weeks (0 = all 52)"
+        default: "0"
+
+permissions:
+  contents: write
+
+jobs:
+  factors:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    env:
+      DATABENTO_API_KEY: ${{ secrets.DATABENTO_API_KEY }}
+      DATABENTO_BUDGET_USD: ${{ inputs.budget_usd }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt
+      - uses: actions/cache/restore@v4
+        with:
+          path: data/sharadar
+          key: sharadar-v1-none
+          restore-keys: sharadar-v1-
+          fail-on-cache-miss: true
+      - uses: actions/cache/restore@v4
+        with:
+          path: data/databento
+          key: dbn-v1-none
+          restore-keys: dbn-v1-
+      - name: Calm-stock test
+        run: python -m replay.ghrun replay.calm_test --weeks ${{ inputs.weeks }}
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: data/databento
+          key: dbn-v1-${{ github.run_id }}-${{ github.run_attempt }}
+      - if: always()
+        run: .github/scripts/commit-results.sh "calm-stock test"
