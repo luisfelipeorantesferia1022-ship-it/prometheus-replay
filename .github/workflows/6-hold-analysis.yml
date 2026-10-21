@@ -1,0 +1,46 @@
+name: 6 · Hold-to-expiry and peak analysis of agent trades
+
+on:
+  workflow_dispatch:
+    inputs:
+      budget_usd:
+        description: "Hard Databento budget for the whole project (USD)"
+        default: "40"
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    env:
+      DATABENTO_API_KEY: ${{ secrets.DATABENTO_API_KEY }}
+      DATABENTO_BUDGET_USD: ${{ inputs.budget_usd }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt
+      - uses: actions/cache/restore@v4
+        with:
+          path: data/sharadar
+          key: sharadar-v1-none
+          restore-keys: sharadar-v1-
+          fail-on-cache-miss: true
+      - uses: actions/cache/restore@v4
+        with:
+          path: data/databento
+          key: dbn-v1-none
+          restore-keys: dbn-v1-
+      - name: Every agent book
+        run: python -m replay.ghrun replay.hold_analysis
+      - name: The 11 trades from before the expiry fix
+        run: python -m replay.ghrun replay.hold_analysis --trades results/analysis/inputs/prefix_sim_min1_lstm_copy_trades.csv --name prefix_sim_min1_lstm_copy
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: data/databento
+          key: dbn-v1-${{ github.run_id }}-${{ github.run_attempt }}
+      - if: always()
+        run: .github/scripts/commit-results.sh "hold-to-expiry analysis"
