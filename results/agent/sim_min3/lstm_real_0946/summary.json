@@ -1,0 +1,32 @@
+{
+  "start_balance": 5000.0,
+  "end_equity": 3155.0,
+  "return_pct": -36.9,
+  "max_drawdown_pct": -37.74,
+  "spy_return_pct_same_window": 14.36,
+  "n_trades": 3,
+  "win_rate_pct": 0.0,
+  "total_realized_pnl": -1845.0,
+  "avg_win": 0.0,
+  "avg_loss": -615.0,
+  "exit_reasons": {
+    "Stop loss": 3
+  },
+  "by_ticker": {
+    "CCL": {
+      "count": 2,
+      "sum": -1456.0
+    },
+    "DDOG": {
+      "count": 1,
+      "sum": -389.0
+    }
+  },
+  "variant": "sim_min3",
+  "mode": "real",
+  "selector": "lstm",
+  "entry_start": "09:46",
+  "spread_retries": [],
+  "stopped_early": null,
+  "databento_spent_usd": 4.656892
+}

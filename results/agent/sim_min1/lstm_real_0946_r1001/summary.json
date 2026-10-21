@@ -1,0 +1,47 @@
+{
+  "start_balance": 5000.0,
+  "end_equity": 3933.0,
+  "return_pct": -21.34,
+  "max_drawdown_pct": -29.03,
+  "spy_return_pct_same_window": 14.36,
+  "n_trades": 7,
+  "win_rate_pct": 42.9,
+  "total_realized_pnl": -1067.0,
+  "avg_win": 388.0,
+  "avg_loss": -557.75,
+  "exit_reasons": {
+    "Stop loss": 4,
+    "Trail stop": 3
+  },
+  "by_ticker": {
+    "ADP": {
+      "count": 1,
+      "sum": -650.0
+    },
+    "CCL": {
+      "count": 2,
+      "sum": -1192.0
+    },
+    "DDOG": {
+      "count": 1,
+      "sum": -389.0
+    },
+    "PANW": {
+      "count": 1,
+      "sum": 505.0
+    },
+    "WYNN": {
+      "count": 2,
+      "sum": 659.0
+    }
+  },
+  "variant": "sim_min1",
+  "mode": "real",
+  "selector": "lstm",
+  "entry_start": "09:46",
+  "spread_retries": [
+    "10:01"
+  ],
+  "stopped_early": null,
+  "databento_spent_usd": 4.656875
+}
