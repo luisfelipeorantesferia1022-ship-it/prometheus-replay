@@ -1,9 +1,0 @@
-ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
-XOM,17,-96995.11,-970.0,17.6,False,,,,,backtest below 200%
-ZBH,17,-54443.0,-544.4,29.4,False,,,,,backtest below 200%
-LHX,17,-76188.17,-761.9,23.5,False,,,,,backtest below 200%
-IEX,17,-75319.49,-753.2,23.5,False,,,,,backtest below 200%
-DECK,17,-19485.92,-194.9,41.2,False,,,,,backtest below 200%
-APD,15,-85800.31,-858.0,20.0,False,,,,,backtest below 200%
-IPG,17,40300.29,403.0,41.2,True,30.0,-4349.62,,,sim 1 negative
-FCX,17,-74146.41,-741.5,29.4,False,,,,,backtest below 200%

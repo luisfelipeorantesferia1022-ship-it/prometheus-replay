@@ -114,7 +114,11 @@ def intraday_15m(ticker: str, asof_date: date) -> pd.DataFrame | None:
 #  One week
 # ─────────────────────────────────────────────────────────────────────────────
 
-def run_week(asof_date: date, prev_whitelist: list[str]) -> dict:
+def variant_dir(variant: str) -> "Path":
+    return config.RESULTS_DIR / "variants" / variant
+
+
+def run_week(asof_date: date, prev_whitelists: dict[str, list[str]]) -> dict[str, dict]:
     import intraday_backtest as ib
     from portfolio_sim_v3 import SimConfig, run_sim
 
@@ -123,9 +127,12 @@ def run_week(asof_date: date, prev_whitelist: list[str]) -> dict:
     cands = candidates_for(asof_date)
     print(f"\n[weekly] {asof_date} (run {anchor}): {len(cands)} candidates", flush=True)
 
-    # ── Stage 2 ───────────────────────────────────────────────────────────
+    # ── Stage 2 (shared by every variant) ─────────────────────────────────
+    p = od / "intraday_backtest_results.csv"
     bt_df = None
-    if cands:
+    if cands and config.REUSE_STAGE2:
+        bt_df = pd.read_csv(p) if p.exists() else None
+    elif cands:
         ib.TICKERS = list(cands)
         ib.CFG = SimConfig(ticker_universe=list(cands), oos_shift_days=0,
                            anchor_date=anchor.isoformat(), use_cache=False)
@@ -133,19 +140,18 @@ def run_week(asof_date: date, prev_whitelist: list[str]) -> dict:
         ib.fetch_intraday_data = lambda t: intraday_15m(t, asof_date)
         ib.fetch_earnings_dates = asof.earnings_dates
         ib.correlate_with_lstm_metrics = lambda df: None
-        ib.OUTPUT_CSV = str(od / "intraday_backtest_results.csv")
-        p = od / "intraday_backtest_results.csv"
+        ib.OUTPUT_CSV = str(p)
         p.unlink(missing_ok=True)
         ib.run_intraday_backtest()
         bt_df = pd.read_csv(p) if p.exists() else None
 
-    # ── Gate: stage 2 -> 3 ────────────────────────────────────────────────
+    # ── Gate: stage 2 -> 3 (shared) ───────────────────────────────────────
     stake = float(getattr(ib, "BUDGET_PER_TRADE", 10000.0))
     gate_df, gated = promotion.stage2_gate(cands, bt_df, stake, config.STAGE2_MIN_GAIN_PCT,
                                            config.MIN_TRADES)
+    gate_df.to_csv(od / "stage2_gate.csv", index=False)
 
-    # ── Stage 3: sim 1 on gate survivors, sim 2 on sim-1 positives ────────
-    def _sim(universe: list[str], tag: str):
+    def _sim(universe: list[str], tag: str, where):
         if not universe:
             return None
         cfg = SimConfig(ticker_universe=list(universe), oos_shift_days=0,
@@ -154,56 +160,68 @@ def run_week(asof_date: date, prev_whitelist: list[str]) -> dict:
         m = run_sim(cfg, data=shims.sim_data(universe, anchor), write_output=False)
         if not m:
             return None
-        pd.DataFrame(m.pop("closed_trades", [])).to_csv(od / f"{tag}_closed_trades.csv", index=False)
+        where.mkdir(parents=True, exist_ok=True)
+        pd.DataFrame(m.pop("closed_trades", [])).to_csv(where / f"{tag}_closed_trades.csv", index=False)
         eq = m.pop("equity_curve", [])
-        pd.DataFrame(eq, columns=["date", "equity"]).to_csv(od / f"{tag}_equity.csv", index=False)
-        (od / f"{tag}_metrics.json").write_text(json.dumps(m, indent=2, default=str))
+        pd.DataFrame(eq, columns=["date", "equity"]).to_csv(where / f"{tag}_equity.csv", index=False)
+        (where / f"{tag}_metrics.json").write_text(json.dumps(m, indent=2, default=str))
         return m
 
-    m1 = _sim(gated, "sim1")
-    sim1, sim1_pos = promotion.sim_survivors(gated, m1, config.MIN_TRADES)
-    m2 = _sim(sim1_pos, "sim2")
-    sim2, sim2_pos = promotion.sim_survivors(sim1_pos, m2, config.MIN_TRADES)
+    # ── Sim 1 (shared: same universe for every variant) ───────────────────
+    m1 = _sim(gated, "sim1", od)
 
-    # ── Stage 4 ───────────────────────────────────────────────────────────
-    promoted = list(sim2_pos)
-    table = promotion.funnel_table(gate_df, sim1, sim2, config.STAGE2_MIN_GAIN_PCT)
-    table.to_csv(od / "promotion_table.csv", index=False)
-    applied = promoted if promoted else list(prev_whitelist)
-    summary = {
-        "asof": asof_date.isoformat(), "run_date": anchor.isoformat(),
-        "stage2_min_gain_pct": config.STAGE2_MIN_GAIN_PCT,
-        "candidates": cands, "passed_stage2_gate": gated,
-        "sim1_positive": sim1_pos, "promoted": promoted, "whitelist": applied,
-        "carried_over": not promoted,
-        "backtest_trades": int(len(bt_df)) if bt_df is not None else 0,
-        "sim1_trades": int(m1["n_trades"]) if m1 else 0,
-        "sim2_trades": int(m2["n_trades"]) if m2 else 0,
-    }
-    (od / "weekly.json").write_text(json.dumps(summary, indent=2))
-    print(f"[weekly] {asof_date}: {len(cands)} candidates -> {len(gated)} pass stage-2 gate -> "
-          f"{len(sim1_pos)} positive in sim 1 -> {len(promoted)} positive in sim 2 "
-          f"-> whitelist {applied}", flush=True)
-    return summary
+    # ── Per variant: sim-1 filter, sim 2, promotion ───────────────────────
+    out = {}
+    for variant, min_tr in config.SIM_MIN_TRADES_VARIANTS.items():
+        vd = variant_dir(variant) / "weekly" / asof_date.isoformat()
+        vd.mkdir(parents=True, exist_ok=True)
+        sim1, sim1_pos = promotion.sim_survivors(gated, m1, min_tr)
+        m2 = _sim(sim1_pos, "sim2", vd)
+        sim2, sim2_pos = promotion.sim_survivors(sim1_pos, m2, min_tr)
+        promoted = list(sim2_pos)
+        table = promotion.funnel_table(gate_df, sim1, sim2, config.STAGE2_MIN_GAIN_PCT)
+        table.to_csv(vd / "promotion_table.csv", index=False)
+        prev = prev_whitelists.get(variant, [])
+        applied = promoted if promoted else list(prev)
+        summary = {
+            "variant": variant, "sim_min_trades": min_tr,
+            "asof": asof_date.isoformat(), "run_date": anchor.isoformat(),
+            "stage2_min_gain_pct": config.STAGE2_MIN_GAIN_PCT,
+            "candidates": cands, "passed_stage2_gate": gated,
+            "sim1_positive": sim1_pos, "promoted": promoted, "whitelist": applied,
+            "carried_over": not promoted,
+            "backtest_trades": int(len(bt_df)) if bt_df is not None else 0,
+            "sim1_trades": int(m1["n_trades"]) if m1 else 0,
+            "sim2_trades": int(m2["n_trades"]) if m2 else 0,
+        }
+        (vd / "weekly.json").write_text(json.dumps(summary, indent=2))
+        print(f"[weekly] {asof_date} [{variant}]: {len(cands)} candidates -> {len(gated)} gate -> "
+              f"{len(sim1_pos)} sim-1 positive -> {len(promoted)} promoted -> whitelist {applied}",
+              flush=True)
+        out[variant] = summary
+    return out
 
 
 def run_all() -> None:
-    whitelist: list[str] = []
-    rows = []
+    whitelists: dict[str, list[str]] = {}
+    rows: dict[str, list] = {v: [] for v in config.SIM_MIN_TRADES_VARIANTS}
     for a in asof.weekly_asof_dates():
-        s = run_week(a, whitelist)
-        whitelist = s["whitelist"]
-        rows.append({"asof": s["asof"], "n_candidates": len(s["candidates"]),
-                     "n_passed_stage2_gate": len(s["passed_stage2_gate"]),
-                     "n_sim1_positive": len(s["sim1_positive"]),
-                     "promoted": " ".join(s["promoted"]),
-                     "whitelist": " ".join(s["whitelist"]),
-                     "carried_over": s["carried_over"]})
-    pd.DataFrame(rows).to_csv(config.RESULTS_DIR / "whitelist_timeline.csv", index=False)
+        res = run_week(a, whitelists)
+        for v, s in res.items():
+            whitelists[v] = s["whitelist"]
+            rows[v].append({"asof": s["asof"], "n_candidates": len(s["candidates"]),
+                            "n_passed_stage2_gate": len(s["passed_stage2_gate"]),
+                            "n_sim1_positive": len(s["sim1_positive"]),
+                            "promoted": " ".join(s["promoted"]),
+                            "whitelist": " ".join(s["whitelist"]),
+                            "carried_over": s["carried_over"]})
+    for v, r in rows.items():
+        variant_dir(v).mkdir(parents=True, exist_ok=True)
+        pd.DataFrame(r).to_csv(variant_dir(v) / "whitelist_timeline.csv", index=False)
 
 
-def whitelist_timeline() -> dict[date, list[str]]:
-    df = pd.read_csv(config.RESULTS_DIR / "whitelist_timeline.csv")
+def whitelist_timeline(variant: str) -> dict[date, list[str]]:
+    df = pd.read_csv(variant_dir(variant) / "whitelist_timeline.csv")
     return {date.fromisoformat(r.asof): (str(r.whitelist).split() if isinstance(r.whitelist, str) else [])
             for r in df.itertuples()}
 

@@ -50,9 +50,17 @@ jobs:
           restore-keys: sharadar-v1-
           fail-on-cache-miss: true
       - env: { TF_CPP_MIN_LOG_LEVEL: "3" }
-        run: python -m replay.forecasts shard --shard ${{ matrix.shard }} --nshards ${{ matrix.nshards }}
+        run: python -m replay.ghrun replay.forecasts shard --shard ${{ matrix.shard }} --nshards ${{ matrix.nshards }}
       - name: Strip raw prices before upload
-        run: python -c "import pandas as pd,glob; [pd.read_csv(p).drop(columns=['last_close'],errors='ignore').to_csv(p,index=False) for p in glob.glob('data/forecasts/*.csv')]"
+        run: |
+          python - <<'PY'
+          import glob, pandas as pd
+          for p in glob.glob("data/forecasts/*.csv"):
+              try:
+                  pd.read_csv(p).drop(columns=["last_close"], errors="ignore").to_csv(p, index=False)
+              except pd.errors.EmptyDataError:
+                  pass
+          PY
       - uses: actions/upload-artifact@v4
         with:
           name: forecasts-${{ matrix.shard }}
@@ -72,5 +80,5 @@ jobs:
           pattern: forecasts-*
           path: data/forecasts
           merge-multiple: true
-      - run: python -m replay.forecasts merge
+      - run: python -m replay.ghrun replay.forecasts merge
       - run: .github/scripts/commit-results.sh "agent forecasts"

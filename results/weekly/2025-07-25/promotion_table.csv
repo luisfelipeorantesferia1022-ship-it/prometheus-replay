@@ -1,9 +1,0 @@
-ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
-DRI,15,-88494.24,-884.9,13.3,False,,,,,backtest below 200%
-EIX,12,-18405.7,-184.1,50.0,False,,,,,backtest below 200%
-AWK,12,-31187.83,-311.9,41.7,False,,,,,backtest below 200%
-SBUX,12,-37843.98,-378.4,33.3,False,,,,,backtest below 200%
-TRGP,15,-60980.92,-609.8,26.7,False,,,,,backtest below 200%
-PG,12,-37648.74,-376.5,33.3,False,,,,,backtest below 200%
-APTV,12,-19595.9,-196.0,50.0,False,,,,,backtest below 200%
-WBD,15,108639.18,1086.4,100.0,True,25.0,-982.88,,,sim 1 negative

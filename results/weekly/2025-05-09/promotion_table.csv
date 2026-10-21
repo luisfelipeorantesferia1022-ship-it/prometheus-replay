@@ -1,6 +1,0 @@
-ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
-TAP,9,20256.42,202.6,77.8,True,28.0,-2594.25,,,sim 1 negative
-RF,9,-22471.91,-224.7,33.3,False,,,,,backtest below 200%
-NEE,9,49862.59,498.6,100.0,True,21.0,-821.22,,,sim 1 negative
-TGT,15,-6065.17,-60.7,33.3,False,,,,,backtest below 200%
-ODFL,9,42644.6,426.4,77.8,True,9.0,-1146.15,,,sim 1 negative

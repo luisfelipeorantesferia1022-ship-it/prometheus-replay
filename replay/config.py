@@ -48,6 +48,17 @@ STAGE2_MIN_GAIN_PCT = float(os.environ.get("STAGE2_MIN_GAIN_PCT", "200"))
 # Stage 3 then runs the sim twice: on the gate survivors, then again on only
 # the tickers that were positive in the first sim. Tickers positive in the
 # second sim are promoted.
+#
+# Variants (2026-10-21): the minimum number of trades a ticker needs in EACH
+# sim to count as positive. Stage 2 and sim 1 are shared; the variants split at
+# the sim-1 filter. Name -> min trades.
+SIM_MIN_TRADES_VARIANTS = {
+    f"sim_min{n}": int(n)
+    for n in os.environ.get("SIM_MIN_TRADES_VARIANTS", "1,3").split(",") if n.strip()
+}
+# Reuse the committed stage-2 results instead of re-running the intraday
+# backtest (which needs the cached Databento bars).
+REUSE_STAGE2 = os.environ.get("REUSE_STAGE2", "") == "1"
 
 # ── Live agent (trading_agent_v3.py / paper_trading.py) ──────────────────────
 STARTING_BALANCE = 5000.0    # agent comments describe a $5,000 paper balance

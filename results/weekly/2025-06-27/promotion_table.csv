@@ -1,5 +1,0 @@
-ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
-JNJ,17,-42401.74,-424.0,35.3,False,,,,,backtest below 200%
-GILD,17,-41201.29,-412.0,29.4,False,,,,,backtest below 200%
-DLTR,9,-3394.85,-33.9,33.3,False,,,,,backtest below 200%
-SJM,10,-41858.01,-418.6,10.0,False,,,,,backtest below 200%

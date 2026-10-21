@@ -185,19 +185,25 @@ def main():
             s["candidates"] = asof.members_live_format(a)
             (stage1.out_dir(a) / "stage1.json").write_text(json.dumps(s))
     weekly.run_all()
-    tl = pd.read_csv(config.RESULTS_DIR / "whitelist_timeline.csv")
-    print(tl)
-    if tl["whitelist"].isna().all():
-        tl["whitelist"] = "AAA BBB CCC BRK-B"
-        tl.to_csv(config.RESULTS_DIR / "whitelist_timeline.csv", index=False)
+    for v in config.SIM_MIN_TRADES_VARIANTS:
+        p = weekly.variant_dir(v) / "whitelist_timeline.csv"
+        tl = pd.read_csv(p)
+        print(v); print(tl)
+        if tl["whitelist"].isna().all():      # random tape: force something to trade
+            tl["whitelist"] = "AAA BBB CCC BRK-B" if v.endswith("1") else "AAA BBB"
+            tl.to_csv(p, index=False)
 
     print("forecast jobs:", len(forecasts.jobs()))
     forecasts.run_shard(0, 1)
     forecasts.merge()
+    print("forecast jobs left after merge:", len(forecasts.jobs()))
+    forecasts.run_shard(0, 1)          # nothing left: must not break the merge
+    forecasts.merge()
 
-    for mode in ("copy", "real"):
-        Replay(mode, "lstm").run()
-    Replay("real", "spy_rsi").run()
+    for v in config.SIM_MIN_TRADES_VARIANTS:
+        for mode in ("copy", "real"):
+            Replay(mode, "lstm", v).run()
+        Replay("real", "spy_rsi", v).run()
     print(f"\nSMOKE OK — outputs in {TMP}")
 
 

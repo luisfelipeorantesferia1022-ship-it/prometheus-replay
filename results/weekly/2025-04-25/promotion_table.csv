@@ -1,6 +1,0 @@
-ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
-GWW,12,-26439.88,-264.4,41.7,False,,,,,backtest below 200%
-MDT,18,17009.33,170.1,55.6,False,,,,,backtest below 200%
-FTV,12,52968.99,529.7,58.3,True,36.0,-2424.01,,,sim 1 negative
-BLDR,12,16148.13,161.5,66.7,False,,,,,backtest below 200%
-RVTY,12,57092.97,570.9,66.7,True,33.0,1112.03,35.0,1990.55,promoted

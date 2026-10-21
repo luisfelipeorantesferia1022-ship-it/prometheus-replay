@@ -33,16 +33,25 @@ def earnings_soon(ticker: str, d: date, days: int = config.EARNINGS_SOON_DAYS) -
     return any(d <= e <= cutoff for e in asof.earnings_dates(ticker))
 
 
-def jobs() -> list[tuple[date, str]]:
-    out = []
-    for a, wl in whitelist_timeline().items():
-        for d in asof.week_trading_days(a):
-            if d.weekday() not in config.ENTRY_ALLOWED_WEEKDAYS:
-                continue
-            for t in wl:
-                if not earnings_soon(t, d):
-                    out.append((d, t))
-    return sorted(set(out))
+def jobs(include_done: bool = False) -> list[tuple[date, str]]:
+    """
+    Every (entry morning, ticker) any variant's agent could scan. Fits do not
+    depend on the variant, so the union is fitted once; fits already in
+    FORECASTS_CSV are skipped.
+    """
+    out = set()
+    for variant in config.SIM_MIN_TRADES_VARIANTS:
+        for a, wl in whitelist_timeline(variant).items():
+            for d in asof.week_trading_days(a):
+                if d.weekday() not in config.ENTRY_ALLOWED_WEEKDAYS:
+                    continue
+                for t in wl:
+                    if not earnings_soon(t, d):
+                        out.add((d, t))
+    if not include_done and FORECASTS_CSV.exists():
+        done = pd.read_csv(FORECASTS_CSV)
+        out -= {(date.fromisoformat(str(r.date)), r.ticker) for r in done.itertuples()}
+    return sorted(out)
 
 
 def run_shard(shard: int, nshards: int) -> None:
@@ -77,8 +86,18 @@ def run_shard(shard: int, nshards: int) -> None:
 
 
 def merge() -> None:
-    parts = [pd.read_csv(p) for p in sorted((config.DATA_DIR / "forecasts").glob("shard_*.csv"))]
-    df = pd.concat(parts, ignore_index=True).sort_values(["date", "ticker"])
+    parts = []
+    for p in sorted((config.DATA_DIR / "forecasts").glob("shard_*.csv")):
+        try:
+            parts.append(pd.read_csv(p))
+        except pd.errors.EmptyDataError:
+            pass                                       # a shard with no new fits
+    if FORECASTS_CSV.exists():
+        parts.insert(0, pd.read_csv(FORECASTS_CSV))   # keep earlier fits
+    parts = [p for p in parts if len(p)]
+    df = pd.concat(parts, ignore_index=True)
+    df["date"] = df["date"].astype(str)
+    df = df.drop_duplicates(["date", "ticker"], keep="first").sort_values(["date", "ticker"])
     # last_close is a raw Sharadar price; keep it out of the public results.
     df = df.drop(columns=["last_close"], errors="ignore")
     FORECASTS_CSV.parent.mkdir(parents=True, exist_ok=True)
@@ -99,8 +118,8 @@ def main() -> None:
     ap.add_argument("--nshards", type=int, default=1)
     a = ap.parse_args()
     if a.cmd == "plan":
-        j = jobs()
-        print(f"{len(j)} fits across {len({d for d, _ in j})} entry days")
+        j, allj = jobs(), jobs(include_done=True)
+        print(f"{len(j)} new fits needed ({len(allj)} in total across variants)")
     elif a.cmd == "shard":
         run_shard(a.shard, a.nshards)
     else:

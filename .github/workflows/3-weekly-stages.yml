@@ -3,16 +3,23 @@ name: 3 · Stages 2-4 for every week (Databento bars + sim + promotion)
 on:
   workflow_dispatch:
     inputs:
-      quote_only:
-        description: "Only price the Databento bars stage 2 needs (no download, no spend)"
+      reuse_stage2:
+        description: "Reuse the committed stage-2 backtest results (no Databento needed)"
         type: boolean
         default: true
+      quote_only:
+        description: "Only price the Databento bars stage 2 needs (ignored when reusing stage 2)"
+        type: boolean
+        default: false
       budget_usd:
         description: "Hard Databento budget for the whole project (USD)"
         default: "40"
       stage2_min_gain_pct:
         description: "Stage 2 -> 3 gate: total backtest P&L must be >= this % of the $10k per-trade stake"
         default: "200"
+      sim_min_trades_variants:
+        description: "Comma list of minimum trades per sim; one whitelist variant each"
+        default: "1,3"
 
 permissions:
   contents: write
@@ -25,6 +32,8 @@ jobs:
       DATABENTO_API_KEY: ${{ secrets.DATABENTO_API_KEY }}
       DATABENTO_BUDGET_USD: ${{ inputs.budget_usd }}
       STAGE2_MIN_GAIN_PCT: ${{ inputs.stage2_min_gain_pct }}
+      SIM_MIN_TRADES_VARIANTS: ${{ inputs.sim_min_trades_variants }}
+      REUSE_STAGE2: ${{ inputs.reuse_stage2 && '1' || '' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -37,18 +46,18 @@ jobs:
           restore-keys: sharadar-v1-
           fail-on-cache-miss: true
       - uses: actions/cache/restore@v4
+        if: ${{ !inputs.reuse_stage2 }}
         with:
           path: data/databento
           key: dbn-v1-none
           restore-keys: dbn-v1-
 
       - name: Price stage-2 bars (quote only)
-        if: ${{ inputs.quote_only }}
+        if: ${{ !inputs.reuse_stage2 && inputs.quote_only }}
         env: { DATABENTO_QUOTE_ONLY: "1" }
-        run: python -m replay.weekly prefetch
-
+        run: python -m replay.ghrun replay.weekly prefetch
       - name: Report quote as an annotation
-        if: ${{ always() && inputs.quote_only }}
+        if: ${{ always() && !inputs.reuse_stage2 && inputs.quote_only }}
         run: |
           python - <<'PY'
           from replay import dbn, weekly
@@ -59,29 +68,31 @@ jobs:
           PY
 
       - name: Buy stage-2 bars
-        if: ${{ !inputs.quote_only }}
-        run: python -m replay.weekly prefetch
+        if: ${{ !inputs.reuse_stage2 && !inputs.quote_only }}
+        run: python -m replay.ghrun replay.weekly prefetch
       - uses: actions/cache/save@v4
-        if: ${{ always() && !inputs.quote_only }}
+        if: ${{ always() && !inputs.reuse_stage2 && !inputs.quote_only }}
         with:
           path: data/databento
           key: dbn-v1-${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Stages 2, 3, 4 for all weeks
-        if: ${{ !inputs.quote_only }}
+        if: ${{ inputs.reuse_stage2 || !inputs.quote_only }}
         env: { TF_CPP_MIN_LOG_LEVEL: "3" }
-        run: python -m replay.weekly run
-      - name: Funnel counts as an annotation
-        if: ${{ !inputs.quote_only }}
+        run: python -m replay.ghrun replay.weekly run
+      - name: Funnel counts as annotations
+        if: ${{ inputs.reuse_stage2 || !inputs.quote_only }}
         run: |
           python - <<'PY'
-          import pandas as pd
-          t = pd.read_csv("results/whitelist_timeline.csv")
-          wl = t["whitelist"].fillna("").str.split()
-          print(f"::notice title=Funnel (52 weeks)::candidates {t.n_candidates.sum()} -> stage-2 gate {t.n_passed_stage2_gate.sum()} -> sim-1 positive {t.n_sim1_positive.sum()} -> promoted {t.promoted.fillna('').str.split().str.len().sum()} | weeks with a fresh promotion {(~t.carried_over).sum()} | weeks with an empty whitelist {(wl.str.len()==0).sum()} | distinct whitelisted tickers {len(set(x for l in wl for x in l))}")
+          import glob, pandas as pd
+          for p in sorted(glob.glob("results/variants/*/whitelist_timeline.csv")):
+              v = p.split("/")[2]
+              t = pd.read_csv(p)
+              wl = t["whitelist"].fillna("").str.split()
+              print(f"::notice title=Funnel {v}::candidates {t.n_candidates.sum()} -> stage-2 gate {t.n_passed_stage2_gate.sum()} -> sim-1 positive {t.n_sim1_positive.sum()} -> promoted {t.promoted.fillna('').str.split().str.len().sum()} | weeks with a fresh promotion {(~t.carried_over).sum()} | weeks with an empty whitelist {(wl.str.len()==0).sum()} | distinct whitelisted tickers {len(set(x for l in wl for x in l))}")
           PY
       - name: Report spend as an annotation
-        if: ${{ always() && !inputs.quote_only }}
+        if: ${{ always() && !inputs.reuse_stage2 && !inputs.quote_only }}
         run: python -c "from replay import dbn; l=dbn.ledger(); print(f\"::notice title=Databento spend::spent \${l['spent_usd']:.2f} total, by purpose {l.get('by_purpose')}\")"
-      - if: ${{ always() && !inputs.quote_only }}
-        run: .github/scripts/commit-results.sh "stages 2-4"
+      - if: ${{ always() && (inputs.reuse_stage2 || !inputs.quote_only) }}
+        run: .github/scripts/commit-results.sh "stages 2-4 (variants ${{ inputs.sim_min_trades_variants }})"

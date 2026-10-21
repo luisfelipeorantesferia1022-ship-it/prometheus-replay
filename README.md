@@ -23,6 +23,12 @@ of the $10,000 per-trade stake (≥ $20,000) → sim on those survivors → sim 
 on only the tickers positive in the first sim → tickers positive in the second
 sim are promoted. The threshold is the `stage2_min_gain_pct` input of workflow 3.
 
+**Two whitelist variants (2026-10-21).** A ticker counts as positive in a sim
+only with at least N trades there. `sim_min1` (N=1) and `sim_min3` (N=3) share
+stage 2 and sim 1 and split from the sim-1 filter on. Each has its own
+`results/variants/<variant>/` (whitelist timeline, per-week promotion tables,
+sim-2 outputs) and its own agent books under `results/agent/<variant>/`.
+
 ## What is reused and what is ported
 
 `strategy/` holds the live repo's research modules **unmodified**:
@@ -79,8 +85,9 @@ Secrets: `SHARADAR_API_KEY`, `DATABENTO_API_KEY`. Every workflow is manual
 5. **Agent replay**: the continuous book in each mode. Databento pulls are
    priced first and stop hard at the budget.
 
-Results land in `results/`: per-week sweep/backtest/sim/promotion files,
-`whitelist_timeline.csv`, and `results/agent/<selector>_<mode>/` with
+Results land in `results/`: per-week sweep/backtest/sim-1 files under
+`results/weekly/`, per-variant promotion files under `results/variants/`, and
+`results/agent/<variant>/<selector>_<mode>/` with
 `trades.csv`, `daily_equity.csv`, `entry_log.csv`, `summary.json`.
 
 Actions caches are evicted after 7 days without use, so run the steps within a

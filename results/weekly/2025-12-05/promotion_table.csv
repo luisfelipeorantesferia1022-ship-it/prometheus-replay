@@ -1,9 +1,0 @@
-ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
-PG,18,-89277.69,-892.8,22.2,False,,,,,backtest below 200%
-VZ,15,29166.46,291.7,73.3,True,27.0,-1756.58,,,sim 1 negative
-LIN,15,-13055.0,-130.6,53.3,False,,,,,backtest below 200%
-OKE,16,39576.5,395.8,68.8,True,18.0,-3024.02,,,sim 1 negative
-DVN,12,1834.36,18.3,58.3,False,,,,,backtest below 200%
-CCL,18,-49735.43,-497.4,27.8,False,,,,,backtest below 200%
-PWR,15,-39118.21,-391.2,40.0,False,,,,,backtest below 200%
-SYY,16,-36033.33,-360.3,37.5,False,,,,,backtest below 200%

@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
     inputs:
       runs:
-        description: "selector:mode pairs, space separated"
-        default: "lstm:copy lstm:real spy_rsi:real"
+        description: "variant:selector:mode triples, space separated"
+        default: "sim_min1:lstm:copy sim_min1:lstm:real sim_min1:spy_rsi:real sim_min3:lstm:copy sim_min3:lstm:real sim_min3:spy_rsi:real"
       budget_usd:
         description: "Hard Databento budget for the whole project (USD)"
         default: "40"
@@ -38,18 +38,21 @@ jobs:
           restore-keys: dbn-v1-
       - name: Replay
         run: |
+          status=0
           for r in ${{ inputs.runs }}; do
-            python -m replay.agent --selector "${r%%:*}" --mode "${r##*:}"
+            IFS=: read -r v sel mode <<< "$r"
+            python -m replay.ghrun replay.agent --variant "$v" --selector "$sel" --mode "$mode" || status=1
           done
+          exit $status
       - name: Summaries as annotations
         if: always()
         run: |
           python - <<'PY'
           import json, glob
           from replay import dbn
-          for p in sorted(glob.glob("results/agent/*/summary.json")):
+          for p in sorted(glob.glob("results/agent/*/*/summary.json")):
               s = json.load(open(p))
-              print(f"::notice title={s.get('selector')}/{s.get('mode')}::return {s.get('return_pct')}% | trades {s.get('n_trades')} | win {s.get('win_rate_pct')}% | maxDD {s.get('max_drawdown_pct')}% | SPY {s.get('spy_return_pct_same_window')}%")
+              print(f"::notice title={s.get('variant')} {s.get('selector')}/{s.get('mode')}::return {s.get('return_pct')}% | trades {s.get('n_trades')} | win {s.get('win_rate_pct')}% | maxDD {s.get('max_drawdown_pct')}% | SPY {s.get('spy_return_pct_same_window')}%")
           print(f"::notice title=Databento spend::${dbn.ledger()['spent_usd']:.2f}")
           PY
       - uses: actions/cache/save@v4

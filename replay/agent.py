@@ -124,12 +124,12 @@ class Book:
 
 
 class Replay:
-    def __init__(self, mode: str, selector: str):
+    def __init__(self, mode: str, selector: str, variant: str):
         assert mode in ("copy", "real") and selector in ("lstm", "spy_rsi")
-        self.mode, self.selector = mode, selector
+        self.mode, self.selector, self.variant = mode, selector, variant
         self.delay = pd.Timedelta(minutes=config.COPY_QUOTE_DELAY_MIN if mode == "copy" else 0)
         self.book = Book()
-        self.whitelists = whitelist_timeline()
+        self.whitelists = whitelist_timeline(variant)
         self.day_to_asof = {}
         for a in self.whitelists:
             for d in asof.week_trading_days(a):
@@ -513,14 +513,14 @@ class Replay:
                 self.stopped = f"{d}: {e}"
                 break
             if d.day == 1 or d.weekday() == 4:
-                print(f"[agent {self.mode}/{self.selector}] {d} cash ${self.book.balance:,.2f} "
+                print(f"[agent {self.variant} {self.mode}/{self.selector}] {d} cash ${self.book.balance:,.2f} "
                       f"open {len(self.book.open)} closed {len(self.book.closed)} "
                       f"| databento ${dbn.ledger()['spent_usd']:.2f}", flush=True)
         return self.write()
 
     # ── Output ─────────────────────────────────────────────────────────────
     def write(self) -> dict:
-        od = config.RESULTS_DIR / "agent" / f"{self.selector}_{self.mode}"
+        od = config.RESULTS_DIR / "agent" / self.variant / f"{self.selector}_{self.mode}"
         od.mkdir(parents=True, exist_ok=True)
         trades = pd.DataFrame([asdict(t) for t in self.book.closed + self.book.open])
         trades.to_csv(od / "trades.csv", index=False)
@@ -528,7 +528,7 @@ class Replay:
         daily.to_csv(od / "daily_equity.csv", index=False)
         pd.DataFrame(self.book.entry_log).to_csv(od / "entry_log.csv", index=False)
         s = summarize(trades, daily)
-        s.update({"mode": self.mode, "selector": self.selector,
+        s.update({"variant": self.variant, "mode": self.mode, "selector": self.selector,
                   "stopped_early": getattr(self, "stopped", None),
                   "databento_spent_usd": dbn.ledger()["spent_usd"]})
         (od / "summary.json").write_text(json.dumps(s, indent=2, default=str))
@@ -566,8 +566,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--mode", choices=["copy", "real"], required=True)
     ap.add_argument("--selector", choices=["lstm", "spy_rsi"], default="lstm")
+    ap.add_argument("--variant", default=next(iter(config.SIM_MIN_TRADES_VARIANTS)))
     a = ap.parse_args()
-    Replay(a.mode, a.selector).run()
+    Replay(a.mode, a.selector, a.variant).run()
 
 
 if __name__ == "__main__":
