@@ -1,14 +1,14 @@
 {
   "by_purpose": {
-    "agent_bars": 0.008957,
-    "chain_quotes": 0.000213,
-    "exit_option_trades": 0.000175,
-    "held_option_quotes": 0.003478,
-    "options_definitions": 0.028369,
+    "agent_bars": 0.034505,
+    "chain_quotes": 0.001047,
+    "exit_option_trades": 0.002304,
+    "held_option_quotes": 0.021252,
+    "options_definitions": 0.131576,
     "stage2_bars": 4.393456
   },
   "equity_dataset": "EQUS.MINI",
   "quoted_usd": 0.0,
-  "requests": 418,
-  "spent_usd": 4.434648
+  "requests": 669,
+  "spent_usd": 4.58414
 }

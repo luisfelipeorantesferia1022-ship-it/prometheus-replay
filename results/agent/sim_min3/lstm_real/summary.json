@@ -1,0 +1,26 @@
+{
+  "start_balance": 5000.0,
+  "end_equity": 4685.0,
+  "return_pct": -6.3,
+  "max_drawdown_pct": -10.35,
+  "spy_return_pct_same_window": 14.36,
+  "n_trades": 1,
+  "win_rate_pct": 0.0,
+  "total_realized_pnl": -315.0,
+  "avg_win": 0.0,
+  "avg_loss": -315.0,
+  "exit_reasons": {
+    "Thursday-before-expiry force-exit": 1
+  },
+  "by_ticker": {
+    "DDOG": {
+      "count": 1,
+      "sum": -315.0
+    }
+  },
+  "variant": "sim_min3",
+  "mode": "real",
+  "selector": "lstm",
+  "stopped_early": null,
+  "databento_spent_usd": 4.573467
+}
