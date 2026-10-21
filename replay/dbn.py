@@ -234,7 +234,11 @@ def option_definitions(underlying: str, d: date) -> pd.DataFrame:
         return pd.DataFrame()
     df = df.reset_index()
     df = df.sort_values("ts_recv").drop_duplicates("raw_symbol", keep="last")
-    df["expiration"] = pd.to_datetime(df["expiration"], utc=True).dt.tz_convert(ET).dt.date
+    # Expiry date straight from the OSI symbol (root padded to 6, then YYMMDD).
+    # Converting the UTC expiration timestamp to New York time lands on the
+    # previous day, which moved every expiry (and the Thursday force-exit)
+    # one day early.
+    df["expiration"] = pd.to_datetime(df["raw_symbol"].str[6:12], format="%y%m%d").dt.date
     return df
 
 
