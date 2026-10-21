@@ -1,0 +1,4 @@
+ticker,option,entry,contracts,cost,spent,exit,exit_reason,realized_pnl,underlying_at_expiry,value_at_expiry,hold_to_expiry_pnl,hold_to_expiry_pct,peak_bid,peak_bid_at,peak_bid_pnl,peak_bid_pct,peak_mid,peak_mid_at,peak_mid_pct,ever_positive_bid,peak_before_exit,quote_minutes
+CCL,CALL 32 exp 2025-10-03,2025-09-15 09:47:20,9,1.13,1017.0,2025-09-29 09:38:00,Stop loss,-792.0,28.57,0.0,-1017.0,-100.0,1.29,2025-09-17 14:06:00,144.0,14.2,1.335,2025-09-19 09:31:00,18.1,True,True,4938
+CCL,PUT 28 exp 2025-10-31,2025-10-13 09:47:20,8,1.09,872.0,2025-10-21 14:04:00,Stop loss,-664.0,28.83,0.0,-872.0,-100.0,1.13,2025-10-13 10:32:00,32.0,3.7,1.25,2025-10-14 09:31:00,14.7,True,True,5581
+DDOG,CALL 162.5 exp 2025-12-12,2025-11-26 09:48:40,1,4.85,485.0,2025-12-03 10:09:00,Stop loss,-389.0,146.0,0.0,-485.0,-100.0,4.7,2025-11-28 10:16:00,-15.0,-3.1,4.9,2025-12-02 09:31:00,1.0,False,True,3672
