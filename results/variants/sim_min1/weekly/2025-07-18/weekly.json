@@ -1,0 +1,38 @@
+{
+  "variant": "sim_min1",
+  "sim_min_trades": 1,
+  "asof": "2025-07-18",
+  "run_date": "2025-07-19",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "NSC",
+    "DASH",
+    "INCY",
+    "AFL",
+    "LW",
+    "TECH",
+    "VTRS",
+    "GEHC",
+    "PGR"
+  ],
+  "passed_stage2_gate": [
+    "NSC",
+    "DASH",
+    "TECH",
+    "GEHC"
+  ],
+  "sim1_positive": [
+    "DASH",
+    "TECH"
+  ],
+  "promoted": [
+    "TECH"
+  ],
+  "whitelist": [
+    "TECH"
+  ],
+  "carried_over": false,
+  "backtest_trades": 132,
+  "sim1_trades": 81,
+  "sim2_trades": 64
+}

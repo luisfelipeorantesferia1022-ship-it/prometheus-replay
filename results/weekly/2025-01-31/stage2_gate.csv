@@ -1,0 +1,11 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+CME,14,18346.96,183.5,64.3,False
+BAX,12,-37702.4,-377.0,41.7,False
+GPC,17,-80593.95,-805.9,23.5,False
+DOC,8,-19897.0,-199.0,37.5,False
+CINF,14,13444.48,134.4,42.9,False
+BG,12,7241.63,72.4,58.3,False
+FTNT,12,-34658.87,-346.6,41.7,False
+QCOM,12,-45299.53,-453.0,33.3,False
+SWK,12,-37133.83,-371.3,41.7,False
+FICO,12,-28362.52,-283.6,41.7,False

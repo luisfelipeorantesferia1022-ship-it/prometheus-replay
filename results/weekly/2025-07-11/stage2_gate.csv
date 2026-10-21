@@ -1,0 +1,10 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+OKE,18,-22243.51,-222.4,50.0,False
+KDP,15,42434.77,424.3,66.7,True
+WDC,18,145649.3,1456.5,94.4,True
+LW,15,-74983.85,-749.8,26.7,False
+CAG,8,-64982.59,-649.8,0.0,False
+TECH,18,43909.75,439.1,72.2,True
+KMB,18,-87912.31,-879.1,16.7,False
+DLTR,15,72093.59,720.9,80.0,True
+BAX,18,18891.71,188.9,66.7,False

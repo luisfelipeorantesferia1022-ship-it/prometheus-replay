@@ -1,0 +1,10 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+MSFT,9,32367.23,323.7,77.8,True
+EG,9,-17949.28,-179.5,44.4,False
+PSA,9,-20499.47,-205.0,22.2,False
+KDP,9,41429.39,414.3,66.7,True
+WDC,9,34356.92,343.6,77.8,True
+LMT,10,-32670.72,-326.7,20.0,False
+AVGO,18,12085.6,120.9,72.2,False
+SJM,18,-36781.23,-367.8,27.8,False
+PEP,9,-9796.05,-98.0,44.4,False

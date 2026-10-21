@@ -1,0 +1,16 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+ROP,18,-52812.52,-528.1,27.8,False
+HOLX,18,-121432.71,-1214.3,0.0,False
+CPB,10,-5658.88,-56.6,60.0,False
+KIM,11,-46231.66,-462.3,27.3,False
+ACN,9,-18241.75,-182.4,33.3,False
+RVTY,18,-72165.28,-721.7,16.7,False
+IP,18,-66985.11,-669.9,38.9,False
+DVA,18,-26462.6,-264.6,38.9,False
+DXCM,18,-23002.17,-230.0,50.0,False
+HRL,9,-14720.12,-147.2,33.3,False
+AZO,10,-37116.77,-371.2,20.0,False
+POOL,18,-5044.89,-50.4,55.6,False
+MPWR,18,-56223.94,-562.2,27.8,False
+GEHC,18,-14690.02,-146.9,33.3,False
+VST,18,21215.35,212.2,50.0,True

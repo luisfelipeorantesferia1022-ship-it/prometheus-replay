@@ -1,0 +1,33 @@
+{
+  "variant": "sim_min1",
+  "sim_min_trades": 1,
+  "asof": "2025-06-20",
+  "run_date": "2025-06-21",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "IPG",
+    "CSCO",
+    "RVTY",
+    "AKAM",
+    "MMM",
+    "IBM",
+    "WAT",
+    "DLTR",
+    "ZTS",
+    "TECH",
+    "WDC",
+    "CMG"
+  ],
+  "passed_stage2_gate": [
+    "WDC"
+  ],
+  "sim1_positive": [],
+  "promoted": [],
+  "whitelist": [
+    "TECH"
+  ],
+  "carried_over": true,
+  "backtest_trades": 193,
+  "sim1_trades": 25,
+  "sim2_trades": 0
+}

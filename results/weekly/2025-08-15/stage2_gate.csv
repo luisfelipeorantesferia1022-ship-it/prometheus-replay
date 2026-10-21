@@ -1,0 +1,17 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+EG,9,-3449.88,-34.5,55.6,False
+AJG,9,-21516.12,-215.2,44.4,False
+GIS,18,-50230.83,-502.3,38.9,False
+SOLV,9,-9122.32,-91.2,55.6,False
+EXR,9,-28342.04,-283.4,33.3,False
+EQIX,9,-34918.34,-349.2,11.1,False
+F,7,-7815.06,-78.2,42.9,False
+HST,6,14409.0,144.1,83.3,False
+AMP,9,-54936.89,-549.4,11.1,False
+WY,9,-21230.75,-212.3,33.3,False
+JKHY,9,-21487.47,-214.9,44.4,False
+ZBRA,10,48611.03,486.1,80.0,True
+NCLH,9,15327.74,153.3,55.6,False
+JBHT,13,-47563.7,-475.6,23.1,False
+BMY,9,43784.45,437.8,100.0,True
+DOV,9,1583.9,15.8,55.6,False

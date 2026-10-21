@@ -1,0 +1,37 @@
+{
+  "variant": "sim_min1",
+  "sim_min_trades": 1,
+  "asof": "2025-11-28",
+  "run_date": "2025-11-29",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "L",
+    "PSX",
+    "OTIS",
+    "STT",
+    "DRI",
+    "GE",
+    "CF",
+    "FTNT",
+    "VLTO",
+    "AON",
+    "AMAT",
+    "WBD"
+  ],
+  "passed_stage2_gate": [
+    "PSX"
+  ],
+  "sim1_positive": [
+    "PSX"
+  ],
+  "promoted": [
+    "PSX"
+  ],
+  "whitelist": [
+    "PSX"
+  ],
+  "carried_over": false,
+  "backtest_trades": 148,
+  "sim1_trades": 33,
+  "sim2_trades": 33
+}

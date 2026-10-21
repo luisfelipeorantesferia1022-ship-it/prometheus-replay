@@ -1,0 +1,42 @@
+{
+  "variant": "sim_min3",
+  "sim_min_trades": 3,
+  "asof": "2025-09-26",
+  "run_date": "2025-09-27",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "HST",
+    "MAS",
+    "JBHT",
+    "HLT",
+    "PODD",
+    "DRI",
+    "ROP",
+    "CPB",
+    "COP",
+    "CPRT",
+    "PLD",
+    "SHW",
+    "CSX",
+    "MTD",
+    "JBL",
+    "STLD",
+    "MHK",
+    "TYL",
+    "GNRC"
+  ],
+  "passed_stage2_gate": [
+    "COP",
+    "STLD",
+    "MHK"
+  ],
+  "sim1_positive": [],
+  "promoted": [],
+  "whitelist": [
+    "CCL"
+  ],
+  "carried_over": true,
+  "backtest_trades": 287,
+  "sim1_trades": 44,
+  "sim2_trades": 0
+}

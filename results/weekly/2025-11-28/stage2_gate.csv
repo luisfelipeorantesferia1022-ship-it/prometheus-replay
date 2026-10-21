@@ -1,0 +1,13 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+L,11,-10209.68,-102.1,45.5,False
+PSX,12,39858.59,398.6,83.3,True
+OTIS,12,-12781.72,-127.8,58.3,False
+STT,18,-3491.73,-34.9,61.1,False
+DRI,18,-80754.59,-807.5,22.2,False
+GE,16,-27759.15,-277.6,50.0,False
+CF,9,2068.33,20.7,55.6,False
+FTNT,9,-2015.61,-20.2,55.6,False
+VLTO,13,-58102.51,-581.0,30.8,False
+AON,12,-14571.38,-145.7,58.3,False
+AMAT,9,18959.26,189.6,88.9,False
+WBD,9,-8119.59,-81.2,55.6,False

@@ -1,0 +1,14 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+GEN,7,-54714.96,-547.1,0.0,False
+HBAN,9,-20452.8,-204.5,44.4,False
+DIS,12,-38947.42,-389.5,33.3,False
+CFG,9,11744.37,117.4,77.8,False
+TRMB,9,-32332.93,-323.3,33.3,False
+KO,10,12430.39,124.3,50.0,False
+NXPI,10,2309.01,23.1,60.0,False
+SYF,9,-15974.52,-159.7,44.4,False
+AMAT,12,-7095.14,-71.0,58.3,False
+IT,10,-11436.88,-114.4,40.0,False
+VLO,9,9775.52,97.8,55.6,False
+CRM,18,-22704.08,-227.0,44.4,False
+DPZ,10,-36006.99,-360.1,40.0,False

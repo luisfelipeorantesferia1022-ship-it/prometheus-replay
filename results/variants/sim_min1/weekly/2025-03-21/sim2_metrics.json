@@ -1,0 +1,46 @@
+{
+  "n_trades": 77,
+  "win_rate": 35.06,
+  "expectancy": -50.65,
+  "total_pnl": -3900.12,
+  "return_pct": -80.52,
+  "max_dd_pct": -89.5,
+  "ending_balance": 973.85,
+  "exit_reason_counts": {
+    "Hard": 9,
+    "Trail": 25,
+    "Stop": 43
+  },
+  "per_ticker_pnl": {
+    "ADP": {
+      "trades": 23,
+      "wins": 8,
+      "pnl": 171.74,
+      "win_rate": 34.8
+    },
+    "PFG": {
+      "trades": 35,
+      "wins": 12,
+      "pnl": -2809.43,
+      "win_rate": 34.3
+    },
+    "DOV": {
+      "trades": 19,
+      "wins": 7,
+      "pnl": -1262.43,
+      "win_rate": 36.8
+    }
+  },
+  "open_at_end": 1,
+  "exit_engine_errors": 0,
+  "entry_pipeline_errors": 0,
+  "open_market_value": 129.37,
+  "open_cost_basis": 126.0,
+  "unrealized_pnl": 3.37,
+  "equity_at_end": 1103.22,
+  "return_pct_equity": -77.94,
+  "total_pnl_incl_open": -3896.75,
+  "unrevaluable_open": 0,
+  "max_dd_equity_pct": -91.8,
+  "unrevaluable_marks": 0
+}

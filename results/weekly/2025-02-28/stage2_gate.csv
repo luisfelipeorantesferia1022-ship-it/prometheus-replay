@@ -1,0 +1,13 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+CME,7,-4500.07,-45.0,57.1,False
+VICI,8,-31457.12,-314.6,25.0,False
+AMT,9,-24089.1,-240.9,33.3,False
+ES,8,26308.36,263.1,62.5,True
+SWK,8,30226.33,302.3,87.5,True
+JBHT,16,-53509.78,-535.1,25.0,False
+NVR,9,-33998.15,-340.0,33.3,False
+MKTX,8,-24164.39,-241.6,25.0,False
+HAL,14,-19349.53,-193.5,50.0,False
+FITB,15,-75495.04,-755.0,20.0,False
+GPN,7,-4326.93,-43.3,57.1,False
+MLM,7,-11857.0,-118.6,42.9,False

@@ -1,0 +1,15 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
+EG,9,33202.75,332.0,88.9,True,10.0,1746.44,32.0,-1793.66,sim 2 negative
+FRT,9,42855.29,428.6,88.9,True,24.0,-1192.11,,,sim 1 negative
+ES,9,11541.48,115.4,55.6,False,,,,,backtest below 200%
+CLX,9,-28061.44,-280.6,33.3,False,,,,,backtest below 200%
+O,9,32323.56,323.2,77.8,True,26.0,-3545.65,,,sim 1 negative
+VICI,9,2865.23,28.7,66.7,False,,,,,backtest below 200%
+TRMB,9,31292.04,312.9,66.7,True,17.0,-1178.78,,,sim 1 negative
+CPB,15,6857.49,68.6,60.0,False,,,,,backtest below 200%
+SJM,12,-43112.54,-431.1,33.3,False,,,,,backtest below 200%
+CPRT,15,-4831.57,-48.3,60.0,False,,,,,backtest below 200%
+JBHT,16,-23491.13,-234.9,31.2,False,,,,,backtest below 200%
+YUM,10,50747.9,507.5,80.0,True,19.0,-846.13,,,sim 1 negative
+F,7,11264.52,112.6,71.4,False,,,,,backtest below 200%
+ZBRA,10,35257.5,352.6,80.0,True,2.0,1038.7,22.0,2141.97,promoted

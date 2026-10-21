@@ -1,0 +1,9 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+XOM,17,-96995.11,-970.0,17.6,False
+ZBH,17,-54443.0,-544.4,29.4,False
+LHX,17,-76188.17,-761.9,23.5,False
+IEX,17,-75319.49,-753.2,23.5,False
+DECK,17,-19485.92,-194.9,41.2,False
+APD,15,-85800.31,-858.0,20.0,False
+IPG,17,40300.29,403.0,41.2,True
+FCX,17,-74146.41,-741.5,29.4,False

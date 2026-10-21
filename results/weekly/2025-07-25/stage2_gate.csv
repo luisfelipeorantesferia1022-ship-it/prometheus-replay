@@ -1,0 +1,9 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+DRI,15,-88494.24,-884.9,13.3,False
+EIX,12,-18405.7,-184.1,50.0,False
+AWK,12,-31187.83,-311.9,41.7,False
+SBUX,12,-37843.98,-378.4,33.3,False
+TRGP,15,-60980.92,-609.8,26.7,False
+PG,12,-37648.74,-376.5,33.3,False
+APTV,12,-19595.9,-196.0,50.0,False
+WBD,15,108639.18,1086.4,100.0,True

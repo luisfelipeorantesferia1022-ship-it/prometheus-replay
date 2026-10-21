@@ -1,0 +1,9 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+MDT,18,-3636.7,-36.4,44.4,False
+REG,10,11776.79,117.8,60.0,False
+CF,12,-19511.38,-195.1,41.7,False
+BLDR,9,1163.38,11.6,55.6,False
+TECH,12,38557.56,385.6,66.7,True
+VLO,6,20560.11,205.6,100.0,True
+CTVA,12,-13668.53,-136.7,50.0,False
+POOL,9,16081.09,160.8,66.7,False

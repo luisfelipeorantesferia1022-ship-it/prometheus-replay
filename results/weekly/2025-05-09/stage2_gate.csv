@@ -1,0 +1,6 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+TAP,9,20256.42,202.6,77.8,True
+RF,9,-22471.91,-224.7,33.3,False
+NEE,9,49862.59,498.6,100.0,True
+TGT,15,-6065.17,-60.7,33.3,False
+ODFL,9,42644.6,426.4,77.8,True

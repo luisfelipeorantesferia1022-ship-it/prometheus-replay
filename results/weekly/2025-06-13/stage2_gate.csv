@@ -1,0 +1,9 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+VLTO,17,-77933.11,-779.3,23.5,False
+LIN,17,-83083.65,-830.8,17.6,False
+DLTR,9,-8947.81,-89.5,55.6,False
+MPC,15,-21812.41,-218.1,53.3,False
+HUBB,17,-43625.45,-436.3,29.4,False
+CF,14,19744.19,197.4,71.4,False
+FDX,14,-492.16,-4.9,50.0,False
+ULTA,9,-9928.59,-99.3,33.3,False

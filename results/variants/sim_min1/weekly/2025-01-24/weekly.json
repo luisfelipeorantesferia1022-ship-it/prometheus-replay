@@ -1,0 +1,24 @@
+{
+  "variant": "sim_min1",
+  "sim_min_trades": 1,
+  "asof": "2025-01-24",
+  "run_date": "2025-01-25",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "BDX",
+    "MRK",
+    "MDLZ",
+    "VTRS",
+    "AMT"
+  ],
+  "passed_stage2_gate": [
+    "MDLZ"
+  ],
+  "sim1_positive": [],
+  "promoted": [],
+  "whitelist": [],
+  "carried_over": true,
+  "backtest_trades": 72,
+  "sim1_trades": 38,
+  "sim2_trades": 0
+}

@@ -1,0 +1,55 @@
+{
+  "variant": "sim_min3",
+  "sim_min_trades": 3,
+  "asof": "2025-10-17",
+  "run_date": "2025-10-18",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "KIM",
+    "ICE",
+    "MTB",
+    "SYK",
+    "MAA",
+    "MAS",
+    "CPRT",
+    "DPZ",
+    "SHW",
+    "PANW",
+    "DDOG",
+    "IFF",
+    "NXPI",
+    "SLB",
+    "EMN",
+    "BXP",
+    "PRU",
+    "TDG",
+    "PCAR",
+    "HSY",
+    "ELV",
+    "MSCI",
+    "CDNS",
+    "NRG"
+  ],
+  "passed_stage2_gate": [
+    "PANW",
+    "DDOG",
+    "PCAR",
+    "ELV"
+  ],
+  "sim1_positive": [
+    "PANW",
+    "DDOG"
+  ],
+  "promoted": [
+    "PANW",
+    "DDOG"
+  ],
+  "whitelist": [
+    "PANW",
+    "DDOG"
+  ],
+  "carried_over": false,
+  "backtest_trades": 353,
+  "sim1_trades": 110,
+  "sim2_trades": 66
+}

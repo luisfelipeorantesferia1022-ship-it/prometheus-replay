@@ -1,0 +1,17 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
+EG,9,-3449.88,-34.5,55.6,False,,,,,backtest below 200%
+AJG,9,-21516.12,-215.2,44.4,False,,,,,backtest below 200%
+GIS,18,-50230.83,-502.3,38.9,False,,,,,backtest below 200%
+SOLV,9,-9122.32,-91.2,55.6,False,,,,,backtest below 200%
+EXR,9,-28342.04,-283.4,33.3,False,,,,,backtest below 200%
+EQIX,9,-34918.34,-349.2,11.1,False,,,,,backtest below 200%
+F,7,-7815.06,-78.2,42.9,False,,,,,backtest below 200%
+HST,6,14409.0,144.1,83.3,False,,,,,backtest below 200%
+AMP,9,-54936.89,-549.4,11.1,False,,,,,backtest below 200%
+WY,9,-21230.75,-212.3,33.3,False,,,,,backtest below 200%
+JKHY,9,-21487.47,-214.9,44.4,False,,,,,backtest below 200%
+ZBRA,10,48611.03,486.1,80.0,True,11.0,169.39,26.0,-1137.43,sim 2 negative
+NCLH,9,15327.74,153.3,55.6,False,,,,,backtest below 200%
+JBHT,13,-47563.7,-475.6,23.1,False,,,,,backtest below 200%
+BMY,9,43784.45,437.8,100.0,True,28.0,-3621.21,,,sim 1 negative
+DOV,9,1583.9,15.8,55.6,False,,,,,backtest below 200%

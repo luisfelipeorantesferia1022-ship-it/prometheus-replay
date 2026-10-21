@@ -1,0 +1,11 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+TAP,10,6133.28,61.3,60.0,False
+CPRT,12,-47929.04,-479.3,33.3,False
+GEN,7,-29842.93,-298.4,14.3,False
+RMD,9,-21844.79,-218.4,44.4,False
+ELV,10,-15479.55,-154.8,30.0,False
+VLTO,10,-40770.65,-407.7,40.0,False
+MKC,16,-10387.9,-103.9,50.0,False
+CRM,18,-28502.97,-285.0,33.3,False
+CTRA,5,-661.16,-6.6,60.0,False
+NOC,10,-50900.11,-509.0,10.0,False

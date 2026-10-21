@@ -1,0 +1,10 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
+NSC,15,53567.25,535.7,73.3,True,9.0,-986.84,,,sim 1 negative
+DASH,18,43073.67,430.7,72.2,True,11.0,205.71,32.0,-2278.58,sim 2 negative
+INCY,15,-4269.51,-42.7,60.0,False,,,,,backtest below 200%
+AFL,18,-28197.86,-282.0,44.4,False,,,,,backtest below 200%
+LW,12,-70640.51,-706.4,16.7,False,,,,,backtest below 200%
+TECH,18,35120.89,351.2,66.7,True,32.0,554.33,32.0,2305.9,promoted
+VTRS,12,14927.12,149.3,66.7,False,,,,,backtest below 200%
+GEHC,15,45136.8,451.4,66.7,True,29.0,-2905.63,,,sim 1 negative
+PGR,9,-38840.96,-388.4,33.3,False,,,,,backtest below 200%

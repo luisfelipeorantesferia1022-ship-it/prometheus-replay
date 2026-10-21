@@ -1,0 +1,16 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+NEM,9,12328.99,123.3,55.6,False
+O,12,16746.89,167.5,58.3,False
+AMT,12,-10934.4,-109.3,41.7,False
+ED,9,-8601.72,-86.0,55.6,False
+VICI,8,-19810.66,-198.1,37.5,False
+JBHT,13,-45270.61,-452.7,23.1,False
+PHM,9,-32021.89,-320.2,33.3,False
+UDR,9,9824.75,98.2,66.7,False
+FITB,12,-63142.19,-631.4,25.0,False
+CCI,17,636.43,6.4,47.1,False
+HAS,9,9692.21,96.9,77.8,False
+CARR,9,-9764.58,-97.6,44.4,False
+BBY,15,41725.16,417.3,86.7,True
+LMT,10,-51506.17,-515.1,20.0,False
+PYPL,10,-38140.83,-381.4,20.0,False

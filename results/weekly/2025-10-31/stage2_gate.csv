@@ -1,0 +1,7 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+MTB,9,17579.74,175.8,66.7,False
+EIX,10,-17084.79,-170.8,30.0,False
+COF,10,-41469.63,-414.7,30.0,False
+CL,12,-25854.2,-258.5,41.7,False
+CMI,12,-18469.71,-184.7,50.0,False
+BX,9,-56817.77,-568.2,11.1,False

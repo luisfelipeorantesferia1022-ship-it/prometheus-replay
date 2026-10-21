@@ -1,0 +1,30 @@
+{
+  "variant": "sim_min1",
+  "sim_min_trades": 1,
+  "asof": "2025-11-14",
+  "run_date": "2025-11-15",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "TAP",
+    "CPRT",
+    "GEN",
+    "RMD",
+    "ELV",
+    "VLTO",
+    "MKC",
+    "CRM",
+    "CTRA",
+    "NOC"
+  ],
+  "passed_stage2_gate": [],
+  "sim1_positive": [],
+  "promoted": [],
+  "whitelist": [
+    "PANW",
+    "DDOG"
+  ],
+  "carried_over": true,
+  "backtest_trades": 107,
+  "sim1_trades": 0,
+  "sim2_trades": 0
+}

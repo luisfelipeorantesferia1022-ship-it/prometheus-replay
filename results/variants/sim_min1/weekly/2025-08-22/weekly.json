@@ -1,0 +1,45 @@
+{
+  "variant": "sim_min1",
+  "sim_min_trades": 1,
+  "asof": "2025-08-22",
+  "run_date": "2025-08-23",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "EG",
+    "FRT",
+    "ES",
+    "CLX",
+    "O",
+    "VICI",
+    "TRMB",
+    "CPB",
+    "SJM",
+    "CPRT",
+    "JBHT",
+    "YUM",
+    "F",
+    "ZBRA"
+  ],
+  "passed_stage2_gate": [
+    "EG",
+    "FRT",
+    "O",
+    "TRMB",
+    "YUM",
+    "ZBRA"
+  ],
+  "sim1_positive": [
+    "EG",
+    "ZBRA"
+  ],
+  "promoted": [
+    "ZBRA"
+  ],
+  "whitelist": [
+    "ZBRA"
+  ],
+  "carried_over": false,
+  "backtest_trades": 148,
+  "sim1_trades": 98,
+  "sim2_trades": 54
+}

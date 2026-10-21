@@ -1,0 +1,5 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+JNJ,17,-42401.74,-424.0,35.3,False
+GILD,17,-41201.29,-412.0,29.4,False
+DLTR,9,-3394.85,-33.9,33.3,False
+SJM,10,-41858.01,-418.6,10.0,False

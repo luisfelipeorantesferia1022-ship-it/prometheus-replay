@@ -1,0 +1,18 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
+CPRT,9,17075.04,170.8,66.7,False,,,,,backtest below 200%
+SOLV,14,-19558.49,-195.6,50.0,False,,,,,backtest below 200%
+UDR,17,29075.47,290.8,70.6,True,29.0,-2608.38,,,sim 1 negative
+O,14,40661.18,406.6,78.6,True,29.0,-1336.71,,,sim 1 negative
+TSN,16,-46828.29,-468.3,31.2,False,,,,,backtest below 200%
+TXT,17,35769.8,357.7,64.7,True,20.0,-792.04,,,sim 1 negative
+CMCSA,17,-42379.64,-423.8,41.2,False,,,,,backtest below 200%
+EXC,17,-49139.2,-491.4,35.3,False,,,,,backtest below 200%
+MAA,17,-13570.06,-135.7,58.8,False,,,,,backtest below 200%
+CMG,17,-99362.3,-993.6,11.8,False,,,,,backtest below 200%
+CPB,9,-36873.69,-368.7,22.2,False,,,,,backtest below 200%
+JKHY,9,-54610.24,-546.1,11.1,False,,,,,backtest below 200%
+ULTA,8,-14596.51,-146.0,25.0,False,,,,,backtest below 200%
+TRMB,14,-5403.75,-54.0,50.0,False,,,,,backtest below 200%
+PYPL,17,-79826.08,-798.3,23.5,False,,,,,backtest below 200%
+BMY,17,-27134.37,-271.3,52.9,False,,,,,backtest below 200%
+CCL,17,61107.1,611.1,76.5,True,20.0,1354.05,31.0,36416.08,promoted

@@ -1,0 +1,14 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
+SRE,9,-40658.76,-406.6,22.2,False,,,,,backtest below 200%
+SPGI,9,-37380.8,-373.8,22.2,False,,,,,backtest below 200%
+PRU,9,-21800.0,-218.0,44.4,False,,,,,backtest below 200%
+PG,12,-56678.19,-566.8,25.0,False,,,,,backtest below 200%
+OTIS,9,-4163.81,-41.6,55.6,False,,,,,backtest below 200%
+CPRT,9,-34518.07,-345.2,33.3,False,,,,,backtest below 200%
+CTRA,8,-13082.21,-130.8,50.0,False,,,,,backtest below 200%
+MSI,9,-39600.0,-396.0,33.3,False,,,,,backtest below 200%
+AVY,12,-78723.89,-787.2,0.0,False,,,,,backtest below 200%
+JBL,18,-1560.38,-15.6,50.0,False,,,,,backtest below 200%
+ELV,13,-12490.36,-124.9,38.5,False,,,,,backtest below 200%
+AMAT,9,1103.7,11.0,66.7,False,,,,,backtest below 200%
+BRO,11,-24171.28,-241.7,36.4,False,,,,,backtest below 200%

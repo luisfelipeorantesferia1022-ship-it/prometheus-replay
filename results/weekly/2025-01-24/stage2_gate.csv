@@ -1,0 +1,6 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+BDX,15,-11586.02,-115.9,46.7,False
+MRK,15,-37404.6,-374.0,40.0,False
+MDLZ,15,44137.29,441.4,60.0,True
+VTRS,10,-32766.64,-327.7,40.0,False
+AMT,17,-12448.38,-124.5,47.1,False

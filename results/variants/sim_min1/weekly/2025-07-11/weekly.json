@@ -1,0 +1,37 @@
+{
+  "variant": "sim_min1",
+  "sim_min_trades": 1,
+  "asof": "2025-07-11",
+  "run_date": "2025-07-12",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "OKE",
+    "KDP",
+    "WDC",
+    "LW",
+    "CAG",
+    "TECH",
+    "KMB",
+    "DLTR",
+    "BAX"
+  ],
+  "passed_stage2_gate": [
+    "KDP",
+    "WDC",
+    "TECH",
+    "DLTR"
+  ],
+  "sim1_positive": [
+    "TECH"
+  ],
+  "promoted": [
+    "TECH"
+  ],
+  "whitelist": [
+    "TECH"
+  ],
+  "carried_over": false,
+  "backtest_trades": 143,
+  "sim1_trades": 88,
+  "sim2_trades": 34
+}

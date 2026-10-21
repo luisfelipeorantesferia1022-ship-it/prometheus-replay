@@ -1,0 +1,19 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
+ANSS,12,30669.29,306.7,66.7,True,7.0,-516.17,,,sim 1 negative
+GOOG,17,14847.77,148.5,58.8,False,,,,,backtest below 200%
+ICE,17,-37646.97,-376.5,41.2,False,,,,,backtest below 200%
+ADP,17,27207.07,272.1,64.7,True,14.0,1706.55,23.0,171.74,promoted
+DOC,12,3256.84,32.6,58.3,False,,,,,backtest below 200%
+IQV,17,-25443.65,-254.4,47.1,False,,,,,backtest below 200%
+PSA,11,49923.61,499.2,90.9,True,13.0,-3710.49,,,sim 1 negative
+GEN,17,-2974.33,-29.7,58.8,False,,,,,backtest below 200%
+DOV,17,65814.32,658.1,70.6,True,9.0,5241.51,19.0,-1262.43,sim 2 negative
+HRL,9,-10721.48,-107.2,33.3,False,,,,,backtest below 200%
+MHK,17,49675.49,496.8,76.5,True,21.0,-2819.82,,,sim 1 negative
+REG,17,12156.46,121.6,58.8,False,,,,,backtest below 200%
+PFG,17,35231.39,352.3,70.6,True,21.0,1260.88,35.0,-2809.43,sim 2 negative
+CRM,9,15949.55,159.5,55.6,False,,,,,backtest below 200%
+UNH,17,-126074.3,-1260.7,0.0,False,,,,,backtest below 200%
+GEHC,14,18497.71,185.0,71.4,False,,,,,backtest below 200%
+PNC,17,-46457.71,-464.6,23.5,False,,,,,backtest below 200%
+IDXX,17,22875.11,228.8,52.9,True,18.0,-4996.59,,,sim 1 negative

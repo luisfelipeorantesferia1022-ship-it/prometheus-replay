@@ -1,0 +1,12 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
+NTRS,18,87344.14,873.4,66.7,True,24.0,1741.92,35.0,-2318.27,sim 2 negative
+SBAC,17,78813.16,788.1,70.6,True,26.0,-1158.47,,,sim 1 negative
+KDP,16,-24834.21,-248.3,50.0,False,,,,,backtest below 200%
+IQV,18,-4241.86,-42.4,61.1,False,,,,,backtest below 200%
+MNST,15,-32938.25,-329.4,40.0,False,,,,,backtest below 200%
+NVR,11,-21714.74,-217.1,36.4,False,,,,,backtest below 200%
+SPG,18,65388.15,653.9,66.7,True,20.0,-1594.78,,,sim 1 negative
+UNH,15,-83802.18,-838.0,13.3,False,,,,,backtest below 200%
+AME,18,87151.08,871.5,77.8,True,18.0,-1842.29,,,sim 1 negative
+NOW,18,20462.68,204.6,66.7,True,0.0,0.0,,,no trades (sim 1)
+EMR,18,67215.08,672.2,55.6,True,16.0,881.3,26.0,-1349.4,sim 2 negative

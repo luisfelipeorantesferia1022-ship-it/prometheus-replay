@@ -1,0 +1,39 @@
+{
+  "variant": "sim_min3",
+  "sim_min_trades": 3,
+  "asof": "2025-08-01",
+  "run_date": "2025-08-02",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "CME",
+    "EG",
+    "WDC",
+    "DPZ",
+    "KDP",
+    "AIG",
+    "POOL",
+    "ON",
+    "ANET",
+    "CI"
+  ],
+  "passed_stage2_gate": [
+    "CME",
+    "WDC",
+    "KDP",
+    "ON",
+    "ANET"
+  ],
+  "sim1_positive": [
+    "CME",
+    "WDC",
+    "ON"
+  ],
+  "promoted": [],
+  "whitelist": [
+    "TECH"
+  ],
+  "carried_over": true,
+  "backtest_trades": 101,
+  "sim1_trades": 98,
+  "sim2_trades": 80
+}

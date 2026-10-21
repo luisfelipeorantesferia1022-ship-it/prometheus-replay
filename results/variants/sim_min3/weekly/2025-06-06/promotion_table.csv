@@ -1,0 +1,19 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
+ACN,17,-21816.29,-218.2,52.9,False,,,,,backtest below 200%
+USB,17,30188.94,301.9,64.7,True,30.0,-3040.91,,,sim 1 negative
+SJM,12,-47709.45,-477.1,33.3,False,,,,,backtest below 200%
+APD,14,-33062.84,-330.6,35.7,False,,,,,backtest below 200%
+MTB,17,-15741.45,-157.4,52.9,False,,,,,backtest below 200%
+VLTO,15,-45341.24,-453.4,33.3,False,,,,,backtest below 200%
+MOH,17,-74431.38,-744.3,29.4,False,,,,,backtest below 200%
+SPG,10,-46698.78,-467.0,10.0,False,,,,,backtest below 200%
+FRT,11,-40590.69,-405.9,36.4,False,,,,,backtest below 200%
+DAY,11,-31749.31,-317.5,45.5,False,,,,,backtest below 200%
+CPT,14,-77095.1,-771.0,14.3,False,,,,,backtest below 200%
+KVUE,11,-64055.0,-640.5,9.1,False,,,,,backtest below 200%
+LUV,17,31561.52,315.6,64.7,True,30.0,-865.47,,,sim 1 negative
+AOS,15,-26514.88,-265.1,40.0,False,,,,,backtest below 200%
+FDX,17,-7937.77,-79.4,35.3,False,,,,,backtest below 200%
+IFF,12,-34873.14,-348.7,33.3,False,,,,,backtest below 200%
+EMN,17,-26212.25,-262.1,41.2,False,,,,,backtest below 200%
+EXPD,12,-49325.98,-493.3,16.7,False,,,,,backtest below 200%

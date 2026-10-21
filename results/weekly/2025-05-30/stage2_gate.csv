@@ -1,0 +1,13 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+KVUE,8,-34451.52,-344.5,25.0,False
+ADSK,8,-12751.02,-127.5,37.5,False
+SPGI,12,-73381.17,-733.8,0.0,False
+EG,11,-50319.21,-503.2,18.2,False
+VLTO,12,-29375.08,-293.8,33.3,False
+AOS,12,-24972.4,-249.7,41.7,False
+RTX,15,-11682.47,-116.8,60.0,False
+UPS,12,-20034.12,-200.3,41.7,False
+GLW,12,18484.97,184.8,75.0,False
+EXPD,9,-37542.14,-375.4,11.1,False
+MOS,17,-3627.84,-36.3,47.1,False
+TER,12,-15914.95,-159.1,33.3,False

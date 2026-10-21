@@ -1,0 +1,40 @@
+{
+  "variant": "sim_min3",
+  "sim_min_trades": 3,
+  "asof": "2025-08-15",
+  "run_date": "2025-08-16",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "EG",
+    "AJG",
+    "GIS",
+    "SOLV",
+    "EXR",
+    "EQIX",
+    "F",
+    "HST",
+    "AMP",
+    "WY",
+    "JKHY",
+    "ZBRA",
+    "NCLH",
+    "JBHT",
+    "BMY",
+    "DOV"
+  ],
+  "passed_stage2_gate": [
+    "ZBRA",
+    "BMY"
+  ],
+  "sim1_positive": [
+    "ZBRA"
+  ],
+  "promoted": [],
+  "whitelist": [
+    "TECH"
+  ],
+  "carried_over": true,
+  "backtest_trades": 153,
+  "sim1_trades": 39,
+  "sim2_trades": 26
+}

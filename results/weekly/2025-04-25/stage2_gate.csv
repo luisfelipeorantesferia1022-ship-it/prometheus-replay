@@ -1,0 +1,6 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+GWW,12,-26439.88,-264.4,41.7,False
+MDT,18,17009.33,170.1,55.6,False
+FTV,12,52968.99,529.7,58.3,True
+BLDR,12,16148.13,161.5,66.7,False
+RVTY,12,57092.97,570.9,66.7,True

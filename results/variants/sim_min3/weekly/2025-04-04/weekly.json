@@ -1,0 +1,40 @@
+{
+  "variant": "sim_min3",
+  "sim_min_trades": 3,
+  "asof": "2025-04-04",
+  "run_date": "2025-04-05",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "NTRS",
+    "SBAC",
+    "KDP",
+    "IQV",
+    "MNST",
+    "NVR",
+    "SPG",
+    "UNH",
+    "AME",
+    "NOW",
+    "EMR"
+  ],
+  "passed_stage2_gate": [
+    "NTRS",
+    "SBAC",
+    "SPG",
+    "AME",
+    "NOW",
+    "EMR"
+  ],
+  "sim1_positive": [
+    "NTRS",
+    "EMR"
+  ],
+  "promoted": [],
+  "whitelist": [
+    "STX"
+  ],
+  "carried_over": true,
+  "backtest_trades": 182,
+  "sim1_trades": 104,
+  "sim2_trades": 61
+}

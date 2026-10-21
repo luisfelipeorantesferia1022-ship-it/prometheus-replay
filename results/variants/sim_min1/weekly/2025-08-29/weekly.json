@@ -1,0 +1,45 @@
+{
+  "variant": "sim_min1",
+  "sim_min_trades": 1,
+  "asof": "2025-08-29",
+  "run_date": "2025-08-30",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "CPRT",
+    "DRI",
+    "DASH",
+    "UDR",
+    "TSN",
+    "JBHT",
+    "LVS",
+    "CTSH",
+    "WY",
+    "FRT",
+    "MSFT",
+    "WYNN",
+    "LMT",
+    "HSIC",
+    "REGN",
+    "HPQ"
+  ],
+  "passed_stage2_gate": [
+    "UDR",
+    "CTSH",
+    "FRT",
+    "WYNN",
+    "REGN"
+  ],
+  "sim1_positive": [
+    "WYNN"
+  ],
+  "promoted": [
+    "WYNN"
+  ],
+  "whitelist": [
+    "WYNN"
+  ],
+  "carried_over": false,
+  "backtest_trades": 199,
+  "sim1_trades": 50,
+  "sim2_trades": 36
+}

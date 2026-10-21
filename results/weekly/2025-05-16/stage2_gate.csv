@@ -1,0 +1,9 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+EG,9,-6808.04,-68.1,33.3,False
+IEX,9,9933.12,99.3,55.6,False
+AOS,10,23373.28,233.7,70.0,True
+CSX,12,23277.57,232.8,75.0,True
+PYPL,10,13325.27,133.3,60.0,False
+CAH,9,23242.34,232.4,66.7,True
+NUE,11,-43045.74,-430.5,18.2,False
+MOH,9,-33501.0,-335.0,33.3,False

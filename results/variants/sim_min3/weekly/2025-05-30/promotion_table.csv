@@ -1,0 +1,13 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
+KVUE,8,-34451.52,-344.5,25.0,False,,,,,backtest below 200%
+ADSK,8,-12751.02,-127.5,37.5,False,,,,,backtest below 200%
+SPGI,12,-73381.17,-733.8,0.0,False,,,,,backtest below 200%
+EG,11,-50319.21,-503.2,18.2,False,,,,,backtest below 200%
+VLTO,12,-29375.08,-293.8,33.3,False,,,,,backtest below 200%
+AOS,12,-24972.4,-249.7,41.7,False,,,,,backtest below 200%
+RTX,15,-11682.47,-116.8,60.0,False,,,,,backtest below 200%
+UPS,12,-20034.12,-200.3,41.7,False,,,,,backtest below 200%
+GLW,12,18484.97,184.8,75.0,False,,,,,backtest below 200%
+EXPD,9,-37542.14,-375.4,11.1,False,,,,,backtest below 200%
+MOS,17,-3627.84,-36.3,47.1,False,,,,,backtest below 200%
+TER,12,-15914.95,-159.1,33.3,False,,,,,backtest below 200%

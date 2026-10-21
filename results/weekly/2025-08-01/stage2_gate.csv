@@ -1,0 +1,11 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+CME,9,43642.52,436.4,100.0,True
+EG,9,-43088.33,-430.9,22.2,False
+WDC,9,49221.92,492.2,88.9,True
+DPZ,11,-36066.36,-360.7,27.3,False
+KDP,9,33967.09,339.7,66.7,True
+AIG,12,-87648.28,-876.5,8.3,False
+POOL,9,-9741.93,-97.4,33.3,False
+ON,12,51091.65,510.9,100.0,True
+ANET,12,52223.33,522.2,100.0,True
+CI,9,1571.64,15.7,44.4,False

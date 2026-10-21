@@ -1,0 +1,50 @@
+{
+  "variant": "sim_min3",
+  "sim_min_trades": 3,
+  "asof": "2025-03-28",
+  "run_date": "2025-03-29",
+  "stage2_min_gain_pct": 200.0,
+  "candidates": [
+    "SNA",
+    "RMD",
+    "CVS",
+    "PSA",
+    "UNH",
+    "GEN",
+    "WY",
+    "D",
+    "GOOGL",
+    "HD",
+    "CRM",
+    "EIX",
+    "FDX",
+    "HAS",
+    "STX",
+    "PHM",
+    "UBER",
+    "EXPE"
+  ],
+  "passed_stage2_gate": [
+    "PSA",
+    "WY",
+    "D",
+    "GOOGL",
+    "HD",
+    "HAS",
+    "STX"
+  ],
+  "sim1_positive": [
+    "GOOGL",
+    "STX"
+  ],
+  "promoted": [
+    "STX"
+  ],
+  "whitelist": [
+    "STX"
+  ],
+  "carried_over": false,
+  "backtest_trades": 278,
+  "sim1_trades": 102,
+  "sim2_trades": 68
+}

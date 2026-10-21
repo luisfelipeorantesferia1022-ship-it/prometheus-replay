@@ -1,0 +1,16 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+UDR,9,25126.4,251.3,77.8,True
+USB,11,-43623.65,-436.2,27.3,False
+CSX,9,-4601.05,-46.0,55.6,False
+CSCO,8,-9200.96,-92.0,62.5,False
+CHTR,12,33038.68,330.4,83.3,True
+NSC,9,9628.72,96.3,55.6,False
+BF-B,17,-8424.4,-84.2,41.2,False
+FANG,10,-56437.1,-564.4,20.0,False
+CLX,11,-10892.65,-108.9,45.5,False
+CAG,16,22203.13,222.0,68.8,True
+BXP,10,10718.6,107.2,50.0,False
+D,8,11568.8,115.7,50.0,False
+AME,10,1273.46,12.7,50.0,False
+TEL,9,35879.99,358.8,77.8,True
+ALB,8,-12535.43,-125.4,50.0,False

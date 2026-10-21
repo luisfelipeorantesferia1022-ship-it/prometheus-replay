@@ -1,0 +1,11 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
+CME,9,43642.52,436.4,100.0,True,23.0,43.73,23.0,-610.41,sim 2 negative
+EG,9,-43088.33,-430.9,22.2,False,,,,,backtest below 200%
+WDC,9,49221.92,492.2,88.9,True,21.0,498.9,29.0,-1165.08,sim 2 negative
+DPZ,11,-36066.36,-360.7,27.3,False,,,,,backtest below 200%
+KDP,9,33967.09,339.7,66.7,True,21.0,-3522.95,,,sim 1 negative
+AIG,12,-87648.28,-876.5,8.3,False,,,,,backtest below 200%
+POOL,9,-9741.93,-97.4,33.3,False,,,,,backtest below 200%
+ON,12,51091.65,510.9,100.0,True,22.0,592.16,28.0,-546.11,sim 2 negative
+ANET,12,52223.33,522.2,100.0,True,11.0,-514.35,,,sim 1 negative
+CI,9,1571.64,15.7,44.4,False,,,,,backtest below 200%

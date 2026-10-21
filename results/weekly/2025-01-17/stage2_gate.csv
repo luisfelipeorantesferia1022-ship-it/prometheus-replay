@@ -1,0 +1,12 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+NWSA,13,-38458.77,-384.6,38.5,False
+EA,11,-42815.25,-428.2,36.4,False
+IPG,17,40481.54,404.8,52.9,True
+TXN,11,-75440.15,-754.4,9.1,False
+TMO,14,-85598.93,-856.0,14.3,False
+GEN,14,-74047.52,-740.5,21.4,False
+VTRS,11,-33699.5,-337.0,36.4,False
+DAY,17,-34188.19,-341.9,41.2,False
+PAYC,17,-102495.42,-1025.0,11.8,False
+ODFL,17,-71156.61,-711.6,29.4,False
+CPRT,17,-77277.73,-772.8,17.6,False

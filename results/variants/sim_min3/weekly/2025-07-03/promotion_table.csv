@@ -1,0 +1,12 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
+AWK,18,-113133.06,-1131.3,5.6,False,,,,,backtest below 200%
+MPC,18,59870.1,598.7,77.8,True,20.0,-2476.56,,,sim 1 negative
+ADSK,17,2372.18,23.7,58.8,False,,,,,backtest below 200%
+WDC,18,151541.51,1515.4,100.0,True,22.0,-5123.8,,,sim 1 negative
+CCI,18,-32983.5,-329.8,38.9,False,,,,,backtest below 200%
+PCG,14,-54896.22,-549.0,21.4,False,,,,,backtest below 200%
+DLTR,12,-635.07,-6.4,41.7,False,,,,,backtest below 200%
+TJX,17,-77438.9,-774.4,29.4,False,,,,,backtest below 200%
+IT,18,-63256.87,-632.6,33.3,False,,,,,backtest below 200%
+RVTY,18,41821.46,418.2,72.2,True,22.0,4306.07,32.0,1424.09,promoted
+PODD,18,-100936.36,-1009.4,11.1,False,,,,,backtest below 200%

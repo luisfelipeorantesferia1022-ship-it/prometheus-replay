@@ -1,0 +1,15 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate
+EG,9,33202.75,332.0,88.9,True
+FRT,9,42855.29,428.6,88.9,True
+ES,9,11541.48,115.4,55.6,False
+CLX,9,-28061.44,-280.6,33.3,False
+O,9,32323.56,323.2,77.8,True
+VICI,9,2865.23,28.7,66.7,False
+TRMB,9,31292.04,312.9,66.7,True
+CPB,15,6857.49,68.6,60.0,False
+SJM,12,-43112.54,-431.1,33.3,False
+CPRT,15,-4831.57,-48.3,60.0,False
+JBHT,16,-23491.13,-234.9,31.2,False
+YUM,10,50747.9,507.5,80.0,True
+F,7,11264.52,112.6,71.4,False
+ZBRA,10,35257.5,352.6,80.0,True

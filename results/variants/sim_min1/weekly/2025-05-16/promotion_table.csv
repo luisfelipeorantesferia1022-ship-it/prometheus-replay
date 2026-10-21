@@ -1,0 +1,9 @@
+ticker,backtest_trades,backtest_pnl,backtest_gain_pct_of_stake,backtest_win_%,passed_gate,sim1_trades,sim1_pnl,sim2_trades,sim2_pnl,status
+EG,9,-6808.04,-68.1,33.3,False,,,,,backtest below 200%
+IEX,9,9933.12,99.3,55.6,False,,,,,backtest below 200%
+AOS,10,23373.28,233.7,70.0,True,22.0,-454.86,,,sim 1 negative
+CSX,12,23277.57,232.8,75.0,True,22.0,-4104.96,,,sim 1 negative
+PYPL,10,13325.27,133.3,60.0,False,,,,,backtest below 200%
+CAH,9,23242.34,232.4,66.7,True,20.0,-198.08,,,sim 1 negative
+NUE,11,-43045.74,-430.5,18.2,False,,,,,backtest below 200%
+MOH,9,-33501.0,-335.0,33.3,False,,,,,backtest below 200%
