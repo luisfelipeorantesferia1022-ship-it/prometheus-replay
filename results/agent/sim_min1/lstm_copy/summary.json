@@ -1,18 +1,18 @@
 {
   "start_balance": 5000.0,
-  "end_equity": 2817.0,
-  "return_pct": -43.66,
-  "max_drawdown_pct": -43.66,
-  "spy_return_pct_same_window": 14.36,
+  "end_equity": 3270.15,
+  "return_pct": -34.6,
+  "max_drawdown_pct": -41.95,
+  "spy_return_pct_same_window": 14.57,
   "n_trades": 11,
   "win_rate_pct": 36.4,
-  "total_realized_pnl": -2183.0,
+  "total_realized_pnl": -1729.85,
   "avg_win": 336.38,
-  "avg_loss": -504.07,
+  "avg_loss": -439.34,
   "exit_reasons": {
+    "Stop loss": 5,
     "Trail stop": 5,
-    "Stop loss": 4,
-    "Thursday-before-expiry force-exit": 2
+    "Thursday-before-expiry force-exit": 1
   },
   "by_ticker": {
     "ADP": {
@@ -25,7 +25,7 @@
     },
     "DDOG": {
       "count": 3,
-      "sum": 306.0
+      "sum": 297.0
     },
     "PANW": {
       "count": 1,
@@ -37,7 +37,7 @@
     },
     "PSX": {
       "count": 1,
-      "sum": -637.5
+      "sum": -175.35
     },
     "WYNN": {
       "count": 2,
@@ -48,5 +48,5 @@
   "mode": "copy",
   "selector": "lstm",
   "stopped_early": null,
-  "databento_spent_usd": 4.491148
+  "databento_spent_usd": 4.644586
 }

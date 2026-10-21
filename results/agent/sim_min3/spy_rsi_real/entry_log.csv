@@ -109,10 +109,12 @@ date,universe,spy_trend,passed,skips,deployed,result,select_skips,entry_done_at
 2025-11-03,PANW DDOG,Bullish,PANW,DDOG: earnings within 7 days,,all candidates exhausted,PANW: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
 2025-11-04,PANW DDOG,Bullish,PANW,DDOG: earnings within 7 days,,all candidates exhausted,PANW: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
 2025-11-05,PANW DDOG,Bullish,PANW,DDOG: earnings within 7 days,,all candidates exhausted,PANW: select_option: no contract within budget after scoring (over budget 2),09:31:00
+2025-11-06,PANW DDOG,,,,,weekday gate,,09:30:00
 2025-11-10,PANW DDOG,Bearish,DDOG PANW,,,all candidates exhausted,DDOG: select_option: no contract within budget after scoring (spread>20% 2); PANW: select_option: no contract within budget after scoring (spread>20% 3),09:31:00
-2025-11-11,PANW DDOG,Bullish,PANW DDOG,,,all candidates exhausted,"PANW: select_option: no contract within budget after scoring (spread>20% 1, over budget 1); DDOG: select_option: no contract within budget after scoring (spread>20% 2)",09:31:00
+2025-11-11,PANW DDOG,Bullish,PANW DDOG,,PANW,deployed,DDOG: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
 2025-11-12,PANW DDOG,Bullish,DDOG,PANW: earnings within 7 days,DDOG,deployed,,09:31:00
 2025-11-13,PANW DDOG,,,,,weekday gate,,09:30:00
+2025-11-14,PANW DDOG,,,,,weekday gate,,09:30:00
 2025-11-17,PANW DDOG,Bearish,DDOG,PANW: earnings within 7 days,,all candidates exhausted,DDOG: select_option: no contract within budget after scoring (spread>20% 3),09:31:00
 2025-11-18,PANW DDOG,Bearish,DDOG,PANW: earnings within 7 days,,all candidates exhausted,DDOG: select_option: no contract within budget after scoring (spread>20% 2),09:31:00
 2025-11-19,PANW DDOG,Bearish,DDOG,PANW: earnings within 7 days,,all candidates exhausted,DDOG: select_option: no contract within budget after scoring (spread>20% 2),09:31:00

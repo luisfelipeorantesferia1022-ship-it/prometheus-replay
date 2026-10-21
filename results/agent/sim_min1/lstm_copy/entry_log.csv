@@ -22,7 +22,7 @@ date,universe,spy_trend,passed,skips,deployed,result,select_skips,entry_done_at
 2025-04-23,PSA,Bearish,,PSA: earnings within 7 days,,no candidates passed filters,,09:30:02
 2025-04-28,RVTY,Bullish,,RVTY: earnings within 7 days,,no candidates passed filters,,09:30:02
 2025-04-29,RVTY,Bullish,,RVTY: predicted move +0.82% below 1%,,no candidates passed filters,,09:31:20
-2025-04-30,RVTY,Bullish,RVTY,,,all candidates exhausted,RVTY: select_option: no contract within budget after scoring,09:31:20
+2025-04-30,RVTY,Bullish,RVTY,,,all candidates exhausted,RVTY: select_option: no contract within budget after scoring (spread>20% 1),09:31:20
 2025-05-05,TECH,Bullish,,TECH: earnings within 7 days,,no candidates passed filters,,09:30:02
 2025-05-06,TECH,Bullish,,TECH: earnings within 7 days,,no candidates passed filters,,09:30:02
 2025-05-07,TECH,Bullish,,TECH: earnings within 7 days,,no candidates passed filters,,09:30:02
@@ -33,9 +33,9 @@ date,universe,spy_trend,passed,skips,deployed,result,select_skips,entry_done_at
 2025-05-20,TECH,Bullish,,TECH: SPY filter: Bearish vs Bullish,,no candidates passed filters,,09:31:20
 2025-05-21,TECH,Bullish,,TECH: predicted move -0.26% below 1%,,no candidates passed filters,,09:31:20
 2025-05-27,TECH,Bullish,,TECH: predicted move +0.73% below 1%,,no candidates passed filters,,09:31:20
-2025-05-28,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring,09:31:20
-2025-06-02,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring,09:31:20
-2025-06-03,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring,09:31:20
+2025-05-28,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring (spread>20% 1),09:31:20
+2025-06-02,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring (spread>20% 1),09:31:20
+2025-06-03,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring (spread>20% 1),09:31:20
 2025-06-04,TECH,Bullish,,TECH: SPY filter: Bearish vs Bullish,,no candidates passed filters,,09:31:20
 2025-06-09,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:20
 2025-06-10,TECH,Bullish,,TECH: predicted move -0.52% below 1%,,no candidates passed filters,,09:31:20
@@ -44,7 +44,7 @@ date,universe,spy_trend,passed,skips,deployed,result,select_skips,entry_done_at
 2025-06-17,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:20
 2025-06-18,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no expiry in 12-24 DTE,09:31:20
 2025-06-23,TECH,Bearish,TECH,,,all candidates exhausted,TECH: select_option: no strike in range,09:31:20
-2025-06-24,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring,09:31:20
+2025-06-24,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no contract within budget after scoring (spread>20% 1),09:31:20
 2025-06-25,TECH,Bullish,,TECH: SPY filter: Bearish vs Bullish,,no candidates passed filters,,09:31:20
 2025-06-30,TECH,Bullish,,TECH: predicted move +0.93% below 1%,,no candidates passed filters,,09:31:20
 2025-07-01,TECH,Bullish,TECH,,,all candidates exhausted,TECH: select_option: no strike in range,09:31:20
@@ -114,7 +114,7 @@ date,universe,spy_trend,passed,skips,deployed,result,select_skips,entry_done_at
 2025-11-03,PANW DDOG,Bullish,,PANW: SPY filter: Bearish vs Bullish; DDOG: earnings within 7 days,,no candidates passed filters,,09:31:22
 2025-11-04,PANW DDOG,Bullish,,PANW: SPY filter: Bearish vs Bullish; DDOG: earnings within 7 days,,no candidates passed filters,,09:31:22
 2025-11-05,PANW DDOG,Bullish,,PANW: SPY filter: Bearish vs Bullish; DDOG: earnings within 7 days,,no candidates passed filters,,09:31:22
-2025-11-10,PANW DDOG,Bearish,DDOG PANW,,DDOG,deployed,PANW: select_option: no contract within budget after scoring,09:32:40
+2025-11-10,PANW DDOG,Bearish,DDOG PANW,,DDOG,deployed,"PANW: select_option: no contract within budget after scoring (no quote 1, over budget 1)",09:32:40
 2025-11-11,PANW DDOG,Bullish,,PANW: SPY filter: Bearish vs Bullish; DDOG: SPY filter: Bearish vs Bullish,,no candidates passed filters,,09:32:40
 2025-11-12,PANW DDOG,Bullish,,PANW: earnings within 7 days; DDOG: SPY filter: Bearish vs Bullish,,no candidates passed filters,,09:31:22
 2025-11-13,PANW DDOG,,,,,weekday gate,,09:30:00
@@ -124,7 +124,7 @@ date,universe,spy_trend,passed,skips,deployed,result,select_skips,entry_done_at
 2025-11-19,PANW DDOG,Bearish,DDOG,PANW: earnings within 7 days,DDOG,deployed,,09:31:22
 2025-11-20,PANW DDOG,,,,,weekday gate,,09:30:00
 2025-11-24,PANW DDOG,Bearish,,PANW: predicted move -0.21% below 1%; DDOG: SPY filter: Bullish vs Bearish,,no candidates passed filters,,09:32:40
-2025-11-25,PANW DDOG,Bearish,PANW,DDOG: predicted move +0.68% below 1%,,all candidates exhausted,PANW: select_option: no contract within budget after scoring,09:32:40
+2025-11-25,PANW DDOG,Bearish,PANW,DDOG: predicted move +0.68% below 1%,,all candidates exhausted,PANW: select_option: no contract within budget after scoring (spread>20% 2),09:32:40
 2025-11-26,PANW DDOG,Bullish,DDOG,PANW: predicted move -0.43% below 1%,DDOG,deployed,,09:32:40
 2025-11-28,PANW DDOG,,,,,weekday gate,,09:30:00
 2025-12-01,PSX,Bullish,,PSX: SPY filter: Bearish vs Bullish,,no candidates passed filters,,09:31:20
@@ -135,6 +135,7 @@ date,universe,spy_trend,passed,skips,deployed,result,select_skips,entry_done_at
 2025-12-08,PSX,Bullish,,PSX: SPY filter: Bearish vs Bullish,,no candidates passed filters,,09:31:20
 2025-12-09,PSX,Bullish,,PSX: predicted move +0.24% below 1%,,no candidates passed filters,,09:31:20
 2025-12-10,PSX,Bullish,,PSX: predicted move -0.72% below 1%,,no candidates passed filters,,09:31:20
+2025-12-11,PSX,,,,,weekday gate,,09:30:00
 2025-12-15,PSX,Bullish,,PSX: SPY filter: Bearish vs Bullish,,no candidates passed filters,,09:31:20
 2025-12-16,PSX,Bullish,,PSX: predicted move +0.43% below 1%,,no candidates passed filters,,09:31:20
 2025-12-17,PSX,Bullish,PSX,,PSX,deployed,,09:31:20
@@ -147,3 +148,4 @@ date,universe,spy_trend,passed,skips,deployed,result,select_skips,entry_done_at
 2025-12-29,PSX,Bullish,,PSX: SPY filter: Bearish vs Bullish,,no candidates passed filters,,09:31:20
 2025-12-30,PSX,Bullish,,PSX: SPY filter: Bearish vs Bullish,,no candidates passed filters,,09:31:20
 2025-12-31,PSX,Bullish,,PSX: SPY filter: Bearish vs Bullish,,no candidates passed filters,,09:31:20
+2026-01-02,,,,,,empty universe,,09:30:00
