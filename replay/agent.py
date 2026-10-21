@@ -124,13 +124,16 @@ class Book:
 
 
 class Replay:
-    def __init__(self, mode: str, selector: str, variant: str, entry_start: str | None = None):
+    def __init__(self, mode: str, selector: str, variant: str, entry_start: str | None = None,
+                 spread_retries: list[str] | None = None):
         assert mode in ("copy", "real") and selector in ("lstm", "spy_rsi")
         self.mode, self.selector, self.variant = mode, selector, variant
         # None = the live V3 behaviour (scan at the open). "09:46" = the V2
         # rule restored on 2026-10-21: hold entries until 9:46 ET so the
         # 15-minute-delayed sandbox quotes come from today's session.
         self.entry_start = entry_start
+        self.spread_retries = list(spread_retries or [])      # e.g. ["10:01"]
+        self._spread_retry, self._today_log = [], {}
         self.delay = pd.Timedelta(minutes=config.COPY_QUOTE_DELAY_MIN if mode == "copy" else 0)
         self.book = Book()
         self.whitelists = whitelist_timeline(variant)
@@ -462,6 +465,7 @@ class Replay:
             log.update({"spy_trend": trend, "passed": " ".join(c["ticker"] for c in passed),
                         "skips": "; ".join(f"{t}: {r}" for t, r in skips)})
             deployed, held = [], {t.ticker for t in self.book.open}
+            self._spread_retry = []
             for rank, c in enumerate(passed, 1):
                 if c["ticker"] in held:
                     continue
@@ -471,20 +475,12 @@ class Replay:
                 opt, why = self.select_option(c["ticker"], c["direction"], budget, clock)
                 if opt is None:
                     skips.append((c["ticker"], f"select_option: {why}"))
+                    if "spread>20%" in why:
+                        self._spread_retry.append((rank, len(passed), c))
                     continue
-                tr = Trade(id=self.book.next_id, ticker=c["ticker"], direction=c["direction"],
-                           opt_type=opt["opt_type"], raw_symbol=opt["raw_symbol"],
-                           strike=opt["strike"], expiry=opt["expiry"], entry_ts=clock,
-                           entry_stock=c["current_price"], option_cost=opt["fill"],
-                           entry_mid=opt["mid"], entry_ask=opt["ask"],
-                           contracts=opt["contracts"], total_spent=opt["total_cost"],
-                           entry_delta=opt["delta"], snr=c["snr"], tom_pct=c["tom_pct"],
-                           rank_position=rank, n_candidates=len(passed))
-                self.book.next_id += 1
-                self.book.balance = round(self.book.balance - tr.total_spent, 2)
-                self.book.open.append(tr)
-                deployed.append(tr.ticker)
-                held.add(tr.ticker)
+                self._open_trade(c, opt, clock, rank, len(passed))
+                deployed.append(c["ticker"])
+                held.add(c["ticker"])
                 if len(deployed) >= slots:
                     break
             log["deployed"] = " ".join(deployed)
@@ -493,7 +489,61 @@ class Replay:
             log["select_skips"] = "; ".join(f"{t}: {r}" for t, r in skips if r.startswith("select_option"))
         log["entry_done_at"] = str(clock.time())
         self.book.entry_log.append(log)
+        self._today_log = log
         return clock
+
+    def _open_trade(self, c: dict, opt: dict, ts: pd.Timestamp, rank: int, n: int) -> Trade:
+        tr = Trade(id=self.book.next_id, ticker=c["ticker"], direction=c["direction"],
+                   opt_type=opt["opt_type"], raw_symbol=opt["raw_symbol"],
+                   strike=opt["strike"], expiry=opt["expiry"], entry_ts=ts,
+                   entry_stock=c["current_price"], option_cost=opt["fill"],
+                   entry_mid=opt["mid"], entry_ask=opt["ask"],
+                   contracts=opt["contracts"], total_spent=opt["total_cost"],
+                   entry_delta=opt["delta"], snr=c["snr"], tom_pct=c["tom_pct"],
+                   rank_position=rank, n_candidates=n)
+        self.book.next_id += 1
+        self.book.balance = round(self.book.balance - tr.total_spent, 2)
+        self.book.open.append(tr)
+        return tr
+
+    def retry_spread(self, d: date, ts: pd.Timestamp) -> None:
+        """
+        Second chance (requested 2026-10-21): tickers that passed the morning
+        scan but had every contract rejected on the 20% spread rule are
+        re-checked at `ts` with fresh prices. Same decision, same rules.
+        """
+        pending = getattr(self, "_spread_retry", [])
+        if not pending:
+            return
+        log = self._today_log
+        tag = f"retry_{ts:%H%M}"
+        held = {t.ticker for t in self.book.open}
+        slots = config.MAX_OPEN_POSITIONS - len(self.book.open)
+        notes, still, bought = [], [], []
+        for rank, n, c in pending:
+            if slots <= 0 or c["ticker"] in held:
+                continue
+            budget = round(self.book.balance * config.BASE_POSITION_PCT, 2)
+            if budget < config.MIN_TRADE_BUDGET:
+                break
+            price = self.stock_price(c["ticker"], ts)
+            c2 = dict(c, current_price=price if price else c["current_price"])
+            opt, why = self.select_option(c2["ticker"], c2["direction"], budget, ts)
+            if opt is None:
+                notes.append(f"{c2['ticker']}: {why}")
+                if "spread>20%" in why:
+                    still.append((rank, n, c))
+                continue
+            self._open_trade(c2, opt, ts, rank, n)
+            bought.append(c2["ticker"])
+            held.add(c2["ticker"])
+            slots -= 1
+        self._spread_retry = still
+        log[tag] = ("BOUGHT " + " ".join(bought) + ("; " if notes else "") if bought else "") + "; ".join(notes)
+        if bought:
+            log["deployed"] = " ".join(x for x in [str(log.get("deployed") or ""), *bought] if x)
+            log["result"] = f"deployed on {ts:%H:%M} retry" if log.get("result") != "deployed" \
+                else "deployed"
 
     # ── Day loop ───────────────────────────────────────────────────────────
     def mark(self, d: date, ts: pd.Timestamp) -> float:
@@ -526,8 +576,18 @@ class Replay:
             while t < entry_ts and self.book.open:    # exits keep running meanwhile
                 self.exit_tick(t)
                 t += ONE_MIN
+        self._spread_retry = []
         clock = self.try_entry(d, entry_ts)           # once per day
         ts = max(open_ts + ONE_MIN, clock.ceil("min"))
+        for hhmm in self.spread_retries:
+            rt = pd.Timestamp(f"{d} {hhmm}")
+            if rt <= clock or not self._spread_retry:
+                continue
+            while ts < rt and self.book.open:          # exits keep running meanwhile
+                self.exit_tick(ts)
+                ts += ONE_MIN
+            self.retry_spread(d, rt)
+            ts = max(ts, rt + ONE_MIN)
         while ts <= last_tick and self.book.open:
             self.exit_tick(ts)
             ts += ONE_MIN
@@ -562,6 +622,7 @@ class Replay:
     # ── Output ─────────────────────────────────────────────────────────────
     def write(self) -> dict:
         suffix = f"_{self.entry_start.replace(':', '')}" if self.entry_start else ""
+        suffix += "".join(f"_r{x.replace(':', '')}" for x in self.spread_retries)
         od = config.RESULTS_DIR / "agent" / self.variant / f"{self.selector}_{self.mode}{suffix}"
         od.mkdir(parents=True, exist_ok=True)
         trades = pd.DataFrame([asdict(t) for t in self.book.closed + self.book.open],
@@ -573,6 +634,7 @@ class Replay:
         s = summarize(trades, daily)
         s.update({"variant": self.variant, "mode": self.mode, "selector": self.selector,
                   "entry_start": self.entry_start or "open",
+                  "spread_retries": self.spread_retries,
                   "stopped_early": getattr(self, "stopped", None),
                   "databento_spent_usd": dbn.ledger()["spent_usd"]})
         (od / "summary.json").write_text(json.dumps(s, indent=2, default=str))
@@ -612,8 +674,10 @@ def main():
     ap.add_argument("--selector", choices=["lstm", "spy_rsi"], default="lstm")
     ap.add_argument("--variant", default=next(iter(config.SIM_MIN_TRADES_VARIANTS)))
     ap.add_argument("--entry-start", default=None, help="HH:MM ET; default = at the open")
+    ap.add_argument("--spread-retry", default="", help="comma list of HH:MM re-checks for spread rejections")
     a = ap.parse_args()
-    Replay(a.mode, a.selector, a.variant, a.entry_start).run()
+    Replay(a.mode, a.selector, a.variant, a.entry_start,
+           [x for x in a.spread_retry.split(",") if x.strip()]).run()
 
 
 if __name__ == "__main__":
