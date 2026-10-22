@@ -1,0 +1,1472 @@
+{
+ "all": {
+  "label": "all options",
+  "options": 331,
+  "weeks": 12,
+  "tickers": 138,
+  "tests": {
+   "avg_mae_pct|peak_pct": {
+    "measure": "LSTM error (MAE %)",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.065,
+    "median_weekly_rho": 0.093,
+    "weeks_negative": 2,
+    "weeks_positive": 10,
+    "sign_test_p": 0.0386,
+    "wilcoxon_p": 0.0049
+   },
+   "avg_mae_pct|peak5_pct": {
+    "measure": "LSTM error (MAE %)",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.093,
+    "median_weekly_rho": 0.113,
+    "weeks_negative": 2,
+    "weeks_positive": 10,
+    "sign_test_p": 0.0386,
+    "wilcoxon_p": 0.021
+   },
+   "avg_mae_pct|end_pct": {
+    "measure": "LSTM error (MAE %)",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.038,
+    "median_weekly_rho": 0.003,
+    "weeks_negative": 6,
+    "weeks_positive": 6,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": 0.8501
+   },
+   "hit_rate_pct|peak_pct": {
+    "measure": "LSTM within \u00b12%",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": -0.032,
+    "median_weekly_rho": -0.059,
+    "weeks_negative": 9,
+    "weeks_positive": 3,
+    "sign_test_p": 0.146,
+    "wilcoxon_p": 0.0522
+   },
+   "hit_rate_pct|peak5_pct": {
+    "measure": "LSTM within \u00b12%",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": -0.079,
+    "median_weekly_rho": -0.091,
+    "weeks_negative": 10,
+    "weeks_positive": 2,
+    "sign_test_p": 0.0386,
+    "wilcoxon_p": 0.0161
+   },
+   "hit_rate_pct|end_pct": {
+    "measure": "LSTM within \u00b12%",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": 0.043,
+    "median_weekly_rho": -0.006,
+    "weeks_negative": 6,
+    "weeks_positive": 6,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": 0.5186
+   },
+   "vol_1y_pct|peak_pct": {
+    "measure": "1-year volatility",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.093,
+    "median_weekly_rho": 0.121,
+    "weeks_negative": 4,
+    "weeks_positive": 8,
+    "sign_test_p": 0.3877,
+    "wilcoxon_p": 0.0771
+   },
+   "vol_1y_pct|peak5_pct": {
+    "measure": "1-year volatility",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.042,
+    "median_weekly_rho": 0.129,
+    "weeks_negative": 4,
+    "weeks_positive": 8,
+    "sign_test_p": 0.3877,
+    "wilcoxon_p": 0.021
+   },
+   "vol_1y_pct|end_pct": {
+    "measure": "1-year volatility",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.042,
+    "median_weekly_rho": -0.019,
+    "weeks_negative": 7,
+    "weeks_positive": 5,
+    "sign_test_p": 0.7744,
+    "wilcoxon_p": 0.6221
+   },
+   "vol_20d_pct|peak_pct": {
+    "measure": "20-day volatility",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.104,
+    "median_weekly_rho": 0.127,
+    "weeks_negative": 5,
+    "weeks_positive": 7,
+    "sign_test_p": 0.7744,
+    "wilcoxon_p": 0.1514
+   },
+   "vol_20d_pct|peak5_pct": {
+    "measure": "20-day volatility",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.141,
+    "median_weekly_rho": 0.131,
+    "weeks_negative": 3,
+    "weeks_positive": 9,
+    "sign_test_p": 0.146,
+    "wilcoxon_p": 0.0425
+   },
+   "vol_20d_pct|end_pct": {
+    "measure": "20-day volatility",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.007,
+    "median_weekly_rho": 0.011,
+    "weeks_negative": 6,
+    "weeks_positive": 6,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": 0.6772
+   },
+   "beta_1y|peak_pct": {
+    "measure": "Stock beta",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.085,
+    "median_weekly_rho": 0.107,
+    "weeks_negative": 5,
+    "weeks_positive": 7,
+    "sign_test_p": 0.7744,
+    "wilcoxon_p": 0.1294
+   },
+   "beta_1y|peak5_pct": {
+    "measure": "Stock beta",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.064,
+    "median_weekly_rho": 0.113,
+    "weeks_negative": 2,
+    "weeks_positive": 9,
+    "sign_test_p": 0.0654,
+    "wilcoxon_p": 0.0244
+   },
+   "beta_1y|end_pct": {
+    "measure": "Stock beta",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.022,
+    "median_weekly_rho": 0.006,
+    "weeks_negative": 6,
+    "weeks_positive": 6,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": 1.0
+   },
+   "iv_pct|peak_pct": {
+    "measure": "Implied vol at entry",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.044,
+    "median_weekly_rho": 0.101,
+    "weeks_negative": 4,
+    "weeks_positive": 8,
+    "sign_test_p": 0.3877,
+    "wilcoxon_p": 0.3013
+   },
+   "iv_pct|peak5_pct": {
+    "measure": "Implied vol at entry",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.007,
+    "median_weekly_rho": 0.06,
+    "weeks_negative": 4,
+    "weeks_positive": 8,
+    "sign_test_p": 0.3877,
+    "wilcoxon_p": 0.3394
+   },
+   "iv_pct|end_pct": {
+    "measure": "Implied vol at entry",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": 0.001,
+    "median_weekly_rho": -0.001,
+    "weeks_negative": 6,
+    "weeks_positive": 6,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": 0.8501
+   }
+  }
+ },
+ "tradable": {
+  "label": "agent-tradable (spread <= 20%, delta >= 0.35)",
+  "options": 129,
+  "weeks": 12,
+  "tickers": 70,
+  "tests": {
+   "avg_mae_pct|peak_pct": {
+    "measure": "LSTM error (MAE %)",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.087,
+    "median_weekly_rho": -0.058,
+    "weeks_negative": 4,
+    "weeks_positive": 3,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "avg_mae_pct|peak5_pct": {
+    "measure": "LSTM error (MAE %)",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.021,
+    "median_weekly_rho": 0.034,
+    "weeks_negative": 3,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "avg_mae_pct|end_pct": {
+    "measure": "LSTM error (MAE %)",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": 0.006,
+    "median_weekly_rho": 0.099,
+    "weeks_negative": 3,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "hit_rate_pct|peak_pct": {
+    "measure": "LSTM within \u00b12%",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": -0.065,
+    "median_weekly_rho": 0.002,
+    "weeks_negative": 3,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "hit_rate_pct|peak5_pct": {
+    "measure": "LSTM within \u00b12%",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": -0.013,
+    "median_weekly_rho": -0.043,
+    "weeks_negative": 4,
+    "weeks_positive": 3,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "hit_rate_pct|end_pct": {
+    "measure": "LSTM within \u00b12%",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.018,
+    "median_weekly_rho": -0.1,
+    "weeks_negative": 5,
+    "weeks_positive": 2,
+    "sign_test_p": 0.4531,
+    "wilcoxon_p": null
+   },
+   "vol_1y_pct|peak_pct": {
+    "measure": "1-year volatility",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": -0.007,
+    "median_weekly_rho": 0.058,
+    "weeks_negative": 2,
+    "weeks_positive": 5,
+    "sign_test_p": 0.4531,
+    "wilcoxon_p": null
+   },
+   "vol_1y_pct|peak5_pct": {
+    "measure": "1-year volatility",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": -0.078,
+    "median_weekly_rho": 0.033,
+    "weeks_negative": 3,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "vol_1y_pct|end_pct": {
+    "measure": "1-year volatility",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.007,
+    "median_weekly_rho": 0.071,
+    "weeks_negative": 2,
+    "weeks_positive": 5,
+    "sign_test_p": 0.4531,
+    "wilcoxon_p": null
+   },
+   "vol_20d_pct|peak_pct": {
+    "measure": "20-day volatility",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": -0.033,
+    "median_weekly_rho": 0.026,
+    "weeks_negative": 3,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "vol_20d_pct|peak5_pct": {
+    "measure": "20-day volatility",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": -0.004,
+    "median_weekly_rho": -0.104,
+    "weeks_negative": 5,
+    "weeks_positive": 2,
+    "sign_test_p": 0.4531,
+    "wilcoxon_p": null
+   },
+   "vol_20d_pct|end_pct": {
+    "measure": "20-day volatility",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.017,
+    "median_weekly_rho": 0.027,
+    "weeks_negative": 3,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "beta_1y|peak_pct": {
+    "measure": "Stock beta",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": -0.007,
+    "median_weekly_rho": -0.009,
+    "weeks_negative": 4,
+    "weeks_positive": 3,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "beta_1y|peak5_pct": {
+    "measure": "Stock beta",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": -0.019,
+    "median_weekly_rho": -0.057,
+    "weeks_negative": 5,
+    "weeks_positive": 2,
+    "sign_test_p": 0.4531,
+    "wilcoxon_p": null
+   },
+   "beta_1y|end_pct": {
+    "measure": "Stock beta",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.016,
+    "median_weekly_rho": 0.02,
+    "weeks_negative": 3,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "iv_pct|peak_pct": {
+    "measure": "Implied vol at entry",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.019,
+    "median_weekly_rho": -0.021,
+    "weeks_negative": 4,
+    "weeks_positive": 3,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "iv_pct|peak5_pct": {
+    "measure": "Implied vol at entry",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": -0.053,
+    "median_weekly_rho": -0.071,
+    "weeks_negative": 5,
+    "weeks_positive": 2,
+    "sign_test_p": 0.4531,
+    "wilcoxon_p": null
+   },
+   "iv_pct|end_pct": {
+    "measure": "Implied vol at entry",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": 0.059,
+    "median_weekly_rho": 0.147,
+    "weeks_negative": 3,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   }
+  }
+ },
+ "candidates": {
+  "label": "stage-1 candidates",
+  "options": 195,
+  "weeks": 12,
+  "tickers": 84,
+  "tests": {
+   "avg_mae_pct|peak_pct": {
+    "measure": "LSTM error (MAE %)",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.091,
+    "median_weekly_rho": 0.017,
+    "weeks_negative": 5,
+    "weeks_positive": 5,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": 0.3906
+   },
+   "avg_mae_pct|peak5_pct": {
+    "measure": "LSTM error (MAE %)",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.053,
+    "median_weekly_rho": -0.009,
+    "weeks_negative": 5,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": 0.8203
+   },
+   "avg_mae_pct|end_pct": {
+    "measure": "LSTM error (MAE %)",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": 0.02,
+    "median_weekly_rho": 0.066,
+    "weeks_negative": 3,
+    "weeks_positive": 6,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": 0.1641
+   },
+   "hit_rate_pct|peak_pct": {
+    "measure": "LSTM within \u00b12%",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": -0.063,
+    "median_weekly_rho": 0.02,
+    "weeks_negative": 5,
+    "weeks_positive": 5,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": 0.7695
+   },
+   "hit_rate_pct|peak5_pct": {
+    "measure": "LSTM within \u00b12%",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": -0.058,
+    "median_weekly_rho": 0.024,
+    "weeks_negative": 4,
+    "weeks_positive": 5,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": 1.0
+   },
+   "hit_rate_pct|end_pct": {
+    "measure": "LSTM within \u00b12%",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.008,
+    "median_weekly_rho": -0.051,
+    "weeks_negative": 6,
+    "weeks_positive": 3,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": 0.1641
+   },
+   "vol_1y_pct|peak_pct": {
+    "measure": "1-year volatility",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.096,
+    "median_weekly_rho": 0.033,
+    "weeks_negative": 5,
+    "weeks_positive": 5,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": 0.5566
+   },
+   "vol_1y_pct|peak5_pct": {
+    "measure": "1-year volatility",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.03,
+    "median_weekly_rho": 0.069,
+    "weeks_negative": 2,
+    "weeks_positive": 8,
+    "sign_test_p": 0.1094,
+    "wilcoxon_p": 0.1309
+   },
+   "vol_1y_pct|end_pct": {
+    "measure": "1-year volatility",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.019,
+    "median_weekly_rho": -0.039,
+    "weeks_negative": 6,
+    "weeks_positive": 3,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": 0.4727
+   },
+   "vol_20d_pct|peak_pct": {
+    "measure": "20-day volatility",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.116,
+    "median_weekly_rho": 0.025,
+    "weeks_negative": 5,
+    "weeks_positive": 5,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": 0.4316
+   },
+   "vol_20d_pct|peak5_pct": {
+    "measure": "20-day volatility",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.153,
+    "median_weekly_rho": 0.076,
+    "weeks_negative": 4,
+    "weeks_positive": 6,
+    "sign_test_p": 0.7539,
+    "wilcoxon_p": 0.1934
+   },
+   "vol_20d_pct|end_pct": {
+    "measure": "20-day volatility",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": 0.014,
+    "median_weekly_rho": -0.022,
+    "weeks_negative": 6,
+    "weeks_positive": 3,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": 0.9102
+   },
+   "beta_1y|peak_pct": {
+    "measure": "Stock beta",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.083,
+    "median_weekly_rho": 0.016,
+    "weeks_negative": 3,
+    "weeks_positive": 7,
+    "sign_test_p": 0.3438,
+    "wilcoxon_p": 0.625
+   },
+   "beta_1y|peak5_pct": {
+    "measure": "Stock beta",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.056,
+    "median_weekly_rho": 0.018,
+    "weeks_negative": 4,
+    "weeks_positive": 5,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": 0.4961
+   },
+   "beta_1y|end_pct": {
+    "measure": "Stock beta",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.007,
+    "median_weekly_rho": -0.014,
+    "weeks_negative": 5,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": 1.0
+   },
+   "iv_pct|peak_pct": {
+    "measure": "Implied vol at entry",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.052,
+    "median_weekly_rho": -0.013,
+    "weeks_negative": 5,
+    "weeks_positive": 5,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": 1.0
+   },
+   "iv_pct|peak5_pct": {
+    "measure": "Implied vol at entry",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": -0.002,
+    "median_weekly_rho": 0.019,
+    "weeks_negative": 3,
+    "weeks_positive": 7,
+    "sign_test_p": 0.3438,
+    "wilcoxon_p": 0.5566
+   },
+   "iv_pct|end_pct": {
+    "measure": "Implied vol at entry",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": 0.043,
+    "median_weekly_rho": 0.045,
+    "weeks_negative": 4,
+    "weeks_positive": 6,
+    "sign_test_p": 0.7539,
+    "wilcoxon_p": 0.4922
+   }
+  }
+ },
+ "controls": {
+  "label": "random S&P 500 controls",
+  "options": 136,
+  "weeks": 12,
+  "tickers": 66,
+  "tests": {
+   "avg_mae_pct|peak_pct": {
+    "measure": "LSTM error (MAE %)",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.03,
+    "median_weekly_rho": -0.042,
+    "weeks_negative": 5,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "avg_mae_pct|peak5_pct": {
+    "measure": "LSTM error (MAE %)",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.109,
+    "median_weekly_rho": 0.0,
+    "weeks_negative": 3,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "avg_mae_pct|end_pct": {
+    "measure": "LSTM error (MAE %)",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.083,
+    "median_weekly_rho": 0.025,
+    "weeks_negative": 4,
+    "weeks_positive": 5,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "hit_rate_pct|peak_pct": {
+    "measure": "LSTM within \u00b12%",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.016,
+    "median_weekly_rho": -0.026,
+    "weeks_negative": 5,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "hit_rate_pct|peak5_pct": {
+    "measure": "LSTM within \u00b12%",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": -0.079,
+    "median_weekly_rho": 0.0,
+    "weeks_negative": 4,
+    "weeks_positive": 3,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "hit_rate_pct|end_pct": {
+    "measure": "LSTM within \u00b12%",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": 0.086,
+    "median_weekly_rho": -0.025,
+    "weeks_negative": 5,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "vol_1y_pct|peak_pct": {
+    "measure": "1-year volatility",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.097,
+    "median_weekly_rho": 0.242,
+    "weeks_negative": 2,
+    "weeks_positive": 7,
+    "sign_test_p": 0.1797,
+    "wilcoxon_p": null
+   },
+   "vol_1y_pct|peak5_pct": {
+    "measure": "1-year volatility",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.065,
+    "median_weekly_rho": 0.146,
+    "weeks_negative": 3,
+    "weeks_positive": 6,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": null
+   },
+   "vol_1y_pct|end_pct": {
+    "measure": "1-year volatility",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.057,
+    "median_weekly_rho": -0.008,
+    "weeks_negative": 5,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "vol_20d_pct|peak_pct": {
+    "measure": "20-day volatility",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.082,
+    "median_weekly_rho": 0.124,
+    "weeks_negative": 2,
+    "weeks_positive": 7,
+    "sign_test_p": 0.1797,
+    "wilcoxon_p": null
+   },
+   "vol_20d_pct|peak5_pct": {
+    "measure": "20-day volatility",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.117,
+    "median_weekly_rho": -0.018,
+    "weeks_negative": 5,
+    "weeks_positive": 3,
+    "sign_test_p": 0.7266,
+    "wilcoxon_p": null
+   },
+   "vol_20d_pct|end_pct": {
+    "measure": "20-day volatility",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.042,
+    "median_weekly_rho": -0.017,
+    "weeks_negative": 5,
+    "weeks_positive": 3,
+    "sign_test_p": 0.7266,
+    "wilcoxon_p": null
+   },
+   "beta_1y|peak_pct": {
+    "measure": "Stock beta",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.092,
+    "median_weekly_rho": 0.098,
+    "weeks_negative": 3,
+    "weeks_positive": 6,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": null
+   },
+   "beta_1y|peak5_pct": {
+    "measure": "Stock beta",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.077,
+    "median_weekly_rho": 0.085,
+    "weeks_negative": 3,
+    "weeks_positive": 6,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": null
+   },
+   "beta_1y|end_pct": {
+    "measure": "Stock beta",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.028,
+    "median_weekly_rho": 0.025,
+    "weeks_negative": 4,
+    "weeks_positive": 5,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "iv_pct|peak_pct": {
+    "measure": "Implied vol at entry",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.039,
+    "median_weekly_rho": 0.024,
+    "weeks_negative": 4,
+    "weeks_positive": 5,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "iv_pct|peak5_pct": {
+    "measure": "Implied vol at entry",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.043,
+    "median_weekly_rho": -0.018,
+    "weeks_negative": 5,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "iv_pct|end_pct": {
+    "measure": "Implied vol at entry",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.06,
+    "median_weekly_rho": -0.09,
+    "weeks_negative": 6,
+    "weeks_positive": 3,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": null
+   }
+  }
+ },
+ "calls": {
+  "label": "calls",
+  "options": 166,
+  "weeks": 12,
+  "tickers": 136,
+  "tests": {
+   "avg_mae_pct|peak_pct": {
+    "measure": "LSTM error (MAE %)",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.17,
+    "median_weekly_rho": 0.131,
+    "weeks_negative": 3,
+    "weeks_positive": 6,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": null
+   },
+   "avg_mae_pct|peak5_pct": {
+    "measure": "LSTM error (MAE %)",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.156,
+    "median_weekly_rho": 0.154,
+    "weeks_negative": 3,
+    "weeks_positive": 6,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": null
+   },
+   "avg_mae_pct|end_pct": {
+    "measure": "LSTM error (MAE %)",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": 0.043,
+    "median_weekly_rho": 0.071,
+    "weeks_negative": 4,
+    "weeks_positive": 5,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "hit_rate_pct|peak_pct": {
+    "measure": "LSTM within \u00b12%",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": -0.152,
+    "median_weekly_rho": -0.127,
+    "weeks_negative": 6,
+    "weeks_positive": 3,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": null
+   },
+   "hit_rate_pct|peak5_pct": {
+    "measure": "LSTM within \u00b12%",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": -0.16,
+    "median_weekly_rho": -0.183,
+    "weeks_negative": 7,
+    "weeks_positive": 2,
+    "sign_test_p": 0.1797,
+    "wilcoxon_p": null
+   },
+   "hit_rate_pct|end_pct": {
+    "measure": "LSTM within \u00b12%",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.053,
+    "median_weekly_rho": -0.078,
+    "weeks_negative": 5,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "vol_1y_pct|peak_pct": {
+    "measure": "1-year volatility",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.251,
+    "median_weekly_rho": 0.3,
+    "weeks_negative": 2,
+    "weeks_positive": 7,
+    "sign_test_p": 0.1797,
+    "wilcoxon_p": null
+   },
+   "vol_1y_pct|peak5_pct": {
+    "measure": "1-year volatility",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.093,
+    "median_weekly_rho": 0.224,
+    "weeks_negative": 2,
+    "weeks_positive": 7,
+    "sign_test_p": 0.1797,
+    "wilcoxon_p": null
+   },
+   "vol_1y_pct|end_pct": {
+    "measure": "1-year volatility",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": 0.175,
+    "median_weekly_rho": 0.123,
+    "weeks_negative": 2,
+    "weeks_positive": 7,
+    "sign_test_p": 0.1797,
+    "wilcoxon_p": null
+   },
+   "vol_20d_pct|peak_pct": {
+    "measure": "20-day volatility",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.074,
+    "median_weekly_rho": 0.231,
+    "weeks_negative": 2,
+    "weeks_positive": 7,
+    "sign_test_p": 0.1797,
+    "wilcoxon_p": null
+   },
+   "vol_20d_pct|peak5_pct": {
+    "measure": "20-day volatility",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.123,
+    "median_weekly_rho": 0.178,
+    "weeks_negative": 3,
+    "weeks_positive": 6,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": null
+   },
+   "vol_20d_pct|end_pct": {
+    "measure": "20-day volatility",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": 0.023,
+    "median_weekly_rho": 0.037,
+    "weeks_negative": 3,
+    "weeks_positive": 6,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": null
+   },
+   "beta_1y|peak_pct": {
+    "measure": "Stock beta",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.243,
+    "median_weekly_rho": 0.333,
+    "weeks_negative": 3,
+    "weeks_positive": 6,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": null
+   },
+   "beta_1y|peak5_pct": {
+    "measure": "Stock beta",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.102,
+    "median_weekly_rho": 0.238,
+    "weeks_negative": 3,
+    "weeks_positive": 6,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": null
+   },
+   "beta_1y|end_pct": {
+    "measure": "Stock beta",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": 0.21,
+    "median_weekly_rho": 0.192,
+    "weeks_negative": 3,
+    "weeks_positive": 6,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": null
+   },
+   "iv_pct|peak_pct": {
+    "measure": "Implied vol at entry",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.091,
+    "median_weekly_rho": 0.196,
+    "weeks_negative": 1,
+    "weeks_positive": 8,
+    "sign_test_p": 0.0391,
+    "wilcoxon_p": null
+   },
+   "iv_pct|peak5_pct": {
+    "measure": "Implied vol at entry",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.07,
+    "median_weekly_rho": 0.145,
+    "weeks_negative": 1,
+    "weeks_positive": 8,
+    "sign_test_p": 0.0391,
+    "wilcoxon_p": null
+   },
+   "iv_pct|end_pct": {
+    "measure": "Implied vol at entry",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": 0.057,
+    "median_weekly_rho": 0.189,
+    "weeks_negative": 3,
+    "weeks_positive": 6,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": null
+   }
+  }
+ },
+ "puts": {
+  "label": "puts",
+  "options": 165,
+  "weeks": 12,
+  "tickers": 135,
+  "tests": {
+   "avg_mae_pct|peak_pct": {
+    "measure": "LSTM error (MAE %)",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": -0.035,
+    "median_weekly_rho": 0.035,
+    "weeks_negative": 4,
+    "weeks_positive": 5,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "avg_mae_pct|peak5_pct": {
+    "measure": "LSTM error (MAE %)",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.034,
+    "median_weekly_rho": 0.098,
+    "weeks_negative": 3,
+    "weeks_positive": 6,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": null
+   },
+   "avg_mae_pct|end_pct": {
+    "measure": "LSTM error (MAE %)",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.127,
+    "median_weekly_rho": -0.028,
+    "weeks_negative": 5,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "hit_rate_pct|peak_pct": {
+    "measure": "LSTM within \u00b12%",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.082,
+    "median_weekly_rho": 0.062,
+    "weeks_negative": 3,
+    "weeks_positive": 5,
+    "sign_test_p": 0.7266,
+    "wilcoxon_p": null
+   },
+   "hit_rate_pct|peak5_pct": {
+    "measure": "LSTM within \u00b12%",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": -0.007,
+    "median_weekly_rho": 0.011,
+    "weeks_negative": 3,
+    "weeks_positive": 6,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": null
+   },
+   "hit_rate_pct|end_pct": {
+    "measure": "LSTM within \u00b12%",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": 0.149,
+    "median_weekly_rho": -0.018,
+    "weeks_negative": 5,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "vol_1y_pct|peak_pct": {
+    "measure": "1-year volatility",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": -0.056,
+    "median_weekly_rho": -0.011,
+    "weeks_negative": 7,
+    "weeks_positive": 2,
+    "sign_test_p": 0.1797,
+    "wilcoxon_p": null
+   },
+   "vol_1y_pct|peak5_pct": {
+    "measure": "1-year volatility",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": -0.005,
+    "median_weekly_rho": -0.03,
+    "weeks_negative": 5,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "vol_1y_pct|end_pct": {
+    "measure": "1-year volatility",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.271,
+    "median_weekly_rho": -0.338,
+    "weeks_negative": 7,
+    "weeks_positive": 2,
+    "sign_test_p": 0.1797,
+    "wilcoxon_p": null
+   },
+   "vol_20d_pct|peak_pct": {
+    "measure": "20-day volatility",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": 0.128,
+    "median_weekly_rho": 0.014,
+    "weeks_negative": 4,
+    "weeks_positive": 5,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "vol_20d_pct|peak5_pct": {
+    "measure": "20-day volatility",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.157,
+    "median_weekly_rho": 0.044,
+    "weeks_negative": 4,
+    "weeks_positive": 5,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "vol_20d_pct|end_pct": {
+    "measure": "20-day volatility",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.04,
+    "median_weekly_rho": -0.033,
+    "weeks_negative": 5,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "beta_1y|peak_pct": {
+    "measure": "Stock beta",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": -0.061,
+    "median_weekly_rho": -0.135,
+    "weeks_negative": 6,
+    "weeks_positive": 3,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": null
+   },
+   "beta_1y|peak5_pct": {
+    "measure": "Stock beta",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": 0.027,
+    "median_weekly_rho": 0.059,
+    "weeks_negative": 4,
+    "weeks_positive": 5,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "beta_1y|end_pct": {
+    "measure": "Stock beta",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.267,
+    "median_weekly_rho": -0.212,
+    "weeks_negative": 8,
+    "weeks_positive": 1,
+    "sign_test_p": 0.0391,
+    "wilcoxon_p": null
+   },
+   "iv_pct|peak_pct": {
+    "measure": "Implied vol at entry",
+    "outcome": "Peak (best bid)",
+    "pooled_rho": -0.008,
+    "median_weekly_rho": 0.006,
+    "weeks_negative": 4,
+    "weeks_positive": 5,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "iv_pct|peak5_pct": {
+    "measure": "Implied vol at entry",
+    "outcome": "Peak within 5 days",
+    "pooled_rho": -0.065,
+    "median_weekly_rho": -0.119,
+    "weeks_negative": 5,
+    "weeks_positive": 4,
+    "sign_test_p": 1.0,
+    "wilcoxon_p": null
+   },
+   "iv_pct|end_pct": {
+    "measure": "Implied vol at entry",
+    "outcome": "Held to Thursday exit",
+    "pooled_rho": -0.049,
+    "median_weekly_rho": -0.115,
+    "weeks_negative": 6,
+    "weeks_positive": 3,
+    "sign_test_p": 0.5078,
+    "wilcoxon_p": null
+   }
+  }
+ },
+ "partial": {
+  "partial_rho_mae_peak_given_iv": 0.073,
+  "p_naive": 0.1863,
+  "n": 331
+ },
+ "quintiles": {
+  "avg_mae_pct": [
+   {
+    "avg_mae_pct": "1 calmest",
+    "options": 67,
+    "median avg_mae_pct": 1.18,
+    "median IV %": 26.4,
+    "median leverage": 23.4,
+    "median peak %": 40.4,
+    "peak >= +50%": 43.3,
+    "peak >= +100%": 32.8,
+    "median at exit %": -85.2,
+    "mean at exit %": -26.9,
+    "median biggest stock move %": 5.01
+   },
+   {
+    "avg_mae_pct": "2",
+    "options": 66,
+    "median avg_mae_pct": 1.54,
+    "median IV %": 30.2,
+    "median leverage": 20.1,
+    "median peak %": 38.2,
+    "peak >= +50%": 43.9,
+    "peak >= +100%": 33.3,
+    "median at exit %": -87.6,
+    "mean at exit %": 2.2,
+    "median biggest stock move %": 5.87
+   },
+   {
+    "avg_mae_pct": "3",
+    "options": 68,
+    "median avg_mae_pct": 1.82,
+    "median IV %": 30.7,
+    "median leverage": 19.4,
+    "median peak %": 46.9,
+    "peak >= +50%": 50.0,
+    "peak >= +100%": 38.2,
+    "median at exit %": -67.3,
+    "mean at exit %": 21.0,
+    "median biggest stock move %": 6.72
+   },
+   {
+    "avg_mae_pct": "4",
+    "options": 64,
+    "median avg_mae_pct": 2.37,
+    "median IV %": 32.4,
+    "median leverage": 18.5,
+    "median peak %": 66.5,
+    "peak >= +50%": 57.8,
+    "peak >= +100%": 35.9,
+    "median at exit %": -87.8,
+    "mean at exit %": -31.2,
+    "median biggest stock move %": 6.47
+   },
+   {
+    "avg_mae_pct": "5 most volatile",
+    "options": 66,
+    "median avg_mae_pct": 4.71,
+    "median IV %": 34.5,
+    "median leverage": 17.2,
+    "median peak %": 63.1,
+    "peak >= +50%": 51.5,
+    "peak >= +100%": 36.4,
+    "median at exit %": -86.9,
+    "mean at exit %": -18.6,
+    "median biggest stock move %": 6.79
+   }
+  ],
+  "vol_1y_pct": [
+   {
+    "vol_1y_pct": "1 calmest",
+    "options": 68,
+    "median vol_1y_pct": 21.32,
+    "median IV %": 22.8,
+    "median leverage": 27.5,
+    "median peak %": 28.1,
+    "peak >= +50%": 39.7,
+    "peak >= +100%": 29.4,
+    "median at exit %": -84.2,
+    "mean at exit %": -35.9,
+    "median biggest stock move %": 4.08
+   },
+   {
+    "vol_1y_pct": "2",
+    "options": 66,
+    "median vol_1y_pct": 26.0,
+    "median IV %": 28.0,
+    "median leverage": 22.1,
+    "median peak %": 38.9,
+    "peak >= +50%": 45.5,
+    "peak >= +100%": 25.8,
+    "median at exit %": -84.7,
+    "mean at exit %": -20.7,
+    "median biggest stock move %": 5.05
+   },
+   {
+    "vol_1y_pct": "3",
+    "options": 67,
+    "median vol_1y_pct": 29.55,
+    "median IV %": 29.1,
+    "median leverage": 20.5,
+    "median peak %": 74.4,
+    "peak >= +50%": 58.2,
+    "peak >= +100%": 44.8,
+    "median at exit %": -87.6,
+    "mean at exit %": 4.2,
+    "median biggest stock move %": 6.36
+   },
+   {
+    "vol_1y_pct": "4",
+    "options": 64,
+    "median vol_1y_pct": 35.04,
+    "median IV %": 34.4,
+    "median leverage": 17.5,
+    "median peak %": 42.8,
+    "peak >= +50%": 48.4,
+    "peak >= +100%": 39.1,
+    "median at exit %": -91.8,
+    "mean at exit %": 29.5,
+    "median biggest stock move %": 7.73
+   },
+   {
+    "vol_1y_pct": "5 most volatile",
+    "options": 66,
+    "median vol_1y_pct": 43.76,
+    "median IV %": 38.5,
+    "median leverage": 15.5,
+    "median peak %": 63.6,
+    "peak >= +50%": 54.5,
+    "peak >= +100%": 37.9,
+    "median at exit %": -88.5,
+    "mean at exit %": -27.6,
+    "median biggest stock move %": 7.73
+   }
+  ],
+  "iv_pct": [
+   {
+    "iv_pct": "1 calmest",
+    "options": 67,
+    "median iv_pct": 21.6,
+    "median IV %": 21.6,
+    "median leverage": 30.3,
+    "median peak %": 36.1,
+    "peak >= +50%": 40.3,
+    "peak >= +100%": 28.4,
+    "median at exit %": -87.7,
+    "mean at exit %": -31.4,
+    "median biggest stock move %": 3.94
+   },
+   {
+    "iv_pct": "2",
+    "options": 66,
+    "median iv_pct": 27.61,
+    "median IV %": 27.6,
+    "median leverage": 23.3,
+    "median peak %": 65.3,
+    "peak >= +50%": 53.0,
+    "peak >= +100%": 33.3,
+    "median at exit %": -86.3,
+    "mean at exit %": -7.1,
+    "median biggest stock move %": 5.15
+   },
+   {
+    "iv_pct": "3",
+    "options": 66,
+    "median iv_pct": 30.3,
+    "median IV %": 30.3,
+    "median leverage": 19.9,
+    "median peak %": 51.6,
+    "peak >= +50%": 51.5,
+    "peak >= +100%": 36.4,
+    "median at exit %": -83.5,
+    "mean at exit %": -10.0,
+    "median biggest stock move %": 6.1
+   },
+   {
+    "iv_pct": "4",
+    "options": 67,
+    "median iv_pct": 35.42,
+    "median IV %": 35.4,
+    "median leverage": 16.9,
+    "median peak %": 49.6,
+    "peak >= +50%": 49.3,
+    "peak >= +100%": 37.3,
+    "median at exit %": -89.7,
+    "mean at exit %": 7.5,
+    "median biggest stock move %": 6.95
+   },
+   {
+    "iv_pct": "5 most volatile",
+    "options": 65,
+    "median iv_pct": 42.68,
+    "median IV %": 42.7,
+    "median leverage": 13.9,
+    "median peak %": 52.1,
+    "peak >= +50%": 52.3,
+    "peak >= +100%": 41.5,
+    "median at exit %": -80.2,
+    "mean at exit %": -11.2,
+    "median biggest stock move %": 8.77
+   }
+  ],
+  "hit_rate_pct": [
+   {
+    "hit_rate_pct": "1 lowest",
+    "options": 68,
+    "median hit_rate_pct": 18.3,
+    "median IV %": 34.8,
+    "median leverage": 16.6,
+    "median peak %": 63.1,
+    "peak >= +50%": 51.5,
+    "peak >= +100%": 38.2,
+    "median at exit %": -87.6,
+    "mean at exit %": -24.1,
+    "median biggest stock move %": 6.78
+   },
+   {
+    "hit_rate_pct": "2",
+    "options": 68,
+    "median hit_rate_pct": 53.3,
+    "median IV %": 32.6,
+    "median leverage": 18.0,
+    "median peak %": 54.4,
+    "peak >= +50%": 50.0,
+    "peak >= +100%": 32.4,
+    "median at exit %": -85.8,
+    "mean at exit %": -3.3,
+    "median biggest stock move %": 6.79
+   },
+   {
+    "hit_rate_pct": "3",
+    "options": 67,
+    "median hit_rate_pct": 63.3,
+    "median IV %": 30.2,
+    "median leverage": 19.8,
+    "median peak %": 63.5,
+    "peak >= +50%": 52.2,
+    "peak >= +100%": 37.3,
+    "median at exit %": -86.0,
+    "mean at exit %": -8.4,
+    "median biggest stock move %": 5.76
+   },
+   {
+    "hit_rate_pct": "4",
+    "options": 63,
+    "median hit_rate_pct": 73.3,
+    "median IV %": 29.9,
+    "median leverage": 20.1,
+    "median peak %": 46.9,
+    "peak >= +50%": 49.2,
+    "peak >= +100%": 34.9,
+    "median at exit %": -87.8,
+    "mean at exit %": -1.2,
+    "median biggest stock move %": 6.22
+   },
+   {
+    "hit_rate_pct": "5 highest",
+    "options": 65,
+    "median hit_rate_pct": 83.3,
+    "median IV %": 27.7,
+    "median leverage": 22.2,
+    "median peak %": 40.2,
+    "peak >= +50%": 43.1,
+    "peak >= +100%": 33.8,
+    "median at exit %": -83.3,
+    "mean at exit %": -14.7,
+    "median biggest stock move %": 5.26
+   }
+  ]
+ },
+ "quintiles_tradable_mae": [
+  {
+   "avg_mae_pct": "1 calmest",
+   "options": 29,
+   "median avg_mae_pct": 1.31,
+   "median IV %": 29.6,
+   "median leverage": 20.5,
+   "median peak %": 44.3,
+   "peak >= +50%": 41.4,
+   "peak >= +100%": 34.5,
+   "median at exit %": -85.2,
+   "mean at exit %": -13.6,
+   "median biggest stock move %": 5.04
+  },
+  {
+   "avg_mae_pct": "2",
+   "options": 23,
+   "median avg_mae_pct": 1.68,
+   "median IV %": 29.2,
+   "median leverage": 19.9,
+   "median peak %": 70.1,
+   "peak >= +50%": 65.2,
+   "peak >= +100%": 43.5,
+   "median at exit %": -40.0,
+   "mean at exit %": 9.0,
+   "median biggest stock move %": 6.11
+  },
+  {
+   "avg_mae_pct": "3",
+   "options": 25,
+   "median avg_mae_pct": 2.05,
+   "median IV %": 31.9,
+   "median leverage": 19.0,
+   "median peak %": 71.3,
+   "peak >= +50%": 60.0,
+   "peak >= +100%": 32.0,
+   "median at exit %": -85.9,
+   "mean at exit %": -56.8,
+   "median biggest stock move %": 4.67
+  },
+  {
+   "avg_mae_pct": "4",
+   "options": 26,
+   "median avg_mae_pct": 2.59,
+   "median IV %": 35.8,
+   "median leverage": 16.7,
+   "median peak %": 100.3,
+   "peak >= +50%": 61.5,
+   "peak >= +100%": 50.0,
+   "median at exit %": -56.5,
+   "mean at exit %": 28.7,
+   "median biggest stock move %": 8.94
+  },
+  {
+   "avg_mae_pct": "5 most volatile",
+   "options": 26,
+   "median avg_mae_pct": 5.44,
+   "median IV %": 38.5,
+   "median leverage": 15.9,
+   "median peak %": 87.2,
+   "peak >= +50%": 61.5,
+   "peak >= +100%": 46.2,
+   "median at exit %": -66.6,
+   "mean at exit %": 5.9,
+   "median biggest stock move %": 8.25
+  }
+ ]
+}
