@@ -93,6 +93,9 @@ def _transient(e: Exception) -> bool:
     status = getattr(e, "http_status", None)
     if status is not None:
         return status >= 500 or status == 429
+    msg = str(e)
+    if "ended prematurely" in msg or "Error streaming response" in msg:
+        return True                       # large download cut off mid-stream
     name = type(e).__name__
     return any(k in name for k in ("Timeout", "Connection", "RemoteDisconnected",
                                    "ChunkedEncoding", "ProtocolError"))

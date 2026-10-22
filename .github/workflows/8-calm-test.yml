@@ -50,7 +50,7 @@ jobs:
           key: dbn-v1-none
           restore-keys: dbn-v1-
       - name: Calm-stock test, one shard of the weeks
-        run: python -m replay.ghrun replay.calm_test --shard ${{ matrix.shard }} --nshards ${{ inputs.nshards }}
+        run: python -m replay.ghrun replay.calm_test --shard ${{ matrix.shard }} --nshards ${{ inputs.nshards }} --skip-done
       - uses: actions/upload-artifact@v4
         if: always()
         with:

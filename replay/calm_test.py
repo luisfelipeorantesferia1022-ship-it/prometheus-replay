@@ -42,6 +42,7 @@ OUT = R / "analysis" / "calm_test.csv"
 CONTROLS_PER_WEEK = 10
 ENTRY = time(9, 46)
 ONE_MIN = pd.Timedelta(minutes=1)
+QUOTE_CHUNK = 8          # option symbols per quote request
 
 
 def sample(a: date) -> list[tuple[str, str]]:
@@ -55,9 +56,14 @@ def sample(a: date) -> list[tuple[str, str]]:
     return [(t, "candidate") for t in cands] + [(t, "control") for t in ctrl]
 
 
+def opt_root(t: str) -> str:
+    """OPRA root: class shares drop the dot (BF.B -> BFB, BRK.B -> BRKB)."""
+    return t.replace("-", "").replace(".", "")
+
+
 def defs_for_day(d: date, tickers: list[str]) -> dict[str, pd.DataFrame]:
-    """Option definitions for many underlyings with one request, split into
-    the per-ticker cache files dbn.option_definitions reads."""
+    """Option definitions for many underlyings with one request, split by OSI
+    root into the per-ticker cache files dbn.option_definitions reads."""
     def path(t):
         return config.DBN_CACHE_DIR / "opra_def" / d.isoformat() / f"{dbn._db_sym(t)}.parquet"
     missing = [t for t in tickers if not path(t).exists()]
@@ -65,24 +71,20 @@ def defs_for_day(d: date, tickers: list[str]) -> dict[str, pd.DataFrame]:
         s = pd.Timestamp(f"{d} 00:00", tz="UTC")
         cache = config.DBN_CACHE_DIR / "opra_def_batch" / f"{d}_{dbn._hash(missing)}.parquet"
         raw = dbn._get("calm_definitions", cache, dataset=config.OPTIONS_DATASET, schema="definition",
-                       symbols=[f"{dbn._db_sym(t)}.OPT" for t in missing], stype_in="parent",
+                       symbols=[f"{opt_root(t)}.OPT" for t in missing], stype_in="parent",
                        start=s, end=s + pd.Timedelta(hours=14))
         if raw is not None and not raw.empty:
-            key = raw["underlying"].astype(str).str.strip() if "underlying" in raw.columns else None
+            root = raw["raw_symbol"].astype(str).str[:6].str.strip()
             for t in missing:
-                sub = raw[key == dbn._db_sym(t)] if key is not None else raw.iloc[0:0]
+                sub = raw[root == opt_root(t)]
                 if len(sub):
                     path(t).parent.mkdir(parents=True, exist_ok=True)
                     sub.to_parquet(path(t))
     out = {}
     for t in tickers:
-        try:
-            out[t] = dbn.option_definitions(t, d)     # cached, or a single request as fallback
-        except dbn.BudgetExceeded:
-            raise
-        except Exception as e:
-            print(f"[calm] defs {t} {d}: {type(e).__name__}: {e}", flush=True)
-            out[t] = pd.DataFrame()
+        # Only read what the batch cached; never fall back to a per-ticker
+        # request (its parent symbol is wrong for class shares).
+        out[t] = dbn.option_definitions(t, d) if path(t).exists() else pd.DataFrame()
     return out
 
 
@@ -185,10 +187,18 @@ def run_week(a: date) -> list[dict]:
             rows.append(row); chosen.append(row)
 
     if chosen:
-        last = max(pd.Timestamp(f"{r['end_day']} 16:00") for r in chosen)
-        q = dbn.option_quotes([r["raw_symbol"] for r in chosen], pd.Timestamp(f"{d} 09:30"), last,
-                              purpose="calm_quotes")
+        # Several small requests: one large one kept getting cut off mid-stream.
+        frames = []
+        for i in range(0, len(chosen), QUOTE_CHUNK):
+            part = chosen[i:i + QUOTE_CHUNK]
+            last = max(pd.Timestamp(f"{r['end_day']} 16:00") for r in part)
+            frames.append(dbn.option_quotes([r["raw_symbol"] for r in part], pd.Timestamp(f"{d} 09:30"),
+                                            last, purpose="calm_quotes"))
+        frames = [f for f in frames if len(f)]
+        q = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
         col = "symbol" if "symbol" in q.columns else "raw_symbol"
+        if q.empty:
+            q = pd.DataFrame(columns=[col, "ts_et", "bid", "ask"])
         open_live = pd.Timestamp(asof.nyse_schedule().loc[d]["open_et"]) + ONE_MIN
         for r in chosen:
             p = q[q[col] == r["raw_symbol"]] if len(q) else q
@@ -233,6 +243,7 @@ def main():
     ap.add_argument("--weeks", type=int, default=0, help="only the first N weeks (0 = all)")
     ap.add_argument("--shard", type=int, default=None, help="run weeks shard::nshards only")
     ap.add_argument("--nshards", type=int, default=1)
+    ap.add_argument("--skip-done", action="store_true", help="skip weeks already in calm_test.csv")
     ap.add_argument("--merge", action="store_true", help="combine shard parts into calm_test.csv")
     a = ap.parse_args()
     parts = R / "analysis" / "calm_parts"
@@ -243,6 +254,9 @@ def main():
         weeks = weeks[:a.weeks]
     if a.shard is not None:
         weeks = weeks[a.shard::a.nshards]
+    if a.skip_done and OUT.exists():
+        done = set(pd.read_csv(OUT)["asof"])
+        weeks = [w for w in weeks if w.isoformat() not in done]
     base = dbn.ledger()
     rows = []
     try:
@@ -276,7 +290,12 @@ def merge(parts) -> None:
             frames.append(pd.read_csv(f))
         except pd.errors.EmptyDataError:
             pass
-    df = pd.concat(frames, ignore_index=True).sort_values(["asof", "group", "ticker", "side"])
+    new = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame(columns=["asof"])
+    if OUT.exists():                 # keep weeks measured by an earlier run
+        old = pd.read_csv(OUT)
+        old = old[~old["asof"].isin(set(new["asof"]))]
+        new = pd.concat([old, new], ignore_index=True)
+    df = new.sort_values(["asof", "group", "ticker", "side"])
     df.to_csv(OUT, index=False)
     # Repo ledger + every shard's own spend.
     led = json.loads(dbn._LEDGER_REPO.read_text())
