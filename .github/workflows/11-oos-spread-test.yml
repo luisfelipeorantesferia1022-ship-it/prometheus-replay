@@ -1,0 +1,142 @@
+name: 11 · Out-of-sample spread test (2024 + Jan-Sep 2026)
+
+# Pre-registered test of the tight-spread lead: results/oos/PREREGISTRATION.md.
+# Run once with quote_only ticked to price it, then for real.
+
+on:
+  workflow_dispatch:
+    inputs:
+      quote_only:
+        description: "Only price the Databento requests (downloads no option data)"
+        type: boolean
+        default: true
+      top_n:
+        description: "Liquid names per week (locked in the pre-registration)"
+        default: "40"
+      budget_usd:
+        description: "Hard Databento budget for the whole project (USD)"
+        default: "40"
+      nshards:
+        description: "Parallel jobs (weeks are split across them)"
+        default: "20"
+
+permissions:
+  contents: write
+
+env:
+  REPLAY_SHARADAR_DIR: data/sharadar_oos
+  REPLAY_MEMBERSHIP_WINDOW: "2023-12-01,2026-10-23"
+  REPLAY_DATA_START: "2023-06-01"
+  REPLAY_DATA_END: "2026-10-23"
+  REPLAY_CAL_START: "2023-06-01"
+  REPLAY_CAL_END: "2026-12-31"
+  OOS_TOP_N: ${{ inputs.top_n }}
+
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
+    env:
+      DATABENTO_API_KEY: ${{ secrets.DATABENTO_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt
+      - id: sh
+        uses: actions/cache/restore@v4
+        with:
+          path: data/sharadar_oos
+          key: sharadar-oos-v1-none
+          restore-keys: sharadar-oos-v1-
+      - name: Sharadar subset for 2023-12 .. 2026-10 (only if not cached)
+        if: steps.sh.outputs.cache-matched-key == ''
+        env:
+          SHARADAR_API_KEY: ${{ secrets.SHARADAR_API_KEY }}
+        run: python -m replay.ghrun replay.sharadar
+      - if: steps.sh.outputs.cache-matched-key == ''
+        uses: actions/cache/save@v4
+        with:
+          path: data/sharadar_oos
+          key: sharadar-oos-v1-${{ github.run_id }}
+      - name: Weekly sample (point in time) + data coverage check
+        run: python -m replay.ghrun replay.oos_spread --universe
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oos-universe
+          path: results/oos/universe.csv
+      - run: .github/scripts/commit-results.sh "oos universe"
+
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      shards: ${{ steps.m.outputs.shards }}
+    steps:
+      - id: m
+        run: echo "shards=$(python3 -c "import json;print(json.dumps(list(range(${{ inputs.nshards }}))))")" >> "$GITHUB_OUTPUT"
+
+  measure:
+    needs: [prepare, plan]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 330
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: ${{ fromJSON(needs.plan.outputs.shards) }}
+    env:
+      DATABENTO_API_KEY: ${{ secrets.DATABENTO_API_KEY }}
+      DATABENTO_QUOTE_ONLY: ${{ inputs.quote_only && '1' || '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: oos-universe
+          path: results/oos/
+      - uses: actions/cache/restore@v4
+        with:
+          path: data/databento
+          key: dbn-oos-v1-s${{ matrix.shard }}-none
+          restore-keys: dbn-oos-v1-s${{ matrix.shard }}-
+      - name: This shard's slice of the remaining budget
+        run: |
+          python - <<'PY' >> "$GITHUB_ENV"
+          import json
+          spent = json.load(open("results/databento_ledger.json"))["spent_usd"]
+          left = float("${{ inputs.budget_usd }}") - spent
+          print(f"DATABENTO_BUDGET_USD={spent + left / int('${{ inputs.nshards }}'):.4f}")
+          PY
+      - name: Measure one shard of the weeks
+        run: python -m replay.ghrun replay.oos_spread --shard ${{ matrix.shard }} --nshards ${{ inputs.nshards }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: oos-part-${{ matrix.shard }}
+          path: results/oos/parts/
+          if-no-files-found: ignore
+      - if: always() && !inputs.quote_only
+        uses: actions/cache/save@v4
+        with:
+          path: data/databento
+          key: dbn-oos-v1-s${{ matrix.shard }}-${{ github.run_id }}-${{ github.run_attempt }}
+
+  merge:
+    needs: measure
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: oos-part-*
+          path: results/oos/parts/
+          merge-multiple: true
+      - run: python -m replay.ghrun replay.oos_spread --merge
+      - if: ${{ !inputs.quote_only }}
+        run: python -m replay.ghrun replay.oos_spread --score
+      - run: rm -rf results/oos/parts && .github/scripts/commit-results.sh "oos spread test${{ inputs.quote_only && ' (quote only)' || '' }}"

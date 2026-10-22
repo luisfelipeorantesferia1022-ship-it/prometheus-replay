@@ -14,7 +14,9 @@ STRATEGY_DIR = ROOT / "strategy"
 DATA_DIR = Path(os.environ.get("REPLAY_DATA_DIR", ROOT / "data"))
 RESULTS_DIR = Path(os.environ.get("REPLAY_RESULTS_DIR", ROOT / "results"))
 
-SHARADAR_DIR = DATA_DIR / "sharadar"
+# The out-of-sample spread test (2026-10-22) uses its own, wider Sharadar
+# subset; these env overrides leave the 2025 replay's defaults unchanged.
+SHARADAR_DIR = Path(os.environ.get("REPLAY_SHARADAR_DIR", DATA_DIR / "sharadar"))
 DBN_CACHE_DIR = DATA_DIR / "databento"
 
 # ── Replay window ────────────────────────────────────────────────────────────
@@ -29,11 +31,14 @@ AGENT_LAST_EXIT_DAY = "2026-01-30"
 
 # Sharadar history needed: LSTM trains from 2018-01-01 (lstm_test.TRAIN_START,
 # lstm_forecast start); the sim needs 365 + 60 days before each Friday.
-DATA_START = "2017-10-01"
-DATA_END = "2026-02-15"
+DATA_START = os.environ.get("REPLAY_DATA_START", "2017-10-01")
+DATA_END = os.environ.get("REPLAY_DATA_END", "2026-02-15")
 
 # S&P 500 members at ANY point in this window form the price universe.
-MEMBERSHIP_WINDOW = ("2024-12-01", "2025-12-31")
+MEMBERSHIP_WINDOW = tuple(os.environ.get("REPLAY_MEMBERSHIP_WINDOW", "2024-12-01,2025-12-31").split(","))
+# NYSE calendar range loaded by asof.nyse_schedule()
+CALENDAR_START = os.environ.get("REPLAY_CAL_START", "2024-01-01")
+CALENDAR_END = os.environ.get("REPLAY_CAL_END", "")          # "" = AGENT_LAST_EXIT_DAY
 
 # ── Console settings at the time (app/pipeline/ui_settings.json, run state) ──
 MAX_CANDIDATES = 25          # "Cap candidates" used on the 2026-08-07 run

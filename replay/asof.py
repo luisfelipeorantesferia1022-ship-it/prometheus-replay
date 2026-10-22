@@ -179,7 +179,8 @@ def earnings_dates(ticker: str) -> list[date]:
 @lru_cache(maxsize=1)
 def nyse_schedule() -> pd.DataFrame:
     import pandas_market_calendars as mcal
-    s = mcal.get_calendar("NYSE").schedule("2024-01-01", config.AGENT_LAST_EXIT_DAY)
+    s = mcal.get_calendar("NYSE").schedule(config.CALENDAR_START,
+                                           config.CALENDAR_END or config.AGENT_LAST_EXIT_DAY)
     s["open_et"] = s["market_open"].dt.tz_convert("America/New_York").dt.tz_localize(None)
     s["close_et"] = s["market_close"].dt.tz_convert("America/New_York").dt.tz_localize(None)
     s.index = s.index.date

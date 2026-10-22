@@ -61,7 +61,7 @@ def opt_root(t: str) -> str:
     return t.replace("-", "").replace(".", "")
 
 
-def defs_for_day(d: date, tickers: list[str]) -> dict[str, pd.DataFrame]:
+def defs_for_day(d: date, tickers: list[str], purpose: str = "calm_definitions") -> dict[str, pd.DataFrame]:
     """Option definitions for many underlyings with one request, split by OSI
     root into the per-ticker cache files dbn.option_definitions reads."""
     def path(t):
@@ -70,7 +70,7 @@ def defs_for_day(d: date, tickers: list[str]) -> dict[str, pd.DataFrame]:
     if missing:
         s = pd.Timestamp(f"{d} 00:00", tz="UTC")
         cache = config.DBN_CACHE_DIR / "opra_def_batch" / f"{d}_{dbn._hash(missing)}.parquet"
-        raw = dbn._get("calm_definitions", cache, dataset=config.OPTIONS_DATASET, schema="definition",
+        raw = dbn._get(purpose, cache, dataset=config.OPTIONS_DATASET, schema="definition",
                        symbols=[f"{opt_root(t)}.OPT" for t in missing], stype_in="parent",
                        start=s, end=s + pd.Timedelta(hours=14))
         if raw is not None and not raw.empty:
