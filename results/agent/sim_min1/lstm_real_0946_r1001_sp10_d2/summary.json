@@ -1,0 +1,37 @@
+{
+  "start_balance": 5000.0,
+  "end_equity": 5155.0,
+  "return_pct": 3.1,
+  "max_drawdown_pct": -2.1,
+  "spy_return_pct_same_window": 14.36,
+  "n_trades": 2,
+  "win_rate_pct": 50.0,
+  "total_realized_pnl": 155.0,
+  "avg_win": 200.0,
+  "avg_loss": -45.0,
+  "exit_reasons": {
+    "Trail stop": 1,
+    "Day-2 time stop": 1
+  },
+  "by_ticker": {
+    "CCL": {
+      "count": 1,
+      "sum": -45.0
+    },
+    "WYNN": {
+      "count": 1,
+      "sum": 200.0
+    }
+  },
+  "variant": "sim_min1",
+  "mode": "real",
+  "selector": "lstm",
+  "entry_start": "09:46",
+  "spread_retries": [
+    "10:01"
+  ],
+  "max_spread_pct": 10.0,
+  "time_stop_day": 2,
+  "stopped_early": null,
+  "databento_spent_usd": 8.532222
+}
