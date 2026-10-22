@@ -179,7 +179,7 @@ def patterns(P: Paths, meta: pd.DataFrame) -> dict:
     out = {}
     m = P.tradable
     # median / quartile path of the bid P&L over trading time (5-minute grid, 0..9 trading days)
-    grid_t = np.round(np.arange(16 / 390, 9.0, 5 / 390), 4)
+    grid_t = np.round(np.concatenate([d + np.arange(15, 390, 5) / 390 for d in range(9)]), 4)
     pnl = (P.bid_c / P.cost[:, None] - 1) * 100
     tt = np.round(P.tt, 4)
 

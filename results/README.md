@@ -5,7 +5,7 @@ Full-year 2025 walk-forward replay of the Prometheus workflow (weekend LSTM swee
 GitHub Actions from the `prometheus-replay` repo. Raw Sharadar and Databento
 market data are not included (licensed, and kept only in the GitHub Actions cache).
 
-Start with the pages in `report/` (open in a browser): `replay_2025_tables.html`, `calm_test_tables.html`, `winner_search_tables.html`.
+Start with the pages in `report/` (open in a browser): `replay_2025_tables.html`, `calm_test_tables.html`, `winner_search_tables.html`, `sell_strategy.html`.
 
 | Folder / file | What it holds |
 |---|---|
@@ -23,6 +23,11 @@ Start with the pages in `report/` (open in a browser): `replay_2025_tables.html`
 | `report/winner_search_tables.html` | Winner/loser search: can anything known at 9:46 pick winners or weed out losers? (39 features, checked in both halves of 2025) |
 | `analysis/calm_features.csv` | The calm-test options plus entry-time features: gap, early move, momentum, RSI, 52-week range, volume, earnings timing, SPY regime, option cost |
 | `analysis/winner_search.json` | The search results: per-feature correlations by half, models, call/put side rules |
+| `report/sell_strategy.html` | Sell-strategy lab: a chart for every agent trade, the common price patterns, ~2,600 sell rules compared on both halves of 2025 |
+| `analysis/exit_paths.parquet` | 5-minute bid/mid paths for the 1,518 test options (entry to the Thursday exit) |
+| `analysis/agent_trade_paths.parquet` | 1-minute bid/ask/stock paths for the agent's 23 trades, entry to expiry |
+| `analysis/exit_rules.csv` | Every sell rule's results, by half of the year |
+| `analysis/exit_v3_check.csv`, `analysis/exit_lab.json` | Live V3 rules at 1-minute precision per option; pattern statistics |
 | `trace/lineage.json` | Every agent trade traced back through promotion, stage 1, stage 2, sim 1, sim 2 and the entry morning |
 | `databento_ledger.json` | Databento spend so far, against the $40 cap |
 | `data_report.json` | Point-in-time data checks |
