@@ -1,0 +1,2 @@
+id,ticker,direction,opt_type,raw_symbol,strike,expiry,entry_ts,entry_stock,option_cost,entry_mid,entry_ask,contracts,total_spent,entry_delta,snr,tom_pct,rank_position,n_candidates,exit_ts,exit_reason,exit_price,realized_pnl,peak_pnl_pct
+1,CCL,Bullish,CALL,CCL   251003C00032000,32.0,2025-10-03,2025-09-15 10:01:00,31.225,1.16,1.135,1.16,8,928.0,0.4466695667757832,1.1748096070377614,4.080303840047784,1,1,2025-09-29 09:38:00,Stop loss,0.25,-728.0,15.086206896551724
