@@ -204,6 +204,14 @@ def main():
         for mode in ("copy", "real"):
             Replay(mode, "lstm", v).run()
         Replay("real", "spy_rsi", v).run()
+        # proposed V3 changes: 5% spread cap + sell at the day-2 close
+        r = Replay("real", "lstm", v, "09:46", ["10:01"], 0.05, 2)
+        r.run()
+        ix = r._tday_ix
+        for t in r.book.closed:
+            assert (t.entry_ask - t.entry_mid) * 2 / t.entry_mid <= 0.05 + 1e-9, t
+            assert ix[t.exit_ts.date()] - ix[t.entry_ts.date()] <= 3, t
+        print(v, "time-stop book:", [(t.ticker, str(t.entry_ts), str(t.exit_ts), t.exit_reason) for t in r.book.closed])
     print(f"\nSMOKE OK — outputs in {TMP}")
 
 

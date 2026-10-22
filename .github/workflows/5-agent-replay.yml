@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       runs:
-        description: "variant:selector:mode[:HHMM entry start[:HHMM spread retry]] entries, space separated"
+        description: "variant:selector:mode[:HHMM entry start[:HHMM spread retry[:max spread %[:time-stop day]]]] entries, space separated (fields may be empty)"
         default: "sim_min1:lstm:copy sim_min1:lstm:real sim_min1:spy_rsi:real sim_min3:lstm:copy sim_min3:lstm:real sim_min3:spy_rsi:real"
       budget_usd:
         description: "Hard Databento budget for the whole project (USD)"
@@ -40,10 +40,12 @@ jobs:
         run: |
           status=0
           for r in ${{ inputs.runs }}; do
-            IFS=: read -r v sel mode start retry <<< "$r"
+            IFS=: read -r v sel mode start retry cap tday <<< "$r"
             extra=""
             if [ -n "$start" ]; then extra="--entry-start ${start:0:2}:${start:2:2}"; fi
             if [ -n "$retry" ]; then extra="$extra --spread-retry ${retry:0:2}:${retry:2:2}"; fi
+            if [ -n "$cap" ]; then extra="$extra --max-spread $cap"; fi
+            if [ -n "$tday" ]; then extra="$extra --time-stop-day $tday"; fi
             python -m replay.ghrun replay.agent --variant "$v" --selector "$sel" --mode "$mode" $extra || status=1
           done
           exit $status
@@ -55,7 +57,7 @@ jobs:
           from replay import dbn
           for p in sorted(glob.glob("results/agent/*/*/summary.json")):
               s = json.load(open(p))
-              print(f"::notice title={s.get('variant')} {s.get('selector')}/{s.get('mode')} entry {s.get('entry_start', 'open')} retry {','.join(s.get('spread_retries') or []) or '-'}::return {s.get('return_pct')}% | trades {s.get('n_trades')} | win {s.get('win_rate_pct')}% | maxDD {s.get('max_drawdown_pct')}% | SPY {s.get('spy_return_pct_same_window')}%")
+              print(f"::notice title={s.get('variant')} {s.get('selector')}/{s.get('mode')} entry {s.get('entry_start', 'open')} retry {','.join(s.get('spread_retries') or []) or '-'} cap {s.get('max_spread_pct', 20)}% tstop {s.get('time_stop_day') or '-'}::return {s.get('return_pct')}% | trades {s.get('n_trades')} | win {s.get('win_rate_pct')}% | maxDD {s.get('max_drawdown_pct')}% | SPY {s.get('spy_return_pct_same_window')}%")
               import pandas as pd, os
               lp = os.path.join(os.path.dirname(p), "entry_log.csv")
               try:

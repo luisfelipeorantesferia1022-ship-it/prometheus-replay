@@ -46,6 +46,7 @@ from .forecasts import earnings_soon
 from .weekly import whitelist_timeline
 
 ONE_MIN = pd.Timedelta(minutes=1)
+LAST_TICK = pd.Timestamp("15:59").time()      # run_day's last exit tick
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -125,7 +126,8 @@ class Book:
 
 class Replay:
     def __init__(self, mode: str, selector: str, variant: str, entry_start: str | None = None,
-                 spread_retries: list[str] | None = None):
+                 spread_retries: list[str] | None = None, max_spread: float | None = None,
+                 time_stop_day: int | None = None):
         assert mode in ("copy", "real") and selector in ("lstm", "spy_rsi")
         self.mode, self.selector, self.variant = mode, selector, variant
         # None = the live V3 behaviour (scan at the open). "09:46" = the V2
@@ -133,6 +135,13 @@ class Replay:
         # 15-minute-delayed sandbox quotes come from today's session.
         self.entry_start = entry_start
         self.spread_retries = list(spread_retries or [])      # e.g. ["10:01"]
+        # Proposed V3 changes under test (2026-10-22); the defaults are the live V3.
+        # max_spread: entry spread cap as a fraction of mid (live: 0.20).
+        # time_stop_day: sell at the bid at the close of the Nth trading day after
+        # entry (entry day = day 0); None = no time stop (live).
+        self.max_spread = config.MAX_SPREAD_PCT if max_spread is None else float(max_spread)
+        self.time_stop_day = time_stop_day
+        self._tday_ix = {x: i for i, x in enumerate(asof.nyse_schedule().index)}
         self._spread_retry, self._today_log = [], {}
         self.delay = pd.Timedelta(minutes=config.COPY_QUOTE_DELAY_MIN if mode == "copy" else 0)
         self.book = Book()
@@ -330,7 +339,8 @@ class Replay:
                 q = q[q["ts_et"] >= self.first_live_quote(ts.date())]
         last_q = (q.groupby("symbol" if "symbol" in q.columns else "raw_symbol").last()
                   if not q.empty else pd.DataFrame())
-        rejects = {"no quote": 0, "spread>20%": 0, "delta<0.35": 0, "over budget": 0}
+        spread_key = f"spread>{self.max_spread * 100:g}%"
+        rejects = {"no quote": 0, spread_key: 0, "delta<0.35": 0, "over budget": 0}
 
         T = max((datetime.combine(target, datetime.min.time()) + timedelta(hours=16) - now)
                 .total_seconds() / (365 * 86400), 1 / 365)
@@ -345,8 +355,8 @@ class Replay:
                 rejects["no quote"] += 1
                 continue
             mid = (bid + ask) / 2
-            if (ask - bid) / mid > config.MAX_SPREAD_PCT:
-                rejects["spread>20%"] += 1
+            if (ask - bid) / mid > self.max_spread:
+                rejects[spread_key] += 1
                 continue
             iv = implied_vol(mid, current, o["strike"], T, config.RISK_FREE, is_call)
             if iv is not None:
@@ -440,6 +450,15 @@ class Replay:
                 self.close(tr, ts, "Thursday-before-expiry force-exit", peak)
             elif peak >= config.EXIT_TRAIL_TRIGGER_PCT and p <= peak - config.EXIT_TRAIL_GIVEBACK_PCT:
                 self.close(tr, ts, "Trail stop", peak)
+            elif self.time_stop_due(tr, ts):
+                self.close(tr, ts, f"Day-{self.time_stop_day} time stop", peak)
+
+    def time_stop_due(self, tr: Trade, ts: pd.Timestamp) -> bool:
+        """At the last tick (15:59) of trading day N after entry, or any tick after it."""
+        if self.time_stop_day is None:
+            return False
+        held = self._tday_ix[ts.date()] - self._tday_ix[tr.entry_ts.date()]
+        return held > self.time_stop_day or (held == self.time_stop_day and ts.time() >= LAST_TICK)
 
     # ── Entry (try_market_open_entry) ──────────────────────────────────────
     def try_entry(self, d: date, clock: pd.Timestamp) -> pd.Timestamp:
@@ -475,7 +494,7 @@ class Replay:
                 opt, why = self.select_option(c["ticker"], c["direction"], budget, clock)
                 if opt is None:
                     skips.append((c["ticker"], f"select_option: {why}"))
-                    if "spread>20%" in why:
+                    if "spread>" in why:
                         self._spread_retry.append((rank, len(passed), c))
                     continue
                 self._open_trade(c, opt, clock, rank, len(passed))
@@ -531,7 +550,7 @@ class Replay:
             opt, why = self.select_option(c2["ticker"], c2["direction"], budget, ts)
             if opt is None:
                 notes.append(f"{c2['ticker']}: {why}")
-                if "spread>20%" in why:
+                if "spread>" in why:
                     still.append((rank, n, c))
                 continue
             self._open_trade(c2, opt, ts, rank, n)
@@ -623,6 +642,10 @@ class Replay:
     def write(self) -> dict:
         suffix = f"_{self.entry_start.replace(':', '')}" if self.entry_start else ""
         suffix += "".join(f"_r{x.replace(':', '')}" for x in self.spread_retries)
+        if self.max_spread != config.MAX_SPREAD_PCT:
+            suffix += f"_sp{self.max_spread * 100:g}"
+        if self.time_stop_day is not None:
+            suffix += f"_d{self.time_stop_day}"
         od = config.RESULTS_DIR / "agent" / self.variant / f"{self.selector}_{self.mode}{suffix}"
         od.mkdir(parents=True, exist_ok=True)
         trades = pd.DataFrame([asdict(t) for t in self.book.closed + self.book.open],
@@ -635,6 +658,8 @@ class Replay:
         s.update({"variant": self.variant, "mode": self.mode, "selector": self.selector,
                   "entry_start": self.entry_start or "open",
                   "spread_retries": self.spread_retries,
+                  "max_spread_pct": round(self.max_spread * 100, 2),
+                  "time_stop_day": self.time_stop_day,
                   "stopped_early": getattr(self, "stopped", None),
                   "databento_spent_usd": dbn.ledger()["spent_usd"]})
         (od / "summary.json").write_text(json.dumps(s, indent=2, default=str))
@@ -675,9 +700,14 @@ def main():
     ap.add_argument("--variant", default=next(iter(config.SIM_MIN_TRADES_VARIANTS)))
     ap.add_argument("--entry-start", default=None, help="HH:MM ET; default = at the open")
     ap.add_argument("--spread-retry", default="", help="comma list of HH:MM re-checks for spread rejections")
+    ap.add_argument("--max-spread", type=float, default=None,
+                    help="entry spread cap in %% of mid (default: live 20)")
+    ap.add_argument("--time-stop-day", type=int, default=None,
+                    help="sell at the close of trading day N after entry (default: none)")
     a = ap.parse_args()
     Replay(a.mode, a.selector, a.variant, a.entry_start,
-           [x for x in a.spread_retry.split(",") if x.strip()]).run()
+           [x for x in a.spread_retry.split(",") if x.strip()],
+           None if a.max_spread is None else a.max_spread / 100, a.time_stop_day).run()
 
 
 if __name__ == "__main__":
