@@ -298,6 +298,8 @@ def shard(i: int, n: int) -> None:
     u = pd.read_csv(UNIVERSE)
     keys = sorted(u["asof"].unique())[i::n]
     base = dbn.ledger()
+    print(f"::notice title=OOS shard {i} ledger at start::cache ${dbn._read(dbn._LEDGER_CACHE).get('spent_usd', 0):.6f}"
+          f" | repo ${dbn._read(dbn._LEDGER_REPO).get('spent_usd', 0):.6f}", flush=True)
     rows = []
     try:
         for a in keys:

@@ -19,6 +19,9 @@ on:
       nshards:
         description: "Parallel jobs (weeks are split across them)"
         default: "20"
+      shards:
+        description: "Only these shards, comma separated (blank = all); weeks are still split by nshards"
+        default: ""
 
 permissions:
   contents: write
@@ -73,7 +76,12 @@ jobs:
       shards: ${{ steps.m.outputs.shards }}
     steps:
       - id: m
-        run: echo "shards=$(python3 -c "import json;print(json.dumps(list(range(${{ inputs.nshards }}))))")" >> "$GITHUB_OUTPUT"
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          s, n = "${{ inputs.shards }}".strip(), int("${{ inputs.nshards }}")
+          print("shards=" + json.dumps([int(x) for x in s.split(",") if x.strip()] if s else list(range(n))))
+          PY
 
   measure:
     needs: [prepare, plan]
