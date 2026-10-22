@@ -5,7 +5,7 @@ Full-year 2025 walk-forward replay of the Prometheus workflow (weekend LSTM swee
 GitHub Actions from the `prometheus-replay` repo. Raw Sharadar and Databento
 market data are not included (licensed, and kept only in the GitHub Actions cache).
 
-Start with `report/replay_2025_tables.html` and `report/calm_test_tables.html` (open in a browser).
+Start with the pages in `report/` (open in a browser): `replay_2025_tables.html`, `calm_test_tables.html`, `winner_search_tables.html`.
 
 | Folder / file | What it holds |
 |---|---|
@@ -20,6 +20,9 @@ Start with `report/replay_2025_tables.html` and `report/calm_test_tables.html` (
 | `report/calm_test_tables.html` | Calm-stock test: do calmer, lower-error stocks give bigger option peaks? (real OPRA quotes, 1,518 options, 52 weeks) |
 | `analysis/calm_test.csv` | One row per option in that test: stock, call/put, contract, price paid (ask at 9:46), implied vol, leverage, LSTM error, volatility, beta, peak, peak within 5 days, value at the Thursday exit |
 | `analysis/calm_summary.json` | The test's correlations, week-by-week counts and fifths tables |
+| `report/winner_search_tables.html` | Winner/loser search: can anything known at 9:46 pick winners or weed out losers? (39 features, checked in both halves of 2025) |
+| `analysis/calm_features.csv` | The calm-test options plus entry-time features: gap, early move, momentum, RSI, 52-week range, volume, earnings timing, SPY regime, option cost |
+| `analysis/winner_search.json` | The search results: per-feature correlations by half, models, call/put side rules |
 | `trace/lineage.json` | Every agent trade traced back through promotion, stage 1, stage 2, sim 1, sim 2 and the entry morning |
 | `databento_ledger.json` | Databento spend so far, against the $40 cap |
 | `data_report.json` | Point-in-time data checks |
