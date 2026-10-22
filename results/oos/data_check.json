@@ -1,0 +1,35 @@
+{
+  "2024": {
+    "weeks": 52,
+    "first_asof": "2024-01-05",
+    "last_asof": "2024-12-27",
+    "members_without_prices": [
+      "AMTM",
+      "GEV",
+      "SOLV",
+      "SW"
+    ]
+  },
+  "2026": {
+    "weeks": 39,
+    "first_asof": "2026-01-02",
+    "last_asof": "2026-09-25",
+    "members_without_prices": [
+      "FDXF",
+      "HONA"
+    ]
+  },
+  "sharadar_last_price_date": "2026-10-21",
+  "databento_OPRA.PILLAR": {
+    "start": "2013-04-01T00:00:00.000000000Z",
+    "end": "2026-10-22T13:30:00.000000000Z"
+  },
+  "databento_EQUS.MINI": {
+    "start": "2023-03-28T00:00:00.000000000Z",
+    "end": "2026-10-22T04:00:00.000000000Z"
+  },
+  "databento_XNAS.ITCH": {
+    "start": "2018-05-01T00:00:00.000000000Z",
+    "end": "2026-10-22T04:00:00.000000000Z"
+  }
+}
