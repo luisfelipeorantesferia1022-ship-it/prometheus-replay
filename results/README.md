@@ -28,6 +28,7 @@ Start with the pages in `report/` (open in a browser): `replay_2025_tables.html`
 | `analysis/agent_trade_paths.parquet` | 1-minute bid/ask/stock paths for the agent's 23 trades, entry to expiry |
 | `analysis/exit_rules.csv` | Every sell rule's results, by half of the year |
 | `analysis/exit_v3_check.csv`, `analysis/exit_lab.json` | Live V3 rules at 1-minute precision per option; pattern statistics |
+| `analysis/spread_check.csv` | The 1,518 test options with entry spread and the return under each sell rule (V3 exact, V3 + day-2, day-2, hold, +50% take-profit) |
 | `trace/lineage.json` | Every agent trade traced back through promotion, stage 1, stage 2, sim 1, sim 2 and the entry morning |
 | `databento_ledger.json` | Databento spend so far, against the $40 cap |
 | `data_report.json` | Point-in-time data checks |
@@ -35,4 +36,6 @@ Start with the pages in `report/` (open in a browser): `replay_2025_tables.html`
 Book names: `lstm_copy` (what the sandbox agent would book: 15-min delayed quotes,
 mid fills), `lstm_real` (real prices: ask in, bid out), `spy_rsi_real` (control,
 no LSTM). Suffix `_0946` = entries wait until 9:46 ET; `_r1001` = 10:01 re-check
-for tickers rejected only on the 20% spread rule.
+for tickers rejected only on the 20% spread rule. Proposed V3 changes (2026-10-22):
+`_sp<N>` = entry spread cap N% instead of 20%; `_d2` = also sell at the bid at the
+close of the 2nd trading day after entry.
