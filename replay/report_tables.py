@@ -23,6 +23,38 @@ ORDER = [1, 2, 3, 6, 4, 5, 7]          # big-peak trades first, then the rest
 BIG = {1, 2, 3, 6}
 
 
+CSS = """
+:root { --bg:#f7f7f5; --card:#ffffff; --ink:#1d1d1b; --muted:#6b6b66; --line:#e3e2dc; --head:#f0efe9;
+        --pos:#1d7a46; --neg:#b3261e; --big:#eef6ff; --accent:#2f5d9b; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#141414; --card:#1d1d1d; --ink:#ecebe6; --muted:#a3a29b; --line:#33332f; --head:#262624;
+          --pos:#5cc98a; --neg:#f2867e; --big:#1b2633; --accent:#8db4ea; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink);
+       font:15px/1.5 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+main { max-width:1180px; margin:0 auto; padding:32px 16px 64px; }
+h1 { font-size:26px; margin:0 0 4px; }
+.lead { color:var(--muted); margin:0 0 28px; }
+section { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 20px 8px;
+          margin:0 0 20px; }
+h2 { font-size:18px; margin:0 0 6px; }
+p.sub { color:var(--muted); margin:0 0 14px; font-size:14px; }
+.wrap { overflow-x:auto; margin:0 0 12px; }
+table { border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; }
+th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+th { background:var(--head); font-weight:600; font-size:13px; white-space:nowrap; }
+td:first-child, th:first-child { white-space:nowrap; }
+tfoot td { border-top:2px solid var(--line); border-bottom:none; }
+tr.pos td:last-child { color:var(--pos); font-weight:600; }
+tr.neg td:last-child { color:var(--neg); font-weight:600; }
+tr.big td { background:var(--big); }
+table.corr td:not(:first-child), table.corr th:not(:first-child) { text-align:right; }
+ul { margin:0 0 12px; padding-left:20px; } li { margin:0 0 8px; }
+.key { display:inline-block; width:12px; height:12px; background:var(--big); border:1px solid var(--line);
+        vertical-align:-1px; margin-right:6px; border-radius:2px; }
+"""
+
+
 def money(x, sign=True):
     if pd.isna(x):
         return "n/a"
@@ -214,36 +246,7 @@ because options on those stocks were already priced for it (implied vol 41 to 77
     page = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Replay 2025 Tables</title>
-<style>
-:root {{ --bg:#f7f7f5; --card:#ffffff; --ink:#1d1d1b; --muted:#6b6b66; --line:#e3e2dc; --head:#f0efe9;
-        --pos:#1d7a46; --neg:#b3261e; --big:#eef6ff; --accent:#2f5d9b; }}
-@media (prefers-color-scheme: dark) {{
-  :root {{ --bg:#141414; --card:#1d1d1d; --ink:#ecebe6; --muted:#a3a29b; --line:#33332f; --head:#262624;
-          --pos:#5cc98a; --neg:#f2867e; --big:#1b2633; --accent:#8db4ea; }} }}
-* {{ box-sizing:border-box; }}
-body {{ margin:0; background:var(--bg); color:var(--ink);
-       font:15px/1.5 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }}
-main {{ max-width:1180px; margin:0 auto; padding:32px 16px 64px; }}
-h1 {{ font-size:26px; margin:0 0 4px; }}
-.lead {{ color:var(--muted); margin:0 0 28px; }}
-section {{ background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 20px 8px;
-          margin:0 0 20px; }}
-h2 {{ font-size:18px; margin:0 0 6px; }}
-p.sub {{ color:var(--muted); margin:0 0 14px; font-size:14px; }}
-.wrap {{ overflow-x:auto; margin:0 0 12px; }}
-table {{ border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; }}
-th, td {{ text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }}
-th {{ background:var(--head); font-weight:600; font-size:13px; white-space:nowrap; }}
-td:first-child, th:first-child {{ white-space:nowrap; }}
-tfoot td {{ border-top:2px solid var(--line); border-bottom:none; }}
-tr.pos td:last-child {{ color:var(--pos); font-weight:600; }}
-tr.neg td:last-child {{ color:var(--neg); font-weight:600; }}
-tr.big td {{ background:var(--big); }}
-table.corr td:not(:first-child), table.corr th:not(:first-child) {{ text-align:right; }}
-ul {{ margin:0 0 12px; padding-left:20px; }} li {{ margin:0 0 8px; }}
-.key {{ display:inline-block; width:12px; height:12px; background:var(--big); border:1px solid var(--line);
-        vertical-align:-1px; margin-right:6px; border-radius:2px; }}
-</style></head><body><main>
+<style>{CSS}</style></head><body><main>
 <h1>Replay 2025: LSTM real, 1-trade min book</h1>
 <p class="lead">Full-year 2025 walk-forward replay. Generated from the files in results/.
 <span class="key"></span>Shaded rows are trades 1, 2, 3 and 6, the four with big peaks.</p>

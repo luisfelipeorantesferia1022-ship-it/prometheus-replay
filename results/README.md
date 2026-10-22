@@ -5,7 +5,7 @@ Full-year 2025 walk-forward replay of the Prometheus workflow (weekend LSTM swee
 GitHub Actions from the `prometheus-replay` repo. Raw Sharadar and Databento
 market data are not included (licensed, and kept only in the GitHub Actions cache).
 
-Start with `report/replay_2025_tables.html` (open in a browser).
+Start with `report/replay_2025_tables.html` and `report/calm_test_tables.html` (open in a browser).
 
 | Folder / file | What it holds |
 |---|---|
@@ -17,8 +17,11 @@ Start with `report/replay_2025_tables.html` (open in a browser).
 | `analysis/hold_<variant>_<book>.csv` | Per trade: held-to-expiry P&L, best bid reached and when |
 | `analysis/trade_factors.csv` | 23 distinct trades x ~80 measures (funnel, morning forecast, greeks, stock beta/alpha, option beta, peak breakdown) |
 | `analysis/trade_factor_correlations.csv` | Each measure's Spearman correlation with the option peak |
+| `report/calm_test_tables.html` | Calm-stock test: do calmer, lower-error stocks give bigger option peaks? (real OPRA quotes, 1,518 options, 52 weeks) |
+| `analysis/calm_test.csv` | One row per option in that test: stock, call/put, contract, price paid (ask at 9:46), implied vol, leverage, LSTM error, volatility, beta, peak, peak within 5 days, value at the Thursday exit |
+| `analysis/calm_summary.json` | The test's correlations, week-by-week counts and fifths tables |
 | `trace/lineage.json` | Every agent trade traced back through promotion, stage 1, stage 2, sim 1, sim 2 and the entry morning |
-| `databento_ledger.json` | Databento spend ($4.67 of the $40 cap) |
+| `databento_ledger.json` | Databento spend so far, against the $40 cap |
 | `data_report.json` | Point-in-time data checks |
 
 Book names: `lstm_copy` (what the sandbox agent would book: 15-min delayed quotes,
