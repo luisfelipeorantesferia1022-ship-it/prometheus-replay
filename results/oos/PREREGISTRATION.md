@@ -93,4 +93,9 @@ most-traded tickers. None of these can turn a failed test into a pass.
 
 ## Changes before the run
 
-(none yet)
+None to the rule, sample or criteria. `TOP_N` stays at 40.
+
+Free cost quote (workflow 11 run 39853163498, quote only, no option prices
+downloaded): bars + option definitions for all 91 weeks $18.91; option quotes
+estimated at about $4 more (from 2025's cost per quote-minute). Already spent
+$8.53 of the $40 cap. Luis chose to run the test as locked on 2026-10-22.
