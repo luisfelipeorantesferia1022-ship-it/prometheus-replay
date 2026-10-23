@@ -1,0 +1,148 @@
+name: 12 · SEC filings test (download, parse, LLM)
+
+# Pre-registered test: results/filings/PREREGISTRATION.md.
+# mode=test       a few CIKs, writes parse samples to results/filings/plumbing/
+# mode=fetch      all CIKs in parallel shards, then merge (artifact filings-data)
+# mode=llm_*      uses the filings-data artifact of the fetch run given in data_run_id
+# Secrets: SEC_USER_AGENT ("Name email", EDGAR requires it), ANTHROPIC_API_KEY (llm only).
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        options: [test, fetch, llm_preview, llm_submit, llm_collect, llm_retry]
+        default: test
+      test_ciks:
+        description: "mode=test: comma separated CIKs"
+        default: "0000320193,0000310158,0000019617,0000034088,0000072971,0000024741"
+      nshards:
+        description: "mode=fetch: parallel shards (keep total EDGAR rate under 10/s)"
+        default: "20"
+      min_interval:
+        description: "Seconds between EDGAR requests in each shard"
+        default: "2.2"
+      kind:
+        description: "mode=llm_*: pilot | main | l1 | l2"
+        default: "pilot"
+      data_run_id:
+        description: "mode=llm_*: run id of the fetch run whose filings-data artifact to use"
+        default: ""
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: filings-${{ inputs.mode }}
+  cancel-in-progress: false
+
+jobs:
+  test:
+    if: inputs.mode == 'test'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install pandas numpy scipy lxml requests pyarrow
+      - name: Fetch and parse a few CIKs
+        env:
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+          SEC_MIN_INTERVAL: "0.3"
+        run: python -m replay.ghrun replay.filings_fetch --ciks "${{ inputs.test_ciks }}" --out data/filings --samples
+      - name: Merge into plumbing results
+        run: |
+          python -m replay.ghrun replay.filings_fetch --merge --out data/filings --results results/filings/plumbing
+          cp data/filings/shard_00/samples.json results/filings/plumbing/samples.json
+      - run: .github/scripts/commit-results.sh "filings plumbing test"
+
+  plan:
+    if: inputs.mode == 'fetch'
+    runs-on: ubuntu-24.04
+    outputs:
+      shards: ${{ steps.m.outputs.shards }}
+    steps:
+      - id: m
+        run: python3 -c "import json;print('shards='+json.dumps(list(range(int('${{ inputs.nshards }}')))))" >> "$GITHUB_OUTPUT"
+
+  fetch:
+    needs: plan
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: ${{ fromJson(needs.plan.outputs.shards) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install pandas numpy scipy lxml requests pyarrow
+      - name: Fetch and parse shard ${{ matrix.shard }}
+        env:
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+          SEC_MIN_INTERVAL: ${{ inputs.min_interval }}
+        run: python -m replay.ghrun replay.filings_fetch --shard ${{ matrix.shard }} --nshards ${{ inputs.nshards }} --out data/filings
+      - uses: actions/upload-artifact@v4
+        with:
+          name: filings-shard-${{ matrix.shard }}
+          path: data/filings/
+          retention-days: 7
+
+  merge:
+    needs: fetch
+    if: always() && needs.fetch.result != 'cancelled'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install pandas numpy scipy lxml requests pyarrow
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: filings-shard-*
+          path: data/filings/
+          merge-multiple: true
+      - run: python -m replay.ghrun replay.filings_fetch --merge --out data/filings --results results/filings
+      - uses: actions/upload-artifact@v4
+        with:
+          name: filings-data
+          path: |
+            data/filings/payloads_all.jsonl.gz
+            data/filings/cikmeta_all.json
+          retention-days: 90
+      - run: .github/scripts/commit-results.sh "filings: index and parse statistics"
+
+  llm:
+    if: startsWith(inputs.mode, 'llm_')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 340
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install pandas numpy scipy lxml requests pyarrow anthropic
+      - uses: actions/download-artifact@v4
+        if: inputs.mode != 'llm_collect'
+        with:
+          name: filings-data
+          path: data/filings/
+          run-id: ${{ inputs.data_run_id }}
+          github-token: ${{ github.token }}
+      - name: LLM ${{ inputs.mode }} ${{ inputs.kind }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          case "${{ inputs.mode }}" in
+            llm_preview) python -m replay.ghrun replay.filings_llm preview --kind "${{ inputs.kind }}" ;;
+            llm_submit)  python -m replay.ghrun replay.filings_llm submit --kind "${{ inputs.kind }}" && \
+                         python -m replay.ghrun replay.filings_llm collect --wait-hours 5 ;;
+            llm_collect) python -m replay.ghrun replay.filings_llm collect --wait-hours 5 ;;
+            llm_retry)   python -m replay.ghrun replay.filings_llm retry --kind "${{ inputs.kind }}" && \
+                         python -m replay.ghrun replay.filings_llm collect --wait-hours 5 ;;
+          esac
+      - if: always()
+        run: .github/scripts/commit-results.sh "filings: llm ${{ inputs.mode }} ${{ inputs.kind }}"
