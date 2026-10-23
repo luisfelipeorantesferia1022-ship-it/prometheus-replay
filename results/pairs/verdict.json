@@ -1,0 +1,896 @@
+{
+  "locked": {
+    "twins": [
+      "KO/PEP",
+      "HD/LOW",
+      "V/MA",
+      "WMT/TGT",
+      "NKE/UAA",
+      "UPS/FDX",
+      "XOM/CVX",
+      "JPM/BAC",
+      "GS/MS",
+      "MCD/YUM",
+      "LMT/NOC",
+      "CSX/NSC",
+      "DUK/SO",
+      "PG/CL",
+      "MO/PM",
+      "T/VZ",
+      "ADP/PAYX",
+      "SPGI/MCO",
+      "HLT/MAR",
+      "DAL/UAL"
+    ],
+    "lookback": 60,
+    "entry_z": 2.0,
+    "stop_z": 4.0,
+    "max_hold": 20,
+    "cost_rt": 0.0015,
+    "borrow_yr": 0.005,
+    "pass": {
+      "min_trades": 100,
+      "t_clustered": 2.0,
+      "drop_top_share": 0.03,
+      "max_pair_share": 0.25
+    },
+    "test": [
+      "2013-01-01",
+      "2026-10-08"
+    ]
+  },
+  "variants": {
+    "P1_twins": {
+      "trades": 1183,
+      "pairs_traded": 20,
+      "mean_net_pct": -0.051,
+      "mean_gross_pct": 0.114,
+      "median_net_pct": 0.105,
+      "win_rate": 51.8,
+      "t_clustered": -0.75,
+      "avg_sessions": 15.5,
+      "h1": {
+        "trades": 591,
+        "mean_net_pct": -0.179
+      },
+      "h2": {
+        "trades": 592,
+        "mean_net_pct": 0.076
+      },
+      "drop_top": {
+        "k": 36,
+        "mean_net_pct": -0.239
+      },
+      "max_pair_share": 0.137,
+      "top_pair": "WMT/TGT",
+      "exits": {
+        "time": 683,
+        "converged": 406,
+        "stop": 88,
+        "period end": 6
+      },
+      "by_year_mean_net_pct": {
+        "2013": -0.116,
+        "2014": 0.289,
+        "2015": -0.287,
+        "2016": -0.477,
+        "2017": -0.624,
+        "2018": -0.028,
+        "2019": -0.024,
+        "2020": 0.531,
+        "2021": -0.086,
+        "2022": 0.028,
+        "2023": -0.062,
+        "2024": -0.198,
+        "2025": 0.013,
+        "2026": 0.346
+      },
+      "criteria": {
+        "1_trades_ge_100": true,
+        "2_mean_pos_and_t_ge_2": false,
+        "3_both_halves_pos": false,
+        "4_pos_without_top_3pct": false,
+        "5_no_pair_over_25pct": true
+      },
+      "verdict": "fail"
+    },
+    "P2_emerging": {
+      "trades": 513,
+      "pairs_traded": 163,
+      "mean_net_pct": -0.344,
+      "mean_gross_pct": -0.179,
+      "median_net_pct": -0.062,
+      "win_rate": 48.7,
+      "t_clustered": -1.8,
+      "avg_sessions": 15.8,
+      "h1": {
+        "trades": 264,
+        "mean_net_pct": -0.374
+      },
+      "h2": {
+        "trades": 249,
+        "mean_net_pct": -0.312
+      },
+      "drop_top": {
+        "k": 16,
+        "mean_net_pct": -0.577
+      },
+      "max_pair_share": 0.034,
+      "top_pair": "GEV/VST",
+      "exits": {
+        "time": 293,
+        "converged": 148,
+        "period end": 51,
+        "stop": 21
+      },
+      "by_year_mean_net_pct": {
+        "2013": 1.731,
+        "2014": -0.885,
+        "2015": -0.335,
+        "2016": -0.787,
+        "2017": -0.341,
+        "2018": 0.499,
+        "2019": -0.15,
+        "2020": -0.262,
+        "2021": 0.37,
+        "2022": -0.609,
+        "2023": 0.293,
+        "2025": -1.619,
+        "2026": -0.092
+      },
+      "criteria": {
+        "1_trades_ge_100": true,
+        "2_mean_pos_and_t_ge_2": false,
+        "3_both_halves_pos": false,
+        "4_pos_without_top_3pct": false,
+        "5_no_pair_over_25pct": true
+      },
+      "verdict": "fail"
+    }
+  },
+  "formations": [
+    {
+      "formation": "2013-01-02",
+      "pairs": [],
+      "corr_new": []
+    },
+    {
+      "formation": "2013-07-01",
+      "pairs": [
+        "VLO/MPC",
+        "MPC/PSX"
+      ],
+      "corr_new": [
+        0.756,
+        0.715
+      ]
+    },
+    {
+      "formation": "2014-01-02",
+      "pairs": [
+        "VLO/MPC",
+        "MPC/PSX",
+        "MPC/ANDV",
+        "VLO/PSX",
+        "PSX/ANDV"
+      ],
+      "corr_new": [
+        0.79,
+        0.771,
+        0.768,
+        0.762,
+        0.745
+      ]
+    },
+    {
+      "formation": "2014-07-01",
+      "pairs": [
+        "VLO/PSX",
+        "MPC/PSX"
+      ],
+      "corr_new": [
+        0.746,
+        0.743
+      ]
+    },
+    {
+      "formation": "2015-01-02",
+      "pairs": [
+        "PSX/MPC",
+        "VLO/PSX"
+      ],
+      "corr_new": [
+        0.75,
+        0.717
+      ]
+    },
+    {
+      "formation": "2015-07-01",
+      "pairs": [
+        "AAL/DAL",
+        "CMCSA/TWC",
+        "AAL/LUV",
+        "T/DTV1"
+      ],
+      "corr_new": [
+        0.861,
+        0.842,
+        0.779,
+        0.76
+      ]
+    },
+    {
+      "formation": "2016-01-04",
+      "pairs": [
+        "JPM/WFC",
+        "JPM/USB",
+        "C/WFC",
+        "BAC/MET",
+        "C/USB",
+        "JPM/MET",
+        "BAC/USB",
+        "WFC/MS",
+        "JPM/BNY",
+        "BAC/WFC",
+        "DAL/AAL",
+        "MET/USB",
+        "BAC/BNY",
+        "BAC/SCHW",
+        "GS/USB",
+        "BRK.B/USB",
+        "MS/USB",
+        "JPM/SCHW",
+        "JPM/BRK.B",
+        "C/SCHW"
+      ],
+      "corr_new": [
+        0.898,
+        0.874,
+        0.873,
+        0.858,
+        0.855,
+        0.852,
+        0.851,
+        0.851,
+        0.846,
+        0.845,
+        0.844,
+        0.843,
+        0.823,
+        0.817,
+        0.813,
+        0.807,
+        0.806,
+        0.801,
+        0.801,
+        0.799
+      ]
+    },
+    {
+      "formation": "2016-07-01",
+      "pairs": [
+        "JPM/USB",
+        "BAC/GS",
+        "BAC/USB",
+        "BAC/WFC",
+        "C/USB",
+        "GS/USB",
+        "WFC/MS",
+        "DAL/AAL",
+        "C/SCHW",
+        "BAC/SCHW",
+        "MS/USB",
+        "BAC/MET",
+        "JPM/AIG",
+        "KO/PEP",
+        "JPM/SCHW",
+        "GS/SCHW",
+        "USB/SCHW",
+        "WFC/AIG",
+        "MS/AIG",
+        "AAL/UAL"
+      ],
+      "corr_new": [
+        0.911,
+        0.882,
+        0.873,
+        0.87,
+        0.863,
+        0.858,
+        0.855,
+        0.849,
+        0.847,
+        0.845,
+        0.845,
+        0.843,
+        0.84,
+        0.834,
+        0.823,
+        0.815,
+        0.811,
+        0.806,
+        0.801,
+        0.801
+      ]
+    },
+    {
+      "formation": "2017-01-03",
+      "pairs": [
+        "BAC/COF",
+        "PNC/COF",
+        "C/COF",
+        "COF/RF",
+        "MS/COF",
+        "GS/COF",
+        "PM/PEP",
+        "MSFT/GOOGL",
+        "V/ADBE",
+        "MSFT/GOOG"
+      ],
+      "corr_new": [
+        0.822,
+        0.821,
+        0.813,
+        0.81,
+        0.804,
+        0.783,
+        0.735,
+        0.714,
+        0.705,
+        0.703
+      ]
+    },
+    {
+      "formation": "2017-07-03",
+      "pairs": [],
+      "corr_new": []
+    },
+    {
+      "formation": "2018-01-02",
+      "pairs": [],
+      "corr_new": []
+    },
+    {
+      "formation": "2018-07-02",
+      "pairs": [
+        "MSFT/GOOG",
+        "MSFT/GOOGL",
+        "BRK.B/AXP",
+        "MSFT/V",
+        "GOOG/V",
+        "GOOGL/V",
+        "V/CRM"
+      ],
+      "corr_new": [
+        0.78,
+        0.766,
+        0.728,
+        0.727,
+        0.724,
+        0.718,
+        0.701
+      ]
+    },
+    {
+      "formation": "2019-01-02",
+      "pairs": [
+        "ADBE/CRM",
+        "MSFT/V",
+        "MSFT/ADBE",
+        "V/CRM",
+        "MA/CRM",
+        "CRM/INTU",
+        "MSFT/GOOG",
+        "V/ADBE",
+        "MSFT/GOOGL",
+        "MSFT/MA",
+        "CAT/DE",
+        "MSFT/CRM",
+        "V/INTU",
+        "GOOGL/V",
+        "GOOG/V",
+        "TMO/DHR",
+        "MA/INTU",
+        "MSFT/INTU",
+        "AMZN/MA",
+        "ADBE/INTU"
+      ],
+      "corr_new": [
+        0.86,
+        0.851,
+        0.849,
+        0.83,
+        0.828,
+        0.826,
+        0.824,
+        0.823,
+        0.82,
+        0.819,
+        0.811,
+        0.811,
+        0.807,
+        0.806,
+        0.805,
+        0.796,
+        0.793,
+        0.792,
+        0.791,
+        0.791
+      ]
+    },
+    {
+      "formation": "2019-07-01",
+      "pairs": [
+        "CRM/ADBE",
+        "V/PYPL",
+        "CRM/MA",
+        "V/CRM",
+        "MA/PYPL",
+        "AMZN/MA",
+        "AMZN/MSFT",
+        "MSFT/CRM",
+        "MSFT/PYPL",
+        "CRM/INTU",
+        "AMZN/V",
+        "AMZN/ADBE",
+        "BDX/BSX",
+        "CRM/ADSK",
+        "MU/LRCX",
+        "ADBE/PYPL",
+        "ADBE/ADSK",
+        "ABT/BSX",
+        "CRM/PYPL",
+        "ADBE/ISRG"
+      ],
+      "corr_new": [
+        0.841,
+        0.825,
+        0.815,
+        0.81,
+        0.803,
+        0.801,
+        0.796,
+        0.79,
+        0.783,
+        0.768,
+        0.766,
+        0.758,
+        0.756,
+        0.754,
+        0.749,
+        0.748,
+        0.744,
+        0.741,
+        0.741,
+        0.739
+      ]
+    },
+    {
+      "formation": "2020-01-02",
+      "pairs": [
+        "MA/ADP"
+      ],
+      "corr_new": [
+        0.742
+      ]
+    },
+    {
+      "formation": "2020-07-01",
+      "pairs": [
+        "BRK.B/MS",
+        "AXP/COF",
+        "C/COF",
+        "UNH/ELV",
+        "FIS/GPN",
+        "FIS/FISV",
+        "FISV/GPN",
+        "C/AXP",
+        "MA/GPN",
+        "V/FISV",
+        "JPM/AXP",
+        "HD/LOW",
+        "BRK.B/GS",
+        "GS/AXP",
+        "COP/SLB",
+        "AAPL/MSFT",
+        "BAC/BRK.B",
+        "GS/COF",
+        "MDT/SYK",
+        "LMT/LHX"
+      ],
+      "corr_new": [
+        0.908,
+        0.907,
+        0.905,
+        0.903,
+        0.901,
+        0.9,
+        0.898,
+        0.892,
+        0.892,
+        0.889,
+        0.886,
+        0.884,
+        0.883,
+        0.882,
+        0.882,
+        0.881,
+        0.879,
+        0.879,
+        0.878,
+        0.878
+      ]
+    },
+    {
+      "formation": "2021-01-04",
+      "pairs": [
+        "HD/LOW",
+        "JPM/AXP",
+        "CVX/COP",
+        "FISV/GPN",
+        "FIS/GPN",
+        "ELV/CI",
+        "BAC/AXP",
+        "ELV/HUM",
+        "UNP/CSX",
+        "PEP/MDLZ",
+        "V/FISV",
+        "HON/AXP",
+        "UNH/HUM",
+        "UNH/CI",
+        "XOM/COP",
+        "C/AXP",
+        "MS/AXP",
+        "BRK.B/GS",
+        "GS/AXP",
+        "AXP/PNC"
+      ],
+      "corr_new": [
+        0.9,
+        0.894,
+        0.885,
+        0.885,
+        0.885,
+        0.881,
+        0.877,
+        0.87,
+        0.87,
+        0.869,
+        0.866,
+        0.865,
+        0.864,
+        0.862,
+        0.862,
+        0.861,
+        0.858,
+        0.857,
+        0.856,
+        0.856
+      ]
+    },
+    {
+      "formation": "2021-07-01",
+      "pairs": [
+        "SKYD/WBD",
+        "OXY/MPC"
+      ],
+      "corr_new": [
+        0.833,
+        0.754
+      ]
+    },
+    {
+      "formation": "2022-01-03",
+      "pairs": [
+        "AMD/XLNX"
+      ],
+      "corr_new": [
+        0.842
+      ]
+    },
+    {
+      "formation": "2022-07-01",
+      "pairs": [
+        "MPC/MRO",
+        "MPC/FANG",
+        "MPC/APA",
+        "AMD/KLAC",
+        "AMD/AMAT",
+        "AMD/LRCX",
+        "AMD/ON",
+        "AMD/NXPI",
+        "AMD/QCOM"
+      ],
+      "corr_new": [
+        0.796,
+        0.788,
+        0.77,
+        0.755,
+        0.749,
+        0.745,
+        0.738,
+        0.726,
+        0.703
+      ]
+    },
+    {
+      "formation": "2023-01-03",
+      "pairs": [
+        "QCOM/MCHP",
+        "QCOM/NXPI",
+        "NVDA/NXPI",
+        "AMD/AMAT",
+        "NVDA/ON",
+        "AMD/ON",
+        "AMD/KLAC",
+        "AMD/MCHP",
+        "AMD/LRCX",
+        "AMD/NXPI",
+        "AMD/ADI",
+        "QCOM/ON",
+        "AMD/AVGO",
+        "AMZN/INTU",
+        "AMD/QCOM",
+        "AMD/MU",
+        "AMD/INTC",
+        "MSFT/CMG",
+        "NVDA/ACN",
+        "AMD/GOOGL"
+      ],
+      "corr_new": [
+        0.851,
+        0.835,
+        0.833,
+        0.83,
+        0.829,
+        0.819,
+        0.818,
+        0.817,
+        0.813,
+        0.808,
+        0.807,
+        0.805,
+        0.78,
+        0.761,
+        0.761,
+        0.749,
+        0.742,
+        0.731,
+        0.73,
+        0.729
+      ]
+    },
+    {
+      "formation": "2023-07-03",
+      "pairs": [],
+      "corr_new": []
+    },
+    {
+      "formation": "2024-01-02",
+      "pairs": [],
+      "corr_new": []
+    },
+    {
+      "formation": "2024-07-01",
+      "pairs": [],
+      "corr_new": []
+    },
+    {
+      "formation": "2025-01-02",
+      "pairs": [
+        "VST/CEG"
+      ],
+      "corr_new": [
+        0.773
+      ]
+    },
+    {
+      "formation": "2025-07-01",
+      "pairs": [
+        "GS/AXP",
+        "VST/CEG",
+        "GS/COF",
+        "AXP/MS",
+        "AXP/KKR",
+        "GS/KKR",
+        "C/AXP",
+        "ANET/ETN",
+        "GEV/ETN",
+        "AXP/BX",
+        "GEV/VST",
+        "VST/ETN",
+        "C/KKR",
+        "COF/KKR",
+        "GEV/ANET",
+        "NVDA/ETN",
+        "GEV/APH",
+        "ANET/VST",
+        "CAT/AXP",
+        "ETN/DELL"
+      ],
+      "corr_new": [
+        0.857,
+        0.835,
+        0.834,
+        0.834,
+        0.826,
+        0.826,
+        0.821,
+        0.816,
+        0.804,
+        0.784,
+        0.781,
+        0.773,
+        0.766,
+        0.766,
+        0.761,
+        0.758,
+        0.744,
+        0.743,
+        0.72,
+        0.719
+      ]
+    },
+    {
+      "formation": "2026-01-02",
+      "pairs": [
+        "CEG/VST",
+        "GEV/VST",
+        "NVDA/ETN",
+        "AVGO/ETN",
+        "GEV/ETN",
+        "ETN/VST",
+        "JPM/SCHW",
+        "NVDA/VST",
+        "V/ADP"
+      ],
+      "corr_new": [
+        0.83,
+        0.761,
+        0.759,
+        0.756,
+        0.75,
+        0.745,
+        0.731,
+        0.71,
+        0.7
+      ]
+    },
+    {
+      "formation": "2026-07-01",
+      "pairs": [
+        "MU/SNDK",
+        "CAT/TER",
+        "ADBE/WDAY"
+      ],
+      "corr_new": [
+        0.732,
+        0.709,
+        0.707
+      ]
+    }
+  ],
+  "P1_by_pair": {
+    "ADP/PAYX": {
+      "trades": 67,
+      "mean_net_pct": -0.021,
+      "win_rate": 50.7,
+      "luis": false
+    },
+    "CSX/NSC": {
+      "trades": 64,
+      "mean_net_pct": -0.079,
+      "win_rate": 53.1,
+      "luis": false
+    },
+    "DAL/UAL": {
+      "trades": 49,
+      "mean_net_pct": 0.164,
+      "win_rate": 61.2,
+      "luis": false
+    },
+    "DUK/SO": {
+      "trades": 58,
+      "mean_net_pct": -0.042,
+      "win_rate": 51.7,
+      "luis": false
+    },
+    "GS/MS": {
+      "trades": 63,
+      "mean_net_pct": -0.021,
+      "win_rate": 54.0,
+      "luis": false
+    },
+    "HD/LOW": {
+      "trades": 61,
+      "mean_net_pct": 0.059,
+      "win_rate": 54.1,
+      "luis": true
+    },
+    "HLT/MAR": {
+      "trades": 45,
+      "mean_net_pct": 0.381,
+      "win_rate": 48.9,
+      "luis": false
+    },
+    "JPM/BAC": {
+      "trades": 68,
+      "mean_net_pct": 0.32,
+      "win_rate": 61.8,
+      "luis": false
+    },
+    "KO/PEP": {
+      "trades": 62,
+      "mean_net_pct": -0.082,
+      "win_rate": 50.0,
+      "luis": true
+    },
+    "LMT/NOC": {
+      "trades": 61,
+      "mean_net_pct": -0.255,
+      "win_rate": 55.7,
+      "luis": false
+    },
+    "MCD/YUM": {
+      "trades": 64,
+      "mean_net_pct": -0.064,
+      "win_rate": 56.2,
+      "luis": false
+    },
+    "MO/PM": {
+      "trades": 56,
+      "mean_net_pct": -0.444,
+      "win_rate": 42.9,
+      "luis": false
+    },
+    "NKE/UAA": {
+      "trades": 40,
+      "mean_net_pct": 0.304,
+      "win_rate": 60.0,
+      "luis": true
+    },
+    "PG/CL": {
+      "trades": 59,
+      "mean_net_pct": -0.339,
+      "win_rate": 40.7,
+      "luis": false
+    },
+    "SPGI/MCO": {
+      "trades": 65,
+      "mean_net_pct": 0.192,
+      "win_rate": 61.5,
+      "luis": false
+    },
+    "T/VZ": {
+      "trades": 60,
+      "mean_net_pct": -0.358,
+      "win_rate": 46.7,
+      "luis": false
+    },
+    "UPS/FDX": {
+      "trades": 57,
+      "mean_net_pct": -0.097,
+      "win_rate": 43.9,
+      "luis": true
+    },
+    "V/MA": {
+      "trades": 69,
+      "mean_net_pct": 0.158,
+      "win_rate": 56.5,
+      "luis": true
+    },
+    "WMT/TGT": {
+      "trades": 60,
+      "mean_net_pct": -0.532,
+      "win_rate": 40.0,
+      "luis": true
+    },
+    "XOM/CVX": {
+      "trades": 55,
+      "mean_net_pct": -0.138,
+      "win_rate": 45.5,
+      "luis": false
+    }
+  },
+  "verdict": "neither variant passed"
+}
