@@ -5,7 +5,7 @@ Full-year 2025 walk-forward replay of the Prometheus workflow (weekend LSTM swee
 GitHub Actions from the `prometheus-replay` repo. Raw Sharadar and Databento
 market data are not included (licensed, and kept only in the GitHub Actions cache).
 
-Start with the pages in `report/` (open in a browser): `replay_2025_tables.html`, `calm_test_tables.html`, `winner_search_tables.html`, `sell_strategy.html`, `oos_spread_test.html`.
+Start with the pages in `report/` (open in a browser): `replay_2025_tables.html`, `calm_test_tables.html`, `winner_search_tables.html`, `sell_strategy.html`, `oos_spread_test.html`, `pairs_search.html`.
 
 | Folder / file | What it holds |
 |---|---|
@@ -35,6 +35,9 @@ Start with the pages in `report/` (open in a browser): `replay_2025_tables.html`
 | `analysis/oracle_test.txt` | Oracle test (replay/oracle_test.py): if a model knew the stock's direction perfectly over a given horizon, what V3 would have earned and the accuracy needed to break even; 3,034 stock-weeks with both sides measured |
 | `fiveday/PREREGISTRATION.md`, `fiveday/README.md`, `fiveday/verdict.json` | Five-day direction test (pre-registered): can trend, reversal, the SPY rule or a gradient-boosted model call an S&P 500 stock's next-week direction well enough for V3? 2013-2026, 357,857 stock-weeks. No candidate passed |
 | `pairs/PREREGISTRATION.md`, `pairs/README.md`, `pairs/verdict.json` | Twin-stock pairs test (pre-registered): 20 economic twins (incl. KO/PEP, HD/LOW, V/MA, WMT/TGT, NKE/UAA, UPS/FDX) and newly tight pairs, buy the laggard / short the leader, 2013-2026, stocks only. Neither variant passed |
+| `report/pairs_search.html` | Pairs search then holdout: 960 settings searched on 1999-2012, one picked by a fixed rule, tested once on 2013-2026, with luck checks (Reality Check, Deflated Sharpe, random-pair null) |
+| `pairs_search/PREREGISTRATION.md`, `pairs_search/README.md` | That test's locked plan and its outcome (selected setting failed: search Sharpe +0.64, holdout -0.25) |
+| `pairs_search/search_results.csv`, `selection.json`, `holdout.json`, `holdout_all_settings.csv`, `monthly_returns.csv` | Every setting's search and holdout results, the selection and luck checks, the verdict, monthly returns of the selected setting |
 | `trace/lineage.json` | Every agent trade traced back through promotion, stage 1, stage 2, sim 1, sim 2 and the entry morning |
 | `databento_ledger.json` | Databento spend so far, against the $40 cap |
 | `data_report.json` | Point-in-time data checks |
