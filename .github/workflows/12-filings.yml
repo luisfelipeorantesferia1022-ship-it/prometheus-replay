@@ -114,7 +114,7 @@ jobs:
             data/filings/payloads_all.jsonl.gz
             data/filings/cikmeta_all.json
           retention-days: 90
-      - run: .github/scripts/commit-results.sh "filings: index and parse statistics"
+      - run: .github/scripts/commit-results.sh "filings - index and parse statistics"
 
   llm:
     if: startsWith(inputs.mode, 'llm_')
@@ -145,4 +145,4 @@ jobs:
                          python -m replay.ghrun replay.filings_llm collect --wait-hours 5 ;;
           esac
       - if: always()
-        run: .github/scripts/commit-results.sh "filings: llm ${{ inputs.mode }} ${{ inputs.kind }}"
+        run: .github/scripts/commit-results.sh "filings - llm ${{ inputs.mode }} ${{ inputs.kind }}"
