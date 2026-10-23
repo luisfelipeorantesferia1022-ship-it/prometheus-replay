@@ -13,6 +13,7 @@
     "oos_bars": 1.023422,
     "oos_definitions": 16.846025,
     "oos_paths": 4.620003,
+    "oos_shard4_upload_lost": 1.300914,
     "oos_snapshot": 0.022677,
     "options_definitions": 0.17802,
     "stage2_bars": 4.393456
@@ -20,5 +21,5 @@
   "equity_dataset": "EQUS.MINI",
   "quoted_usd": 0.0,
   "requests": 3769,
-  "spent_usd": 31.043548
+  "spent_usd": 32.344462
 }

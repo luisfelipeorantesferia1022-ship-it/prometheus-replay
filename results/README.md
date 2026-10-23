@@ -5,7 +5,7 @@ Full-year 2025 walk-forward replay of the Prometheus workflow (weekend LSTM swee
 GitHub Actions from the `prometheus-replay` repo. Raw Sharadar and Databento
 market data are not included (licensed, and kept only in the GitHub Actions cache).
 
-Start with the pages in `report/` (open in a browser): `replay_2025_tables.html`, `calm_test_tables.html`, `winner_search_tables.html`, `sell_strategy.html`.
+Start with the pages in `report/` (open in a browser): `replay_2025_tables.html`, `calm_test_tables.html`, `winner_search_tables.html`, `sell_strategy.html`, `oos_spread_test.html`.
 
 | Folder / file | What it holds |
 |---|---|
@@ -29,6 +29,9 @@ Start with the pages in `report/` (open in a browser): `replay_2025_tables.html`
 | `analysis/exit_rules.csv` | Every sell rule's results, by half of the year |
 | `analysis/exit_v3_check.csv`, `analysis/exit_lab.json` | Live V3 rules at 1-minute precision per option; pattern statistics |
 | `analysis/spread_check.csv` | The 1,518 test options with entry spread and the return under each sell rule (V3 exact, V3 + day-2, day-2, hold, +50% take-profit) |
+| `report/oos_spread_test.html` | Out-of-sample test of the tight-spread rule on 2024 and Jan-Sep 2026 (pre-registered): verdict, the four checks, other sell rules, splits, month by month |
+| `oos/PREREGISTRATION.md`, `oos/README.md` | The test's locked rule and pass criteria (written before the data), and its outcome and run notes |
+| `oos/oos_trades.csv`, `oos/verdict.json`, `oos/universe.csv` | Every contract measured (entry quote, spread, delta, return under each sell rule), the scored verdict, and the weekly point-in-time sample |
 | `trace/lineage.json` | Every agent trade traced back through promotion, stage 1, stage 2, sim 1, sim 2 and the entry morning |
 | `databento_ledger.json` | Databento spend so far, against the $40 cap |
 | `data_report.json` | Point-in-time data checks |

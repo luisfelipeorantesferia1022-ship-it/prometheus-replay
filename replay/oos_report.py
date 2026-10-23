@@ -149,6 +149,24 @@ def main():
             rows.append([NAMES[per], html.escape(r["ticker"]), r["count"], p(r["mean"])])
     sections.append(("Most-traded names", "", table(["Period", "Ticker", "Trades", "Average V3"], rows, cls="corr")))
 
+    liq = t[(t["group"] == "liquid") & t["spread_pct"].notna()]
+    dsp = (liq["ask"] - liq["bid"]).groupby(liq["period"]).median()
+    notes = f"""<ul>
+<li>The 2025 result did not carry over. On new data, options with spreads under 5% roughly broke even under the
+V3 sell rules ({p(v['periods']['2024'].get('mean'))} in 2024 on {v['periods']['2024']['n']:,} trades,
+{p(v['periods']['2026'].get('mean'))} in 2026 on {v['periods']['2026']['n']:,}), and both 90% ranges include zero.
+The +10.8% of 2025 (86 trades) looks like an upward fluke of the search that found it.</li>
+<li>Tight spreads still beat wide ones by 7-13 points, so the cost effect is real: paying a wide spread loses money,
+paying a tight one only gets you to break-even.</li>
+<li>Calls made money and puts lost in both periods. That reflects which way the stocks drifted during the holds,
+the market's direction rather than anything the rule controls, and it would flip in a falling market.</li>
+<li>Caveat on 2026: entry spreads in the 2026 data are much wider than in 2024 for the same names (median
+${dsp.get('2024', float('nan')):.2f} vs ${dsp.get('2026', float('nan')):.2f} per contract-share), so fewer options
+qualified. It has not been checked whether that is the real market or a quirk of the quote data. 2024's quotes look
+normal and fail the test on their own, so the verdict does not depend on 2026.</li>
+</ul>"""
+    sections.append(("What it means", "", notes))
+
     body = "".join(
         f'<section><h2>{html.escape(h)}</h2>{f"<p class=sub>{html.escape(tx)}</p>" if tx else ""}{tb}</section>'
         for h, tx, tb in sections)
