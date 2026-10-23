@@ -10,11 +10,15 @@
     "exit_paths_quotes": 1.060354,
     "factor_bars": 0.009177,
     "held_option_quotes": 0.044011,
+    "oos_bars": 1.023422,
+    "oos_definitions": 16.846025,
+    "oos_paths": 4.620003,
+    "oos_snapshot": 0.022677,
     "options_definitions": 0.17802,
     "stage2_bars": 4.393456
   },
   "equity_dataset": "EQUS.MINI",
   "quoted_usd": 0.0,
-  "requests": 1417,
-  "spent_usd": 8.531421
+  "requests": 3769,
+  "spent_usd": 31.043548
 }

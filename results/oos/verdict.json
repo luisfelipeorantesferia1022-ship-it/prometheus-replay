@@ -1,0 +1,406 @@
+{
+  "locked": {
+    "top_n": 40,
+    "random_n": 10,
+    "spread_max_pct": 5.0,
+    "min_delta": 0.35,
+    "min_trades": 100,
+    "drop_top_share": 0.03
+  },
+  "periods": {
+    "2024": {
+      "n": 1956,
+      "weeks": 49,
+      "tickers": 73,
+      "mean": 1.36,
+      "median": 29.17,
+      "win_rate": 57.9,
+      "ci90": [
+        -1.4,
+        4.09
+      ],
+      "h1": {
+        "n": 1117,
+        "mean": 1.21
+      },
+      "h2": {
+        "n": 839,
+        "mean": 1.58
+      },
+      "drop_top": {
+        "k": 59,
+        "mean": -4.98
+      },
+      "best_month": {
+        "month": "2024-04",
+        "mean_without": 0.69
+      },
+      "criteria": {
+        "1_mean_and_ci_above_zero": false,
+        "2_both_halves_positive": true,
+        "3_positive_without_top_3pct": false,
+        "4_positive_without_best_month": true
+      },
+      "verdict": "fail",
+      "secondary": {
+        "rules_on_qualifying": {
+          "v3": {
+            "n": 1956,
+            "mean": 1.36
+          },
+          "v3_plus_day2": {
+            "n": 1956,
+            "mean": -3.05
+          },
+          "day2_only": {
+            "n": 1956,
+            "mean": -3.18
+          },
+          "hold_to_thursday": {
+            "n": 1956,
+            "mean": 3.6
+          },
+          "take_profit_50": {
+            "n": 1956,
+            "mean": -5.56
+          }
+        },
+        "wide_5_to_20_v3": {
+          "n": 1722,
+          "mean": -11.18
+        },
+        "by_group": {
+          "liquid": {
+            "n": 1915,
+            "mean": 1.26
+          },
+          "random": {
+            "n": 41,
+            "mean": 6.22
+          }
+        },
+        "by_side": {
+          "CALL": {
+            "n": 1028,
+            "mean": 6.66
+          },
+          "PUT": {
+            "n": 928,
+            "mean": -4.5
+          }
+        },
+        "one_side_follow_spy_trend": {
+          "n": 1014,
+          "mean": 3.33
+        },
+        "cutoff_sensitivity": {
+          "spread<3": {
+            "n": 1150,
+            "mean": 1.36
+          },
+          "spread<4": {
+            "n": 1627,
+            "mean": 1.16
+          },
+          "spread<5": {
+            "n": 1956,
+            "mean": 1.36
+          },
+          "spread<6": {
+            "n": 2211,
+            "mean": 1.06
+          },
+          "spread<8": {
+            "n": 2630,
+            "mean": -0.96
+          },
+          "spread<10": {
+            "n": 2914,
+            "mean": -1.12
+          }
+        },
+        "top_tickers": [
+          {
+            "ticker": "TSLA",
+            "count": 98,
+            "mean": 7.8
+          },
+          {
+            "ticker": "NVDA",
+            "count": 98,
+            "mean": 0.1
+          },
+          {
+            "ticker": "AMD",
+            "count": 97,
+            "mean": -5.7
+          },
+          {
+            "ticker": "META",
+            "count": 96,
+            "mean": -4.4
+          },
+          {
+            "ticker": "AMZN",
+            "count": 95,
+            "mean": -7.8
+          },
+          {
+            "ticker": "BAC",
+            "count": 90,
+            "mean": 0.5
+          },
+          {
+            "ticker": "MU",
+            "count": 90,
+            "mean": 1.1
+          },
+          {
+            "ticker": "GOOGL",
+            "count": 88,
+            "mean": 8.4
+          },
+          {
+            "ticker": "GOOG",
+            "count": 87,
+            "mean": 10.6
+          },
+          {
+            "ticker": "AAPL",
+            "count": 86,
+            "mean": 1.2
+          },
+          {
+            "ticker": "MSFT",
+            "count": 83,
+            "mean": -6.0
+          },
+          {
+            "ticker": "AVGO",
+            "count": 79,
+            "mean": 11.8
+          },
+          {
+            "ticker": "JPM",
+            "count": 71,
+            "mean": -1.3
+          },
+          {
+            "ticker": "INTC",
+            "count": 68,
+            "mean": -1.3
+          },
+          {
+            "ticker": "QCOM",
+            "count": 65,
+            "mean": -0.8
+          }
+        ]
+      },
+      "skips": {
+        "no expiry in 12-24 DTE": 290,
+        "no strike in range": 15,
+        "no live quote by 9:46": 11,
+        "no stock price": 7,
+        "no definitions": 2
+      }
+    },
+    "2026": {
+      "n": 605,
+      "weeks": 37,
+      "tickers": 28,
+      "mean": -0.27,
+      "median": 29.76,
+      "win_rate": 57.9,
+      "ci90": [
+        -4.74,
+        4.31
+      ],
+      "h1": {
+        "n": 354,
+        "mean": -1.13
+      },
+      "h2": {
+        "n": 251,
+        "mean": 0.94
+      },
+      "drop_top": {
+        "k": 19,
+        "mean": -5.33
+      },
+      "best_month": {
+        "month": "2026-07",
+        "mean_without": -2.19
+      },
+      "criteria": {
+        "1_mean_and_ci_above_zero": false,
+        "2_both_halves_positive": false,
+        "3_positive_without_top_3pct": false,
+        "4_positive_without_best_month": false
+      },
+      "verdict": "fail",
+      "secondary": {
+        "rules_on_qualifying": {
+          "v3": {
+            "n": 605,
+            "mean": -0.27
+          },
+          "v3_plus_day2": {
+            "n": 605,
+            "mean": -1.82
+          },
+          "day2_only": {
+            "n": 605,
+            "mean": -1.94
+          },
+          "hold_to_thursday": {
+            "n": 605,
+            "mean": -2.55
+          },
+          "take_profit_50": {
+            "n": 605,
+            "mean": -2.66
+          }
+        },
+        "wide_5_to_20_v3": {
+          "n": 1663,
+          "mean": -6.7
+        },
+        "by_group": {
+          "liquid": {
+            "n": 605,
+            "mean": -0.27
+          },
+          "random": {
+            "n": 0,
+            "mean": null
+          }
+        },
+        "by_side": {
+          "CALL": {
+            "n": 317,
+            "mean": 1.81
+          },
+          "PUT": {
+            "n": 288,
+            "mean": -2.56
+          }
+        },
+        "one_side_follow_spy_trend": {
+          "n": 303,
+          "mean": 0.95
+        },
+        "cutoff_sensitivity": {
+          "spread<3": {
+            "n": 324,
+            "mean": -1.68
+          },
+          "spread<4": {
+            "n": 454,
+            "mean": -0.32
+          },
+          "spread<5": {
+            "n": 605,
+            "mean": -0.27
+          },
+          "spread<6": {
+            "n": 771,
+            "mean": -1.64
+          },
+          "spread<8": {
+            "n": 1043,
+            "mean": -1.48
+          },
+          "spread<10": {
+            "n": 1290,
+            "mean": -2.95
+          }
+        },
+        "top_tickers": [
+          {
+            "ticker": "TSLA",
+            "count": 67,
+            "mean": 2.6
+          },
+          {
+            "ticker": "NVDA",
+            "count": 66,
+            "mean": -5.9
+          },
+          {
+            "ticker": "NFLX",
+            "count": 53,
+            "mean": -7.0
+          },
+          {
+            "ticker": "PLTR",
+            "count": 52,
+            "mean": 7.5
+          },
+          {
+            "ticker": "AMD",
+            "count": 45,
+            "mean": -8.1
+          },
+          {
+            "ticker": "AAPL",
+            "count": 44,
+            "mean": 9.4
+          },
+          {
+            "ticker": "META",
+            "count": 38,
+            "mean": 12.7
+          },
+          {
+            "ticker": "AMZN",
+            "count": 37,
+            "mean": 2.5
+          },
+          {
+            "ticker": "GOOG",
+            "count": 29,
+            "mean": -1.4
+          },
+          {
+            "ticker": "MSFT",
+            "count": 28,
+            "mean": 1.0
+          },
+          {
+            "ticker": "GOOGL",
+            "count": 27,
+            "mean": -11.1
+          },
+          {
+            "ticker": "MU",
+            "count": 25,
+            "mean": 2.6
+          },
+          {
+            "ticker": "AVGO",
+            "count": 21,
+            "mean": -17.3
+          },
+          {
+            "ticker": "INTC",
+            "count": 19,
+            "mean": 3.6
+          },
+          {
+            "ticker": "WMT",
+            "count": 8,
+            "mean": 8.4
+          }
+        ]
+      },
+      "skips": {
+        "no expiry in 12-24 DTE": 256,
+        "no strike in range": 15,
+        "no live quote by 9:46": 14,
+        "no definitions": 4
+      }
+    }
+  },
+  "verdict": "rejected"
+}
